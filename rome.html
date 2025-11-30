@@ -309,6 +309,7 @@
 
     <div class="cta-section">
         <h2>Ready to dive in the tradition?</h2>
+        </div>
         <div class="courses-grid">
              <section class="course-section">
             <h3 class="course-title" onclick="toggleCourse(this)">Appetizers</h3>
@@ -350,10 +351,10 @@
             <h3 class="course-title" onclick="toggleCourse(this)">Second courses</h3>
             <div class="course-content">
                 <ul class="dish-list">
-                    <li><a href="#coda-vaccinara">Coda alla Vaccinara</a></li>
+                    <li><a href="#coda">Coda alla Vaccinara</a></li>
                     <li><a href="#saltimbocca">Saltimbocca alla romana</a></li>
                     <li><a href="#trippa">Trippa alla romana</a></li>
-                    <li><a href="#fagioli-cotiche">Fagioli con le Cotiche</a></li>
+                    <li><a href="#fagioli">Fagioli con le Cotiche</a></li>
                     <li><a href="#carciofi-romana">Carciofi alla romana</a></li>
                     <li><a href="#carciofi-giudia">Carciofi alla Giudia</a></li>
                 </ul>
@@ -362,7 +363,7 @@
       <!--  </section> -->
     </div>
         </div>
-    </div>
+   <!--  </div>-->
 
     <div class="container">
         <!-- Appetizers Section -->
@@ -371,13 +372,13 @@
             <h2 style="text-align:center; font-family:'Playfair Display', serif; font-size:2.5rem; margin-bottom:40px; color:#d32f2f;">Appetizers</h2>
             <div class="appetizers-grid">
                 <!-- Supplì al telefono -->
-                <div class="dish-card">
+                <div class="dish-card" id= "suppli">
                     <div class="dish-header red" onclick="toggleDetails(this)">
                         <h2 class="dish-title red">Supplì al telefono</h2>
                         <p class="dish-description">Golden-fried rice balls filled with rich ragù or vibrant tomato sauce, and a core of mozzarella that stretches with every bite.</p>
                     </div>
                     <img src="suppli.jpg" alt="Supplì al telefono" class="dish-image">
-                    <div class="dish-details">
+                    <div class="dish-details red">
                         <div class="dish-section">
                             <h3>Ingredients:</h3>
                             <p>Rice, mozzarella, tomato sauce or ragù, eggs, breadcrumbs, olive oil</p>
@@ -390,13 +391,13 @@
                 </div>
 
                 <!-- Fiori di zucca -->
-                <div class="dish-card">
+                <div class="dish-card" id="fiori">
                     <div class="dish-header green" onclick="toggleDetails(this)">
                         <h2 class="dish-title green">Fiori di zucca</h2>
                         <p class="dish-description">Gently stuffed with mozzarella (and anchovies), then lightly fried to a crisp perfection.</p>
                     </div>
                     <img src="img_2941.jpg" alt="Fiori di zucca" class="dish-image">
-                    <div class="dish-details">
+                    <div class="dish-details green">
                         <div class="dish-section">
                             <h3>Ingredients:</h3>
                             <p>Zucchini flowers, mozzarella, anchovies (optional), flour, sparkling water, olive oil</p>
@@ -409,13 +410,13 @@
                 </div>
 
                 <!-- Baccalà fritto -->
-                <div class="dish-card">
+                <div class="dish-card" id="baccala">
                     <div class="dish-header yellow" onclick="toggleDetails(this)">
                         <h2 class="dish-title yellow">Baccalà fritto alla romana</h2>
                         <p class="dish-description">Cod wrapped in a light, golden batter and fried to crisp perfection.</p>
                     </div>
                     <img src="Baccala-fritto-alla-romaa-in-pastella_650x433_wm.jpg" alt="Baccalà fritto" class="dish-image">
-                    <div class="dish-details">
+                    <div class="dish-details yellow">
                         <div class="dish-section">
                             <h3>Ingredients:</h3>
                             <p>Salt cod (baccalà), flour, water, olive oil for frying</p>
@@ -441,7 +442,7 @@
                 <p class="dish-description">Pasta entwined with a luscious, velvety sauce of eggs and Pecorino, studded with crispy, savory guanciale.</p>
             </div>
             <img src="Carbonara-ricetta-5328.jpg" alt="Carbonara" class="dish-image">
-            <div class="dish-details">
+            <div class="dish-details yellow">
                 <div class="dish-section">
                     <h3>Ingredients:</h3>
                     <p>Pasta, spaghetti or rigatoni or mezze maniche, Guanciale, or pancetta, Eggs, both yolk and egg white (don't throw anything away), Pecorino romano
@@ -462,7 +463,7 @@
                 <p class="dish-description">Pasta bathed in tomato sauce slowly simmered until it deepens in flavor, lovingly enveloping the salty, melt-in-your-mouth guanciale.</p>
             </div>
             <img src="hq720.jpg" alt="Amatriciana" class="dish-image">
-            <div class="dish-details">
+            <div class="dish-details red">
                 <div class="dish-section">
                     <h3>Ingredients:</h3>
                     <p>Pasta, tomato sauce, guanciale, pecorino cheese, chili flakes</p>
@@ -481,7 +482,7 @@
                 <p class="dish-description">Pasta coated in a blanket of Pecorino, with a gentle dusting of black pepper that awakens each bite.</p>
             </div>
             <img src="IMG_3479.JPG" alt="Cacio e Pepe" class="dish-image">
-            <div class="dish-details">
+            <div class="dish-details yellow">
                 <div class="dish-section">
                     <h3>Ingredients:</h3>
                     <p>Pasta, pecorino cheese, black pepper, pasta water</p>
@@ -496,13 +497,14 @@
     </div>
 
      <!-- Gricia -->
+    <div class="appetizers-grid"><!-- reuse grid layout for uniformity -->
         <div class="dish-card">
             <div class="dish-header yellow" onclick="toggleDetails(this)">
                 <h2 class="dish-title yellow">Gricia</h2>
                 <p class="dish-description">Pasta tossed in an irresistible combination of crispy guanciale and Pecorino cheese.</p>
             </div>
             <img src="IMG_2381.heic" alt="Gricia" class="dish-image">
-            <div class="dish-details">
+            <div class="dish-details yellow">
                 <div class="dish-section">
                     <h3>Ingredients:</h3>
                     <p>Pasta tonnarelli, Guanciale, pecorino cheese, black pepper</p>
@@ -523,7 +525,7 @@
                 <p class="dish-description">Soft, sun-warmed semolina rounds baked until their edges turn golden, layered with butter and Parmigiano that melt into a quiet, velvety richness.</p>
             </div>
             <img src="gnocchi-alla-romana.jpg" alt="Gnocchi alla romana" class="dish-image">
-            <div class="dish-details">
+            <div class="dish-details yellow">
                 <div class="dish-section">
                     <h3>Ingredients:</h3>
                     <p>Semolina, butter, egg yolk, milk, parmigiano, nutmeg, salt, black pepper</p>
@@ -537,7 +539,7 @@
 
     </div>
 
-
+</div>
     
 </section>
 
@@ -547,7 +549,7 @@
     <div class="appetizers-grid"><!-- reuse grid layout for uniformity -->
 
         <!-- Coda -->
-        <div class="dish-card">
+        <div class="dish-card" id="coda">
             <div class="dish-header red" onclick="toggleDetails(this)">
                 <h2 class="dish-title red">Coda alla Vaccinara</h2>
                 <p class="dish-description">Slow-cooked oxtail melting into silky strands, in a tomato sauce that gently simmers it into something lush, and utterly comforting.</p>
@@ -565,7 +567,7 @@
             </div>
         </div>
 <!-- Salti -->
-        <div class="dish-card">
+        <div class="dish-card" id="saltimbocca">
             <div class="dish-header yellow" onclick="toggleDetails(this)">
                 <h2 class="dish-title yellow">Saltimbocca alla Romana</h2>
                 <p class="dish-description">Thin veal kissed with sage and covered in prosciutto, gently sautéed until the edges turn golden and the flavors fuse into a delicate, savory whisper. </p>
@@ -587,7 +589,7 @@
 
         
     <!-- Trippa -->
-        <div class="dish-card">
+        <div class="dish-card" id="trippa">
             <div class="dish-header red" onclick="toggleDetails(this)">
                 <h2 class="dish-title red">Trippa alla Romana</h2>
                 <p class="dish-description">Tender ribbons of slow-cooked tripe simmered in a fragrant tomato embrace, brightened with mint and crowned with Pecorino.</p>
@@ -604,9 +606,9 @@
                 </div>
             </div>
         </div>
-
+<div class="appetizers-grid"><!-- reuse grid layout for uniformity -->
             <!-- Fagioli -->
-        <div class="dish-card">
+        <div class="dish-card" id="fagioli">
             <div class="dish-header red" onclick="toggleDetails(this)">
                 <h2 class="dish-title red">Fagioli con le Cotiche</h2>
                 <p class="dish-description">Tender beans and succulent strips of pork rind simmered together in a rich, savory sauce that clings to every bite.</p>
@@ -626,13 +628,13 @@
         </div>
 
         <!-- Romana -->
-        <div class="dish-card">
+        <div class="dish-card" id="carciofi-romana">
             <div class="dish-header green" onclick="toggleDetails(this)">
                 <h2 class="dish-title green">Carciofi alla romana</h2>
                 <p class="dish-description">Artichokes gently opened like quiet spring blossoms, filled with herbs and garlic, then braised until yielding and aromatic.</p>
             </div>
             <img src="Carciofi-alla-romana.jpg" alt="Carciofi" class="dish-image">
-            <div class="dish-details">
+            <div class="dish-details green">
                 <div class="dish-section">
                     <h3>Ingredients:</h3>
                     <p>Artichoke, Mint, Parsley, White wine, Lemon, Garlic, Olive oil, Salt</p>
@@ -645,13 +647,13 @@
         </div>
 
         <!-- Giudia -->
-        <div class="dish-card">
+        <div class="dish-card" id="carciofi-giudia">
             <div class="dish-header green" onclick="toggleDetails(this)">
                 <h2 class="dish-title green">Carciofi alla Giudia</h2>
                 <p class="dish-description">Artichokes, tender on the inside and crisp on the outside, fried with just a touch of salt— from the Roman-Jewish culinary tradition.</p>
             </div>
             <img src="carciofi-alla-giudia.webp" alt="Carciofi" class="dish-image">
-            <div class="dish-details">
+            <div class="dish-details green">
                 <div class="dish-section">
                     <h3>Ingredients:</h3>
                     <p>Artichoke, Oil, Salt</p>
@@ -662,7 +664,8 @@
                 </div>
             </div>
         </div>
-       
+ </div>
+    
 </section>
     <footer>
         <p>&copy; 2024 Journey of Flavors. All rights reserved.</p>
