@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Journey of Flavors - The Roman Cuisine</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #fff;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            text-align: center;
+            padding: 60px 20px;
+            background: linear-gradient(135deg, #f5f5f5 0%, #fff 100%);
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            color: #666;
+            margin-bottom: 10px;
+            font-weight: 300;
+        }
+
+        h1.main-title {
+            color: #d32f2f;
+            font-weight: 700;
+            margin-bottom: 30px;
+        }
+
+        .tagline {
+            font-size: 1.5rem;
+            color: #666;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .cta-section {
+            background-color: #d32f2f;
+            color: white;
+            padding: 40px;
+            text-align: center;
+            margin: 40px 0;
+        }
+
+        .cta-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 40px;
+        }
+
+        .courses-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 20px;
+        }
+
+        .course-section {
+            padding: 40px 0;
+        }
+
+        .course-title {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            padding-left: 20px;
+            position: relative;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .course-title::before {
+            content: '▶';
+            position: absolute;
+            left: 0;
+            transition: transform 0.3s;
+        }
+
+        .course-title.active::before {
+            transform: rotate(90deg);
+        }
+
+        .course-content {
+            display: none;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border-radius: 8px;
+        }
+
+        .course-content.active {
+            display: block;
+        }
+
+        .dish-list {
+            list-style: none;
+        }
+
+        .dish-list li {
+            padding: 12px 0;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .dish-list li:last-child {
+            border-bottom: none;
+        }
+
+        .dish-list a {
+            color: #666;
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: color 0.3s;
+        }
+
+        .dish-list a:hover {
+            color: #d32f2f;
+        }
+
+        .appetizers-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin: 40px 0;
+        }
+
+        .dish-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .dish-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0,0,0,0.2);
+        }
+
+        .dish-header {
+            padding: 20px;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .dish-header.red {
+            background-color: #ffebee;
+        }
+
+        .dish-header.green {
+            background-color: #e8f5e9;
+        }
+
+        .dish-header.yellow {
+            background-color: #fff9e6;
+        }
+
+        .dish-title {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            white-space: nowrap;
+        }
+
+        .dish-title::before {
+            content: '▶';
+            font-size: 1rem;
+        }
+
+        .dish-title.red {
+            color: #d32f2f;
+        }
+
+        .dish-title.green {
+            color: #2e7d32;
+        }
+
+        .dish-title.yellow {
+            color: #f57c00;
+        }
+
+        .dish-description {
+            color: #666;
+            line-height: 1.8;
+        }
+
+        .dish-image {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+
+        .dish-details {
+            display: none;
+            padding: 20px;
+            background-color: #fafafa;
+        }
+
+        .dish-details.active {
+            display: block;
+        }
+
+        .dish-section {
+            margin-bottom: 20px;
+        }
+
+        .dish-section h3 {
+            color: #d32f2f;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .dish-section h3::before {
+            content: '▶';
+            font-size: 0.8rem;
+        }
+
+        .add-button {
+            background-color: #000;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 1.2rem;
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        footer {
+            background-color: #f5f5f5;
+            padding: 40px 20px;
+            text-align: center;
+            margin-top: 60px;
+            color: #666;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            h1.main-title {
+                font-size: 2.5rem;
+            }
+
+            .tagline {
+                font-size: 1.2rem;
+            }
+
+            .cta-section h2 {
+                font-size: 1.8rem;
+            }
+
+            .appetizers-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>The Roman cuisine</h1>
+        <h1 class="main-title">The Roman cuisine</h1>
+        <p class="tagline">Roman cuisine is full of flavors to delight every palate—you just need to know where to look.</p>
+    </header>
+
+    <div class="cta-section">
+        <h2>Ready to dive in the tradition?</h2>
+        <div class="courses-grid">
+            <div>
+                <h3 style="font-size: 2rem;">▶ Appetizers</h3>
+            </div>
+            <div>
+                <h3 style="font-size: 2rem;">▶ First course</h3>
+            </div>
+            <div>
+                <h3 style="font-size: 2rem;">▶ Second course</h3>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <!-- Appetizers Section -->
+        <section class="appetizers-section">
+            <div class="appetizers-grid">
+                <!-- Supplì al telefono -->
+                <div class="dish-card">
+                    <div class="dish-header red" onclick="toggleDetails(this)">
+                        <h2 class="dish-title red">Supplì al telefono</h2>
+                        <p class="dish-description">Golden-fried rice balls filled with rich ragù or vibrant tomato sauce, and a core of mozzarella that stretches with every bite.</p>
+                    </div>
+                    <img src="https://images.unsplash.com/photo-1585518419759-7fe2e0fbf8a6?w=800&h=600&fit=crop" alt="Supplì al telefono" class="dish-image">
+                    <div class="dish-details">
+                        <div class="dish-section">
+                            <h3>Ingredients:</h3>
+                            <p>Rice, mozzarella, tomato sauce or ragù, eggs, breadcrumbs, olive oil</p>
+                        </div>
+                        <div class="dish-section">
+                            <h3>Where to taste:</h3>
+                            <p>Traditional Roman trattorias and street food vendors throughout Rome</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Fiori di zucca -->
+                <div class="dish-card">
+                    <div class="dish-header green" onclick="toggleDetails(this)">
+                        <h2 class="dish-title green">Fiori di zucca</h2>
+                        <p class="dish-description">Gently stuffed with mozzarella (and anchovies), then lightly fried to a crisp perfection.</p>
+                    </div>
+                    <img src="img_2941.jpg" alt="Fiori di zucca" class="dish-image">
+                    <div class="dish-details">
+                        <div class="dish-section">
+                            <h3>Ingredients:</h3>
+                            <p>Zucchini flowers, mozzarella, anchovies (optional), flour, sparkling water, olive oil</p>
+                        </div>
+                        <div class="dish-section">
+                            <h3>Where to taste:</h3>
+                            <p>Jewish Quarter (Ghetto), traditional Roman restaurants</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Baccalà fritto -->
+                <div class="dish-card">
+                    <div class="dish-header yellow" onclick="toggleDetails(this)">
+                        <h2 class="dish-title yellow">Baccalà fritto alla romana</h2>
+                        <p class="dish-description">Cod wrapped in a light, golden batter and fried to crisp perfection.</p>
+                    </div>
+                    <img src="https://images.unsplash.com/photo-1580959375944-0b6e8d6b2e2e?w=800&h=600&fit=crop" alt="Baccalà fritto" class="dish-image">
+                    <div class="dish-details">
+                        <div class="dish-section">
+                            <h3>Ingredients:</h3>
+                            <p>Salt cod (baccalà), flour, water, olive oil for frying</p>
+                        </div>
+                        <div class="dish-section">
+                            <h3>Where to taste:</h3>
+                            <p>Testaccio neighborhood, traditional friggitorie (fry shops)</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- First Course Section -->
+<section class="first-course-section">
+    <h2 style="text-align:center; font-family:'Playfair Display', serif; font-size:2.5rem; margin-bottom:40px; color:#d32f2f;">First Course</h2>
+    <div class="appetizers-grid"><!-- reuse grid layout for uniformity -->
+
+        <!-- Carbonara -->
+        <div class="dish-card">
+            <div class="dish-header red" onclick="toggleDetails(this)">
+                <h2 class="dish-title red">Carbonara</h2>
+                <p class="dish-description">Pasta entwined with a luscious, velvety sauce of eggs and Pecorino, studded with crispy, savory guanciale.</p>
+            </div>
+            <img src="https://images.unsplash.com/photo-1599785209707-2f6a89c7d6d4?w=800&h=600&fit=crop" alt="Carbonara" class="dish-image">
+            <div class="dish-details">
+                <div class="dish-section">
+                    <h3>Ingredients:</h3>
+                    <p>Pasta, spaghetti or rigatoni or mezze maniche, Guanciale, or pancetta, Eggs, both yolk and egg white (don't throw anything away), Pecorino romano
+                    ,
+                        Black pepper, Salt</p>
+                </div>
+                <div class="dish-section">
+                    <h3>Where to taste:</h3>
+                    <p>Traditional Roman trattorias, especially in Trastevere</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Amatriciana -->
+        <div class="dish-card">
+            <div class="dish-header red" onclick="toggleDetails(this)">
+                <h2 class="dish-title red">Amatriciana</h2>
+                <p class="dish-description">Pasta bathed in tomato sauce slowly simmered until it deepens in flavor, lovingly enveloping the salty, melt-in-your-mouth guanciale.</p>
+            </div>
+            <img src="https://images.unsplash.com/photo-1604908177522-97db7e3fa21c?w=800&h=600&fit=crop" alt="Amatriciana" class="dish-image">
+            <div class="dish-details">
+                <div class="dish-section">
+                    <h3>Ingredients:</h3>
+                    <p>Pasta, tomato sauce, guanciale, pecorino cheese, chili flakes</p>
+                </div>
+                <div class="dish-section">
+                    <h3>Where to taste:</h3>
+                    <p>Rome’s traditional trattorias and Osterie</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Cacio e Pepe -->
+        <div class="dish-card">
+            <div class="dish-header red" onclick="toggleDetails(this)">
+                <h2 class="dish-title red">Cacio e Pepe</h2>
+                <p class="dish-description">Pasta coated in a blanket of Pecorino, with a gentle dusting of black pepper that awakens each bite.</p>
+            </div>
+            <img src="https://images.unsplash.com/photo-1605555972234-ec5b02d569d1?w=800&h=600&fit=crop" alt="Cacio e Pepe" class="dish-image">
+            <div class="dish-details">
+                <div class="dish-section">
+                    <h3>Ingredients:</h3>
+                    <p>Pasta, pecorino cheese, black pepper, pasta water</p>
+                </div>
+                <div class="dish-section">
+                    <h3>Where to taste:</h3>
+                    <p>Classic Roman trattorias, especially in the Campo de' Fiori area</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+     <!-- Gricia -->
+        <div class="dish-card">
+            <div class="dish-header red" onclick="toggleDetails(this)">
+                <h2 class="dish-title red">Gricia</h2>
+                <p class="dish-description">Pasta tossed in an irresistible combination of crispy guanciale and Pecorino cheese.</p>
+            </div>
+            <img src="https://images.unsplash.com/photo-1605555972234-ec5b02d569d1?w=800&h=600&fit=crop" alt="Gricia" class="dish-image">
+            <div class="dish-details">
+                <div class="dish-section">
+                    <h3>Ingredients:</h3>
+                    <p>Pasta tonnarelli, Guanciale, pecorino cheese, black pepper</p>
+                </div>
+                <div class="dish-section">
+                    <h3>Where to taste:</h3>
+                    <p>Classic Roman trattorias, especially in the Campo de' Fiori area</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+         <!-- Gricia -->
+        <div class="dish-card">
+            <div class="dish-header red" onclick="toggleDetails(this)">
+                <h2 class="dish-title red">Gnocchi alla Romana</h2>
+                <p class="dish-description">Soft, sun-warmed semolina rounds baked until their edges turn golden, layered with butter and Parmigiano that melt into a quiet, velvety richness.</p>
+            </div>
+            <img src="https://images.unsplash.com/photo-1605555972234-ec5b02d569d1?w=800&h=600&fit=crop" alt="Gricia" class="dish-image">
+            <div class="dish-details">
+                <div class="dish-section">
+                    <h3>Ingredients:</h3>
+                    <p>Semolina, butter, egg yolk, milk, parmigiano, nutmeg, salt, black pepper</p>
+                </div>
+                <div class="dish-section">
+                    <h3>Where to taste:</h3>
+                    <p>Classic Roman trattorias, especially in the Campo de' Fiori area</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+    
+</section>
+
+
+        <!-- First Course Section -->
+        <section class="course-section">
+            <h2 class="course-title" onclick="toggleCourse(this)">First course</h2>
+            <div class="course-content">
+                <ul class="dish-list">
+                    <li><a href="#carbonara">Carbonara</a></li>
+                    <li><a href="#amatriciana">Amatriciana</a></li>
+                    <li><a href="#cacio-e-pepe">Cacio e Pepe</a></li>
+                    <li><a href="#gricia">Gricia</a></li>
+                    <li><a href="#rigatoni-pajata">Rigatoni con la Pajata</a></li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Second Course Section -->
+        <section class="course-section">
+            <h2 class="course-title" onclick="toggleCourse(this)">Second course</h2>
+            <div class="course-content">
+                <ul class="dish-list">
+                    <li><a href="#coda-vaccinara">Coda alla Vaccinara</a></li>
+                    <li><a href="#saltimbocca">Saltimbocca alla romana</a></li>
+                    <li><a href="#trippa">Trippa alla romana</a></li>
+                    <li><a href="#fagioli-cotiche">Fagioli con le Cotiche</a></li>
+                    <li><a href="#carciofi-romana">Carciofi alla romana</a></li>
+                    <li><a href="#carciofi-giudia">Carciofi alla Giudia</a></li>
+                </ul>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Journey of Flavors. All rights reserved.</p>
+        <p>Discover the authentic taste of Roman cuisine</p>
+    </footer>
+
+    <script>
+        function toggleDetails(element) {
+            const details = element.parentElement.querySelector('.dish-details');
+            details.classList.toggle('active');
+        }
+
+        function toggleCourse(element) {
+            element.classList.toggle('active');
+            const content = element.nextElementSibling;
+            content.classList.toggle('active');
+        }
+
+        // Smooth scroll for links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
