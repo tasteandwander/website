@@ -204,14 +204,34 @@
             object-fit: cover;
         }
 
-        .dish-details.yellow {
-            color: #f57c00;
-            background-color: #f57c00;
-        }
         .dish-details {
             display: none;
             padding: 20px;
             background-color: #fafafa;
+        }
+                /* Color-matched dish details */
+        .dish-details.red h3 {
+            color: #d32f2f;
+        }
+        
+        .dish-details.red {
+            background-color: #ffebee;
+        }
+        
+        .dish-details.green h3 {
+            color: #2e7d32;
+        }
+        
+        .dish-details.green {
+            background-color: #e8f5e9;
+        }
+        
+        .dish-details.yellow h3 {
+            color: #f57c00;
+        }
+        
+        .dish-details.yellow {
+            background-color: #fff9e6;
         }
 
         .dish-details.active {
@@ -395,7 +415,7 @@
                         <p class="dish-description">Cod wrapped in a light, golden batter and fried to crisp perfection.</p>
                     </div>
                     <img src="Baccala-fritto-alla-romaa-in-pastella_650x433_wm.jpg" alt="Baccalà fritto" class="dish-image">
-                    <div class="dish-details yellow">
+                    <div class="dish-details">
                         <div class="dish-section">
                             <h3>Ingredients:</h3>
                             <p>Salt cod (baccalà), flour, water, olive oil for frying</p>
@@ -415,7 +435,7 @@
     <div class="appetizers-grid"><!-- reuse grid layout for uniformity -->
 
         <!-- Carbonara -->
-        <div class="dish-card">
+        <div class="dish-card" id="carbonara">
             <div class="dish-header yellow" onclick="toggleDetails(this)">
                 <h2 class="dish-title yellow">Carbonara</h2>
                 <p class="dish-description">Pasta entwined with a luscious, velvety sauce of eggs and Pecorino, studded with crispy, savory guanciale.</p>
@@ -436,7 +456,7 @@
         </div>
 
         <!-- Amatriciana -->
-        <div class="dish-card">
+        <div class="dish-card" id="amatriciana">
             <div class="dish-header red" onclick="toggleDetails(this)">
                 <h2 class="dish-title red">Amatriciana</h2>
                 <p class="dish-description">Pasta bathed in tomato sauce slowly simmered until it deepens in flavor, lovingly enveloping the salty, melt-in-your-mouth guanciale.</p>
@@ -533,7 +553,7 @@
                 <p class="dish-description">Slow-cooked oxtail melting into silky strands, in a tomato sauce that gently simmers it into something lush, and utterly comforting.</p>
             </div>
             <img src="Carbonara-ricetta-5328.jpg" alt="Carbonara" class="dish-image">
-            <div class="dish-details">
+            <div class="dish-details red">
                 <div class="dish-section">
                     <h3>Ingredients:</h3>
                     <p>Oxtail, Tomato sauce,Onion, Celery, Carrot, White wine, Black pepper, Salt, Olive oil</p>
@@ -547,11 +567,11 @@
 <!-- Salti -->
         <div class="dish-card">
             <div class="dish-header yellow" onclick="toggleDetails(this)">
-                <h2 class="dish-title red">Saltimbocca alla Romana</h2>
+                <h2 class="dish-title yellow">Saltimbocca alla Romana</h2>
                 <p class="dish-description">Thin veal kissed with sage and covered in prosciutto, gently sautéed until the edges turn golden and the flavors fuse into a delicate, savory whisper. </p>
             </div>
-            <img src=".jpg" alt="Carbonara" class="dish-image">
-            <div class="dish-details">
+            <img src=".jpg" alt="salti" class="dish-image">
+            <div class="dish-details yellow">
                 <div class="dish-section">
                     <h3>Ingredients:</h3>
                     <p>Veal slices, Sage, Prosciutto crudo, White wine, Butter, Flour, Black pepper, Salt</p>
@@ -572,8 +592,8 @@
                 <h2 class="dish-title red">Trippa alla Romana</h2>
                 <p class="dish-description">Tender ribbons of slow-cooked tripe simmered in a fragrant tomato embrace, brightened with mint and crowned with Pecorino.</p>
             </div>
-            <img src="Carbonara-ricetta-5328.jpg" alt="Carbonara" class="dish-image">
-            <div class="dish-details">
+            <img src=".jpg" alt="trippa" class="dish-image">
+             <div class="dish-details red">
                 <div class="dish-section">
                     <h3>Ingredients:</h3>
                     <p>Belly, Pomodori San Marzano, Pecorino Romano, White onion, White wine, Carrot, Celery, Mint, Pepper, Salt</p>
@@ -592,14 +612,15 @@
                 <p class="dish-description">Tender beans and succulent strips of pork rind simmered together in a rich, savory sauce that clings to every bite.</p>
             </div>
             <img src=".jpg" alt="Fagioli" class="dish-image">
-            <div class="dish-details">
-                <div class="dish-section">
-                    <h3>Ingredients:</h3>
-                    <p>Borlotti beans, Pork rind, Carrots, White onions, Tomato sauce, Celery, Chili, White wine, Garlic, Salt</p>
-                </div>
-                <div class="dish-section">
-                    <h3>Where to taste:</h3>
-                    <p>Traditional Roman trattorias, especially in Trastevere</p>
+            <div class="dish-details red">
+                    <div class="dish-section">
+                        <h3>Ingredients:</h3>
+                        <p>Borlotti beans, Pork rind, Carrots, White onions, Tomato sauce, Celery, Chili, White wine, Garlic, Salt</p>
+                    </div>
+                    <div class="dish-section">
+                        <h3>Where to taste:</h3>
+                        <p>Traditional Roman trattorias, especially in Trastevere</p>
+                    </div>
                 </div>
             </div>
         </div>
