@@ -204,6 +204,10 @@
             object-fit: cover;
         }
 
+        .dish-details.yellow {
+            color: #f57c00;
+            background-color: #f57c00;
+        }
         .dish-details {
             display: none;
             padding: 20px;
@@ -286,7 +290,17 @@
     <div class="cta-section">
         <h2>Ready to dive in the tradition?</h2>
         <div class="courses-grid">
-            <div>
+             <section class="course-section">
+            <h3 class="course-title" onclick="toggleCourse(this)">Appetizers</h3>
+            <div class="course-content">
+                <ul class="dish-list">
+                    <li><a href="#suppli">Supplì</a></li>
+                    <li><a href="#fiori">Fiore di zucca</a></li>
+                    <li><a href="#baccala">Baccalà alla Romana</a></li>
+                </ul>
+            </div>
+        </section>
+          <!--  <div>
                 <h3 style="font-size: 2rem;">▶ Appetizers</h3>
             </div>
             <div>
@@ -294,10 +308,10 @@
             </div>
             <div>
                 <h3 style="font-size: 2rem;">▶ Second course</h3>
-            </div>
+            </div>-->
              <!-- First Course Section -->
         <section class="course-section">
-            <h2 class="course-title" onclick="toggleCourse(this)">First course</h2>
+            <h3 class="course-title" onclick="toggleCourse(this)">First course</h3>
             <div class="course-content">
                 <ul class="dish-list">
                     <li><a href="#carbonara">Carbonara</a></li>
@@ -312,6 +326,8 @@
         <!-- Second Course Section -->
        <!-- <section class="course-section"> 
             <h2 class="course-title" onclick="toggleCourse(this)">Second course</h2>-->
+             <section class="course-section">
+            <h3 class="course-title" onclick="toggleCourse(this)">Second courses</h3>
             <div class="course-content">
                 <ul class="dish-list">
                     <li><a href="#coda-vaccinara">Coda alla Vaccinara</a></li>
@@ -322,6 +338,7 @@
                     <li><a href="#carciofi-giudia">Carciofi alla Giudia</a></li>
                 </ul>
             </div>
+                 </section>
       <!--  </section> -->
     </div>
         </div>
@@ -329,7 +346,9 @@
 
     <div class="container">
         <!-- Appetizers Section -->
+
         <section class="appetizers-section">
+            <h2 style="text-align:center; font-family:'Playfair Display', serif; font-size:2.5rem; margin-bottom:40px; color:#d32f2f;">Appetizers</h2>
             <div class="appetizers-grid">
                 <!-- Supplì al telefono -->
                 <div class="dish-card">
@@ -337,7 +356,7 @@
                         <h2 class="dish-title red">Supplì al telefono</h2>
                         <p class="dish-description">Golden-fried rice balls filled with rich ragù or vibrant tomato sauce, and a core of mozzarella that stretches with every bite.</p>
                     </div>
-                    <img src="https://images.unsplash.com/photo-1585518419759-7fe2e0fbf8a6?w=800&h=600&fit=crop" alt="Supplì al telefono" class="dish-image">
+                    <img src="suppli.jpg" alt="Supplì al telefono" class="dish-image">
                     <div class="dish-details">
                         <div class="dish-section">
                             <h3>Ingredients:</h3>
@@ -376,7 +395,7 @@
                         <p class="dish-description">Cod wrapped in a light, golden batter and fried to crisp perfection.</p>
                     </div>
                     <img src="Baccala-fritto-alla-romaa-in-pastella_650x433_wm.jpg" alt="Baccalà fritto" class="dish-image">
-                    <div class="dish-details">
+                    <div class="dish-details yellow">
                         <div class="dish-section">
                             <h3>Ingredients:</h3>
                             <p>Salt cod (baccalà), flour, water, olive oil for frying</p>
