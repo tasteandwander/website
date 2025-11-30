@@ -38,7 +38,7 @@
         }
 
         h1.main-title {
-            color: #d32f2f;
+            color: #6B1C29;
             font-weight: 700;
             margin-bottom: 30px;
         }
@@ -51,7 +51,7 @@
         }
 
         .cta-section {
-            background-color: #d32f2f;
+            background-color: #6B1C29;
             color: white;
             padding: 40px;
             text-align: center;
@@ -64,7 +64,7 @@
         }
 
        .cta-subsection {
-    background-color: #d32f2f;
+    background-color: #6B1C29;
     color: white;
     padding: 30px 20px;
     text-align: center;
@@ -370,17 +370,40 @@
 .back-home-button:hover {
     background-color: #b71c1c;
 }
+        
+        .home-btn {
+            position: fixed;
+            top: 30px;
+            right: 30px;
+            background: #8B2635;
+            color: white;
+            padding: 12px 28px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            box-shadow: 0 4px 15px rgba(139, 38, 53, 0.4);
+            transition: all 0.3s ease;
+            z-index: 1000;
+            font-size: 16px;
+        }
+
+        .home-btn:hover {
+            background: #6B1C29;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(139, 38, 53, 0.6);
+        }
     </style>
 </head>
 <body>
+    <a href="index.html" class="home-btn">← Homepage</a>
     <header>
         
         <h1 class="main-title">The Roman cuisine</h1>
         <p class="tagline">Roman cuisine is full of flavors to delight every palate—you just need to know where to look.</p>
     </header>
-<div class="back-home-container">
+<!-- <div class="back-home-container">
     <a href="index.html" class="back-home-button">← Back to Homepage</a>
-</div>
+</div> -->
     <div class="cta-section">
         <h2>Ready to dive in the tradition?</h2>
         </div>
