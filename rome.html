@@ -63,21 +63,58 @@
             margin-bottom: 40px;
         }
 
-        .cta-subsection {
+       .cta-subsection {
     background-color: #d32f2f;
     color: white;
-    padding: 30px 20px; /* reduce top-bottom padding and add left-right padding */
+    padding: 30px 20px;
     text-align: center;
-    margin: 40px auto; /* center horizontally */
-    max-width: 900px; /* limit width so it doesn't stretch too far */
-    border-radius: 10px; /* optional: makes it look nicer */
-    }
-    
-    .cta-subsection h2 {
-        font-size: 1.8rem; /* smaller than before */
-        margin-bottom: 20px;
-        line-height: 1.4; /* improves readability */
-    }
+    margin: 40px auto;
+    max-width: 1200px; /* wider so all fit in a row */
+    border-radius: 10px;
+}
+
+.cta-subsection h2 {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    line-height: 1.4;
+}
+
+/* Make the course sections appear in a row */
+.cta-subsection .courses-grid {
+    display: flex; /* aligns children in a row */
+    justify-content: space-between; /* equal spacing */
+    flex-wrap: wrap; /* wraps on smaller screens */
+    gap: 20px; /* spacing between columns */
+}
+
+.cta-subsection .course-section {
+    flex: 1; /* each section takes equal space */
+    min-width: 200px; /* prevents sections from getting too narrow */
+    background-color: #fff; /* optional: adds contrast */
+    color: #333; /* optional */
+    border-radius: 8px;
+    padding: 15px;
+}
+
+.cta-subsection .course-section h3 {
+    font-size: 1.3rem;
+    color: #d32f2f;
+    margin-bottom: 10px;
+}
+
+.cta-subsection .dish-list li {
+    text-align: left;
+    margin-bottom: 6px;
+}
+
+.cta-subsection .dish-list a {
+    color: #d32f2f;
+    text-decoration: none;
+}
+
+.cta-subsection .dish-list a:hover {
+    text-decoration: underline;
+}
 
         
         .courses-grid {
