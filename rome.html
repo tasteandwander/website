@@ -339,7 +339,8 @@
                     <li><a href="#amatriciana">Amatriciana</a></li>
                     <li><a href="#cacio-e-pepe">Cacio e Pepe</a></li>
                     <li><a href="#gricia">Gricia</a></li>
-                    <li><a href="#rigatoni-pajata">Rigatoni con la Pajata</a></li>
+                    <li><a href="#gnocchi">Gnocchi alla Romana</a></li>
+                    <li><a href="#pajata">Rigatoni alla Pajata</a></li>
                 </ul>
             </div>
         </section>
@@ -430,10 +431,12 @@
             </div>
         </section>
 
-        <!-- First Course Section -->
+<!-- First Course Section -->
 <section class="first-course-section">
     <h2 style="text-align:center; font-family:'Playfair Display', serif; font-size:2.5rem; margin-bottom:40px; color:#d32f2f;">First Course</h2>
-    <div class="appetizers-grid"><!-- reuse grid layout for uniformity -->
+
+    <!-- Grid 1 -->
+    <div class="appetizers-grid">
 
         <!-- Carbonara -->
         <div class="dish-card" id="carbonara">
@@ -445,9 +448,7 @@
             <div class="dish-details yellow">
                 <div class="dish-section">
                     <h3>Ingredients:</h3>
-                    <p>Pasta, spaghetti or rigatoni or mezze maniche, Guanciale, or pancetta, Eggs, both yolk and egg white (don't throw anything away), Pecorino romano
-                    ,
-                        Black pepper, Salt</p>
+                    <p>Pasta (spaghetti, rigatoni or mezze maniche), Guanciale or pancetta, Eggs, Pecorino romano, Black pepper, Salt</p>
                 </div>
                 <div class="dish-section">
                     <h3>Where to taste:</h3>
@@ -460,13 +461,13 @@
         <div class="dish-card" id="amatriciana">
             <div class="dish-header red" onclick="toggleDetails(this)">
                 <h2 class="dish-title red">Amatriciana</h2>
-                <p class="dish-description">Pasta bathed in tomato sauce slowly simmered until it deepens in flavor, lovingly enveloping the salty, melt-in-your-mouth guanciale.</p>
+                <p class="dish-description">Pasta bathed in tomato sauce slowly simmered to deepen its flavor, enriched by tender guanciale.</p>
             </div>
             <img src="hq720.jpg" alt="Amatriciana" class="dish-image">
             <div class="dish-details red">
                 <div class="dish-section">
                     <h3>Ingredients:</h3>
-                    <p>Pasta, tomato sauce, guanciale, pecorino cheese, chili flakes</p>
+                    <p>Pasta, Tomato sauce, Guanciale, Pecorino cheese, Chili flakes</p>
                 </div>
                 <div class="dish-section">
                     <h3>Where to taste:</h3>
@@ -479,13 +480,13 @@
         <div class="dish-card">
             <div class="dish-header yellow" onclick="toggleDetails(this)">
                 <h2 class="dish-title yellow">Cacio e Pepe</h2>
-                <p class="dish-description">Pasta coated in a blanket of Pecorino, with a gentle dusting of black pepper that awakens each bite.</p>
+                <p class="dish-description">Pasta wrapped in a creamy Pecorino emulsion with freshly cracked pepper.</p>
             </div>
             <img src="IMG_3479.JPG" alt="Cacio e Pepe" class="dish-image">
             <div class="dish-details yellow">
                 <div class="dish-section">
                     <h3>Ingredients:</h3>
-                    <p>Pasta, pecorino cheese, black pepper, pasta water</p>
+                    <p>Pasta, Pecorino cheese, Black pepper, Pasta water</p>
                 </div>
                 <div class="dish-section">
                     <h3>Where to taste:</h3>
@@ -496,21 +497,20 @@
 
     </div>
 
+    <!-- Grid 2 -->
     <div class="appetizers-grid">
-        <!-- reuse grid layout for uniformity -->
 
-             <!-- Gricia -->
-
+        <!-- Gricia -->
         <div class="dish-card">
             <div class="dish-header yellow" onclick="toggleDetails(this)">
                 <h2 class="dish-title yellow">Gricia</h2>
-                <p class="dish-description">Pasta tossed in an irresistible combination of crispy guanciale and Pecorino cheese.</p>
+                <p class="dish-description">Pasta tossed with crisp guanciale and a generous snowfall of Pecorino.</p>
             </div>
             <img src="IMG_2381.png" alt="Gricia" class="dish-image">
             <div class="dish-details yellow">
                 <div class="dish-section">
                     <h3>Ingredients:</h3>
-                    <p>Pasta tonnarelli, Guanciale, pecorino cheese, black pepper</p>
+                    <p>Tonnarelli pasta, Guanciale, Pecorino cheese, Black pepper</p>
                 </div>
                 <div class="dish-section">
                     <h3>Where to taste:</h3>
@@ -519,19 +519,36 @@
             </div>
         </div>
 
-    </div>
-
-         <!-- Gnocchi alla romana -->
-        <div class="dish-card">
+        <!-- Gnocchi alla Romana -->
+        <div class="dish-card" id="gnocchi">
             <div class="dish-header yellow" onclick="toggleDetails(this)">
                 <h2 class="dish-title yellow">Gnocchi alla Romana</h2>
-                <p class="dish-description">Soft, sun-warmed semolina rounds baked until their edges turn golden, layered with butter and Parmigiano that melt into a quiet, velvety richness.</p>
+                <p class="dish-description">Soft semolina rounds baked until their edges turn golden, layered with butter and Parmigiano.</p>
             </div>
-            <img src="gnocchi-alla-romana.jpg" alt="Gnocchi alla romana" class="dish-image">
+            <img src="gnocchi-alla-romana.jpg" alt="Gnocchi alla Romana" class="dish-image">
             <div class="dish-details yellow">
                 <div class="dish-section">
                     <h3>Ingredients:</h3>
-                    <p>Semolina, butter, egg yolk, milk, parmigiano, nutmeg, salt, black pepper</p>
+                    <p>Semolina, Butter, Egg yolk, Milk, Parmigiano, Nutmeg, Salt, Black pepper</p>
+                </div>
+                <div class="dish-section">
+                    <h3>Where to taste:</h3>
+                    <p>Classic Roman trattorias, especially in the Campo de' Fiori area</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Pajata -->
+        <div class="dish-card" id="pajata">
+            <div class="dish-header red" onclick="toggleDetails(this)">
+                <h2 class="dish-title red">Rigatoni alla Pajata</h2>
+                <p class="dish-description">Rigatoni cloaked in a rich, tangy tomato sauce infused with the unique Roman delicacy of pajata.</p>
+            </div>
+            <img src="pajata.jpg" alt="Rigatoni alla Pajata" class="dish-image">
+            <div class="dish-details red">
+                <div class="dish-section">
+                    <h3>Ingredients:</h3>
+                    <p>Rigatoni, Tomato sauce, Veal intestines (pajata), Onion, Celery, White wine, Chili flakes</p>
                 </div>
                 <div class="dish-section">
                     <h3>Where to taste:</h3>
@@ -541,14 +558,9 @@
         </div>
 
     </div>
-        <div class="dish-card">
-            
-        </div>
 
-    </div>
-</div>
-    
 </section>
+
 
 
 <section class="second-course-section">
