@@ -63,6 +63,23 @@
             margin-bottom: 40px;
         }
 
+        .cta-subsection {
+    background-color: #d32f2f;
+    color: white;
+    padding: 30px 20px; /* reduce top-bottom padding and add left-right padding */
+    text-align: center;
+    margin: 40px auto; /* center horizontally */
+    max-width: 900px; /* limit width so it doesn't stretch too far */
+    border-radius: 10px; /* optional: makes it look nicer */
+    }
+    
+    .cta-subsection h2 {
+        font-size: 1.8rem; /* smaller than before */
+        margin-bottom: 20px;
+        line-height: 1.4; /* improves readability */
+    }
+
+        
         .courses-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -298,6 +315,24 @@
                 grid-template-columns: 1fr;
             }
         }
+        .back-home-container {
+    text-align: center;
+    margin: 20px 0;
+}
+
+.back-home-button {
+    background-color: #d32f2f;
+    color: white;
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 6px;
+    font-size: 1.1rem;
+    transition: background-color 0.3s;
+}
+
+.back-home-button:hover {
+    background-color: #b71c1c;
+}
     </style>
 </head>
 <body>
@@ -306,10 +341,13 @@
         <h1 class="main-title">The Roman cuisine</h1>
         <p class="tagline">Roman cuisine is full of flavors to delight every palate—you just need to know where to look.</p>
     </header>
-
+<div class="back-home-container">
+    <a href="index.html" class="back-home-button">← Back to Homepage</a>
+</div>
     <div class="cta-section">
         <h2>Ready to dive in the tradition?</h2>
         </div>
+    <div class="cta-subsection">
         <div class="courses-grid">
              <section class="course-section">
             <h3 class="course-title" onclick="toggleCourse(this)">Appetizers</h3>
@@ -364,6 +402,7 @@
       <!--  </section> -->
     </div>
         </div>
+    </div>
    <!--  </div>-->
 
     <div class="container">
@@ -572,7 +611,7 @@
         <div class="dish-card" id="coda">
             <div class="dish-header red" onclick="toggleDetails(this)">
                 <h2 class="dish-title red">Coda alla Vaccinara</h2>
-                <p class="dish-description">Slow-cooked oxtail melting into silky strands...</p>
+                <p class="dish-description">Slow-cooked oxtail melting into silky strands, in a tomato sauce that gently simmers it into something lush, and utterly comforting.</p>
             </div>
             <img src="coda.webp" class="dish-image">
             <div class="dish-details red">
@@ -591,7 +630,7 @@
         <div class="dish-card" id="saltimbocca">
             <div class="dish-header yellow" onclick="toggleDetails(this)">
                 <h2 class="dish-title yellow">Saltimbocca alla Romana</h2>
-                <p class="dish-description">Thin veal kissed with sage...</p>
+                <p class="dish-description">Thin veal kissed with sage and covered in prosciutto, gently sautéed until the edges turn golden and the flavors fuse into a delicate, savory whisper.</p>
             </div>
             <img src="saltimbocca-alla-romana.jpg" class="dish-image">
             <div class="dish-details yellow">
@@ -610,7 +649,7 @@
         <div class="dish-card" id="trippa">
             <div class="dish-header red" onclick="toggleDetails(this)">
                 <h2 class="dish-title red">Trippa alla Romana</h2>
-                <p class="dish-description">Tender ribbons of slow-cooked tripe...</p>
+                <p class="dish-description">Tender ribbons of slow-cooked tripe simmered in a fragrant tomato embrace, brightened with mint and crowned with Pecorino.</p>
             </div>
             <img src="TRIPPA-ALLA-ROMANA.png" class="dish-image">
             <div class="dish-details red">
@@ -629,7 +668,7 @@
         <div class="dish-card" id="fagioli">
             <div class="dish-header red" onclick="toggleDetails(this)">
                 <h2 class="dish-title red">Fagioli con le Cotiche</h2>
-                <p class="dish-description">Tender beans and pork rind...</p>
+                <p class="dish-description">Tender beans and succulent strips of pork rind simmered together in a rich, savory sauce that clings to every bite.</p>
             </div>
             <img src="fagioli-con-le-cotiche-sito-1.jpg" class="dish-image">
             <div class="dish-details red">
@@ -648,7 +687,7 @@
         <div class="dish-card" id="carciofi-romana">
             <div class="dish-header green" onclick="toggleDetails(this)">
                 <h2 class="dish-title green">Carciofi alla romana</h2>
-                <p class="dish-description">Artichokes opened like quiet blossoms...</p>
+                <p class="dish-description">Artichokes gently opened like quiet spring blossoms, filled with herbs and garlic, then braised until yielding and aromatic.</p>
             </div>
             <img src="Carciofi-alla-romana.jpg" class="dish-image">
             <div class="dish-details green">
@@ -667,7 +706,7 @@
         <div class="dish-card" id="carciofi-giudia">
             <div class="dish-header green" onclick="toggleDetails(this)">
                 <h2 class="dish-title green">Carciofi alla Giudia</h2>
-                <p class="dish-description">Crisp-edged artichokes from the Roman-Jewish tradition.</p>
+                <p class="dish-description">Artichokes, tender on the inside and crisp on the outside, fried with just a touch of salt— from the Roman-Jewish culinary tradition.</p>
             </div>
             <img src="carciofi-alla-giudia.webp" class="dish-image">
             <div class="dish-details green">
