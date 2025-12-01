@@ -11,11 +11,37 @@
             box-sizing: border-box;
         }
 
-        body {
+   /*    body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
             line-height: 1.6;
             color: #333;
             background-color: #fff;
+        } */
+
+     body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #fff;
+    /* Add background image */
+    background-image: url('https://cms.througheternity.com/upload/CONF83/20220619/via_margutta_rome.jpg');
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+    }
+
+        /* Add overlay for better readability */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(255, 255, 255, 0.92);
+            z-index: -1;
         }
 
         .container {
@@ -116,7 +142,29 @@
 .cta-subsection .dish-list a:hover {
     text-decoration: underline;
 }
+.menu-divider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 
+.divider-title {
+    font-size: 1.5rem;
+    color: rgba(255, 255, 255, 0.9);
+    font-style: italic;
+    cursor: default;
+    padding: 0;
+}
+
+.divider-title::before {
+    content: '✦';
+    margin-right: 10px;
+}
+
+.divider-title::after {
+    content: '✦';
+    margin-left: 10px;
+}
         
         .courses-grid {
             display: grid;
@@ -411,9 +459,9 @@
     <div class="cta-section">
         </div> 
 </div> -->
-    <div class="cta-subsection">
+ <!--  <div class="cta-subsection"> -->
         <!-- <h2>Ready to dive in the tradition?</h2> -->
-        <div class="courses-grid">
+      <!--  <div class="courses-grid">
              <section class="course-section">
             <h3 class="course-title" onclick="toggleCourse(this)">Appetizers</h3>
             <div class="course-content">
@@ -423,7 +471,7 @@
                     <li><a href="#baccala">Baccalà alla Romana</a></li>
                 </ul>
             </div>
-        </section>
+        </section> -->
           <!--  <div>
                 <h3 style="font-size: 2rem;">▶ Appetizers</h3>
             </div>
@@ -434,6 +482,62 @@
                 <h3 style="font-size: 2rem;">▶ Second course</h3>
             </div>-->
              <!-- First Course Section -->
+       <!-- <section class="course-section">
+            <h3 class="course-title" onclick="toggleCourse(this)">First course</h3>
+            <div class="course-content">
+                <ul class="dish-list">
+                    <li><a href="#carbonara">Carbonara</a></li>
+                    <li><a href="#amatriciana">Amatriciana</a></li>
+                    <li><a href="#cacio-e-pepe">Cacio e Pepe</a></li>
+                    <li><a href="#gricia">Gricia</a></li>
+                    <li><a href="#gnocchi">Gnocchi alla Romana</a></li>
+                    <li><a href="#pajata">Rigatoni alla Pajata</a></li>
+                </ul>
+            </div>
+        </section> -->
+
+        <!-- Second Course Section -->
+     <!--  <!-- <section class="course-section"> 
+            <h2 class="course-title" onclick="toggleCourse(this)">Second course</h2>--> 
+       <!--      <section class="course-section">
+            <h3 class="course-title" onclick="toggleCourse(this)">Second courses</h3>
+            <div class="course-content">
+                <ul class="dish-list">
+                    <li><a href="#coda">Coda alla Vaccinara</a></li>
+                    <li><a href="#saltimbocca">Saltimbocca alla romana</a></li>
+                    <li><a href="#trippa">Trippa alla romana</a></li>
+                    <li><a href="#fagioli">Fagioli con le Cotiche</a></li>
+                    <li><a href="#carciofi-romana">Carciofi alla romana</a></li>
+                    <li><a href="#carciofi-giudia">Carciofi alla Giudia</a></li>
+                </ul>
+            </div>
+                 </section> -->
+      <!--  </section> -->
+ <!--    </div>
+    
+        </div>
+    </div>
+    -->
+    <div class="cta-subsection">
+    <div class="courses-grid">
+        <!-- Appetizers Section -->
+        <section class="course-section">
+            <h3 class="course-title" onclick="toggleCourse(this)">Appetizers</h3>
+            <div class="course-content">
+                <ul class="dish-list">
+                    <li><a href="#suppli">Supplì</a></li>
+                    <li><a href="#fiori">Fiore di zucca</a></li>
+                    <li><a href="#baccala">Baccalà alla Romana</a></li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- NEW: Primi Piatti Divider -->
+        <section class="course-section menu-divider">
+            <h3 class="course-title divider-title">Primi Piatti</h3>
+        </section>
+
+        <!-- First Course Section -->
         <section class="course-section">
             <h3 class="course-title" onclick="toggleCourse(this)">First course</h3>
             <div class="course-content">
@@ -448,10 +552,13 @@
             </div>
         </section>
 
+        <!-- NEW: Secondi Divider -->
+        <section class="course-section menu-divider">
+            <h3 class="course-title divider-title">Secondi</h3>
+        </section>
+
         <!-- Second Course Section -->
-       <!-- <section class="course-section"> 
-            <h2 class="course-title" onclick="toggleCourse(this)">Second course</h2>-->
-             <section class="course-section">
+        <section class="course-section">
             <h3 class="course-title" onclick="toggleCourse(this)">Second courses</h3>
             <div class="course-content">
                 <ul class="dish-list">
@@ -463,11 +570,28 @@
                     <li><a href="#carciofi-giudia">Carciofi alla Giudia</a></li>
                 </ul>
             </div>
-                 </section>
-      <!--  </section> -->
+        </section>
+
+        <section class="course-section menu-divider">
+            <h3 class="course-title divider-title">Desserts</h3>
+        </section>
+
+        <!-- Desserts -->
+        <section class="course-section">
+            <h3 class="course-title" onclick="toggleCourse(this)">Desserts</h3>
+            <div class="course-content">
+                <ul class="dish-list">
+                    <li><a href="#coda">Maritozzo con panna</a></li>
+                    <li><a href="#saltimbocca">Ciambelline al Vino</a></li>
+                    <li><a href="#trippa">Crostata di Ricotta e Visciole</a></li>
+                    <li><a href="#fagioli">Fagioli con le Cotiche</a></li>
+                    <li><a href="#carciofi-romana">Carciofi alla romana</a></li>
+                    <li><a href="#carciofi-giudia">Carciofi alla Giudia</a></li>
+                </ul>
+            </div>
+        </section>
     </div>
-        </div>
-    </div>
+</div>
    <!--  </div>-->
 
     <div class="container">
@@ -594,7 +718,7 @@
                 </div>
                 <div class="dish-section">
                     <h3>Where to taste:</h3>
-                    <p>Classic Roman trattorias, especially in the Campo de' Fiori area</p>
+                    <p>Trattoria da Felice</p>
                 </div>
             </div>
         </div>
@@ -618,7 +742,7 @@
                 </div>
                 <div class="dish-section">
                     <h3>Where to taste:</h3>
-                    <p>Classic Roman trattorias, especially in the Campo de' Fiori area</p>
+                    <p>Sellero e Ventresca, and trattorias</p>
                 </div>
             </div>
         </div>
@@ -705,7 +829,7 @@
                 </div>
                 <div class="dish-section">
                     <h3>Where to taste:</h3>
-                    <p>Traditional Roman trattorias, especially in Trastevere</p>
+                    <p>Traditional Roman trattorias</p>
                 </div>
             </div>
         </div>
