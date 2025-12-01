@@ -156,7 +156,7 @@
     padding: 0;
 }
 
-.divider-title::before {
+/*.divider-title::before {
     content: '✦';
     margin-right: 10px;
 }
@@ -164,7 +164,7 @@
 .divider-title::after {
     content: '✦';
     margin-left: 10px;
-}
+}*/
         
         .courses-grid {
             display: grid;
@@ -532,13 +532,13 @@
             </div>
         </section>
 
-        <!-- NEW: Primi Piatti Divider -->
+        <!-- NEW: Primi Piatti Divider 
         <section class="course-section menu-divider">
             <h3 class="course-title divider-title">Primi Piatti</h3>
-        </section>
+        </section>-->
 
         <!-- First Course Section -->
-        <section class="course-section">
+        <section class="course-section menu-divider">
             <h3 class="course-title" onclick="toggleCourse(this)">First course</h3>
             <div class="course-content">
                 <ul class="dish-list">
@@ -552,13 +552,13 @@
             </div>
         </section>
 
-        <!-- NEW: Secondi Divider -->
-        <section class="course-section menu-divider">
+        <!-- NEW: Secondi Divider 
+        <section class="course-section ">
             <h3 class="course-title divider-title">Secondi</h3>
-        </section>
+        </section> -->
 
         <!-- Second Course Section -->
-        <section class="course-section">
+        <section class="course-section menu-divider">
             <h3 class="course-title" onclick="toggleCourse(this)">Second courses</h3>
             <div class="course-content">
                 <ul class="dish-list">
@@ -572,21 +572,29 @@
             </div>
         </section>
 
-        <section class="course-section menu-divider">
+       <!-- <section class="course-section ">
             <h3 class="course-title divider-title">Desserts</h3>
+        </section> -->
+   <!-- Impasti -->
+        <section class="course-section menu-divider">
+            <h3 class="course-title" onclick="toggleCourse(this)">Doughs</h3>
+            <div class="course-content">
+                <ul class="dish-list">
+                    <li><a href="#taglio">Pizza al taglio</a></li>
+                    <li><a href="#romana">Pizza romana</a></li>
+                     <li><a href="#ciriola">Ciriola</a></li>
+                </ul>
+            </div>
         </section>
-
+        
         <!-- Desserts -->
-        <section class="course-section">
+        <section class="course-section menu-divider">
             <h3 class="course-title" onclick="toggleCourse(this)">Desserts</h3>
             <div class="course-content">
                 <ul class="dish-list">
-                    <li><a href="#coda">Maritozzo con panna</a></li>
-                    <li><a href="#saltimbocca">Ciambelline al Vino</a></li>
-                    <li><a href="#trippa">Crostata di Ricotta e Visciole</a></li>
-                    <li><a href="#fagioli">Fagioli con le Cotiche</a></li>
-                    <li><a href="#carciofi-romana">Carciofi alla romana</a></li>
-                    <li><a href="#carciofi-giudia">Carciofi alla Giudia</a></li>
+                    <li><a href="#maritozzo">Maritozzo con panna</a></li>
+                    <li><a href="#ciambelline">Ciambelline al Vino</a></li>
+                    <li><a href="#crostata">Crostata di Ricotta e Visciole</a></li>
                 </ul>
             </div>
         </section>
@@ -913,6 +921,129 @@
     </div>
 </section>
 
+<section class="second-course-section">
+    <h2 style="text-align:center; font-family:'Playfair Display', serif; font-size:2.5rem; margin-bottom:40px; color:#6B1C29;">Second Course</h2>
+
+    <div class="appetizers-grid">
+
+        <!-- maritozzo -->
+        <div class="dish-card" id="taglio">
+            <div class="dish-header yellow" onclick="toggleDetails(this)">
+                <h2 class="dish-title yellow">Pizza al taglio</h2>
+                <p class="dish-description">Wide, generous slabs of airy dough baked in long pans, their toppings stretching across like edible mosaics—light, crunchy, and joyfully casual, made to be cut, shared, and devoured on the go..</p>
+            </div>
+            <img src="https://assets3.thrillist.com/v1/image/2765820/1584x1056/scale;webp=auto;jpeg_quality=60.jpg">
+            <div class="dish-details yellow">
+                <div class="dish-section">
+                    <h3>Ingredients:</h3>
+                    <p>Flour, beer yiest, water, salt.</p>
+                </div>
+                <div class="dish-section">
+                    <h3>Where to taste:</h3>
+                    <p>Antico Forno Roscioli, pizzerie al taglio, forno</p>
+                </div>
+            </div>
+        </div>
+
+          <div class="dish-card" id="romana">
+            <div class="dish-header red" onclick="toggleDetails(this)">
+                <h2 class="dish-title red">Pizza romana</h2>
+                <p class="dish-description">Thin, and crisp, a sheet of golden dough, a canvas for generous toppings and lively flavors.</p>
+            </div>
+            <img src="https://www.gamberorosso.it/wp-content/uploads/2024/05/pizza-romana-e1568103827939.jpg">
+              
+            <div class="dish-details red">
+                <div class="dish-section">
+                    <h3>Ingredients:</h3>
+                    <p>Flour, beer yiest, water, salt.</p>
+                </div>
+                
+            </div>
+        </div>
+
+          <div class="dish-card" id="ciriola">
+            <div class="dish-header yellow" onclick="toggleDetails(this)">
+                <h2 class="dish-title yellow">Ciriola</h2>
+                <p class="dish-description">Airy bread roll with a gentle crackle outside and a soft, tender heart.</p>
+            </div>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/c/c4/Ciriola.png">
+            <div class="dish-details yellow">
+                <div class="dish-section">
+                    <h3>Ingredients:</h3>
+                    <p>Flour, water, sourdough starter, salt</p>
+                </div>
+                <div class="dish-section">
+                    <h3>Where to taste:</h3>
+                    <p> Forno, supermarket</p>
+                </div>
+            </div>
+        </div>
+   </div>
+</section>
+
+
+<section class="second-course-section">
+    <h2 style="text-align:center; font-family:'Playfair Display', serif; font-size:2.5rem; margin-bottom:40px; color:#6B1C29;">Second Course</h2>
+
+    <div class="appetizers-grid">
+
+        <!-- maritozzo -->
+        <div class="dish-card" id="maritozzo">
+            <div class="dish-header yellow" onclick="toggleDetails(this)">
+                <h2 class="dish-title yellow">Maritozzo con Panna</h2>
+                <p class="dish-description">A soft, slightly sweet bun split open and filled with clouds of fresh whipped cream.</p>
+            </div>
+            <img src="https://static.gamberorosso.it/2024/12/maritozzo-con-la-panna-1.jpeg">
+            <div class="dish-details yellow">
+                <div class="dish-section">
+                    <h3>Ingredients:</h3>
+                    <p>Flour, eggs, milk, water, beer yiest, sugar, butter, orange skin, vanilla, cream</p>
+                </div>
+                <div class="dish-section">
+                    <h3>Where to taste:</h3>
+                    <p>Regoli</p>
+                </div>
+            </div>
+        </div>
+
+          <div class="dish-card" id="ciambelline">
+            <div class="dish-header red" onclick="toggleDetails(this)">
+                <h2 class="dish-title red">Ciambelline al vino</h2>
+                <p class="dish-description">Crunchy and fragrat rings kissed with wine, sugar, and a whisper of anice, the kind of simple pleasure that lingers long after the crumbs are gone</p>
+            </div>
+            <img src="https://i0.wp.com/www.mammachechef.it/wp-content/uploads/2016/12/ciambelline-al-vino-rosso-3.jpg?w=900&ssl=1">
+              
+            <div class="dish-details red">
+                <div class="dish-section">
+                    <h3>Ingredients:</h3>
+                    <p>Flour, sugar, yiest, oil, white or red wine, anice.</p>
+                </div>
+                
+            </div>
+        </div>
+
+          <div class="dish-card" id="crostata">
+            <div class="dish-header red" onclick="toggleDetails(this)">
+                <h2 class="dish-title red">Crostata Ricotta e Visciole</h2>
+                <p class="dish-description">Delicate pastry holding a duet of creamy ricotta and tangy sour cherries.</p>
+            </div>
+            <img src="https://duespaghetti.com/wp-content/uploads/2023/12/DSC01102-2-1480x1480.jpg">
+            <div class="dish-details red">
+                <div class="dish-section">
+                    <h3>Ingredients:</h3>
+                    <p>Flour, eggs, milk, yiest, sugar, butter, sheep ricotta, sour cherry jam</p>
+                </div>
+                <div class="dish-section">
+                    <h3>Where to taste:</h3>
+                    <p>Regoli, Antico Forno Roscioli</p>
+                </div>
+            </div>
+        </div>
+   </div>
+</section>
+
+
+        
     <footer>
         <p>&copy; 2024 Journey of Flavors. All rights reserved.</p>
         <p>Discover the authentic taste of Roman cuisine</p>
