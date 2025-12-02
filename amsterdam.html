@@ -24,7 +24,7 @@
     color: #333;
     background-color: #fff;
     /* Add background image */
-    background-image: url('https://cms.througheternity.com/upload/CONF83/20220619/via_margutta_rome.jpg');
+    background-image: url('https://i.natgeofe.com/n/e2f26e6b-8255-4391-84be-4b0919d4c0d8/20240626-0349-Jonathan%20Irish-NGCW-CITI-AA-Amsterdam-_7R52855.jpg?w=2520&h=1680');
     background-size: cover;
     background-attachment: fixed;
     background-position: center;
@@ -40,7 +40,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(255, 255, 255, 0.92);
+            background-color: rgba(255, 255, 255, 0.7);
             z-index: -1;
         }
 
@@ -90,13 +90,13 @@
             margin-bottom: 40px;
         }
 
-       .cta-subsection {
+.cta-subsection {
     background-color: #6B1C29;
     color: white;
     padding: 30px 20px;
     text-align: center;
     margin: 40px auto;
-    max-width: 1200px; /* wider so all fit in a row */
+    max-width: 1200px;
     border-radius: 10px;
 }
 
@@ -106,19 +106,20 @@
     line-height: 1.4;
 }
 
-/* Make the course sections appear in a row */
+/* Make the course sections appear in a row - ONLY for cta-subsection */
 .cta-subsection .courses-grid {
-    display: flex; /* aligns children in a row */
-    justify-content: space-between; /* equal spacing */
-    flex-wrap: wrap; /* wraps on smaller screens */
-    gap: 20px; /* spacing between columns */
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px;
+    align-items: flex-start; /* ADD THIS - aligns items at the top */
 }
 
 .cta-subsection .course-section {
-    flex: 1; /* each section takes equal space */
-    min-width: 200px; /* prevents sections from getting too narrow */
-    background-color: #6B1C29; /* optional: adds contrast */
-    color: #333; /* optional */
+    flex: 1;
+    min-width: 200px;
+    background-color: #6B1C29;
+    color: #333;
     border-radius: 8px;
     padding: 15px;
 }
@@ -127,6 +128,18 @@
     font-size: 1.3rem;
     color: #fff;
     margin-bottom: 10px;
+}
+
+.cta-subsection .course-content {
+    background-color: white; /* ADD THIS - white background for opened menu */
+    border-radius: 6px;
+    padding: 15px;
+    margin-top: 10px;
+}
+
+.cta-subsection .dish-list {
+    list-style: none;
+    padding: 0;
 }
 
 .cta-subsection .dish-list li {
@@ -142,6 +155,7 @@
 .cta-subsection .dish-list a:hover {
     text-decoration: underline;
 }
+
 .menu-divider {
     display: flex;
     align-items: center;
@@ -156,22 +170,13 @@
     padding: 0;
 }
 
-.divider-title::before {
-    content: '✦';
-    margin-right: 10px;
-}
-
-.divider-title::after {
-    content: '✦';
-    margin-left: 10px;
-}
-        
-        .courses-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin-top: 20px;
-        }
+/* REMOVE THE SECOND .courses-grid - it's conflicting! Delete this: */
+/* .courses-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 20px;
+} */
 
         .course-section {
             padding: 40px 0;
@@ -447,493 +452,78 @@
     <a href="index.html" class="home-btn">← Homepage</a>
     <header>
         
-        <h1 class="main-title">The Taste of Amsterdam </h1>
-       <!-- <p class="tagline"></p>
+        <h1 class="main-title">The Taste of Amsterdam</h1>
+       <!-- <p class="tagline">Roman cuisine is full of flavors to delight every palate—you just need to know where to look.</p>
         -->
-        <p class="tagline">Amsterdam has its own tender comforts—warm, cozy dishes. </p> 
-        <p class="tagline"> Ready to tasta a soft embrace on a cool night?</p>
+        <p class="tagline"> Ready to tasta a soft embrace on a cool night?</p> 
+        <p class="tagline"> Amsterdam has its own tender comforts—warm, cozy dishes.</p>
     </header>
-<!-- <div class="back-home-container">
-    <a href="index.html" class="back-home-button">← Back to Homepage</a>
 
-    <div class="cta-section">
-        </div> 
-</div> -->
- <!--  <div class="cta-subsection"> -->
-        <!-- <h2>Ready to dive in the tradition?</h2> -->
-      <!--  <div class="courses-grid">
-             <section class="course-section">
-            <h3 class="course-title" onclick="toggleCourse(this)">Snacks</h3>
-            <div class="course-content">
-                <ul class="dish-list">
-                    <li><a href="#suppli">Supplì</a></li>
-                    <li><a href="#fiori">Fiore di zucca</a></li>
-                    <li><a href="#baccala">Baccalà alla Romana</a></li>
-                </ul>
-            </div>
-        </section> -->
-    
-             <!-- Main -->
-       <!-- <section class="course-section">
-            <h3 class="course-title" onclick="toggleCourse(this)">First course</h3>
-            <div class="course-content">
-                <ul class="dish-list">
-                    <li><a href="#carbonara">Carbonara</a></li>
-                    <li><a href="#amatriciana">Amatriciana</a></li>
-                    <li><a href="#cacio-e-pepe">Cacio e Pepe</a></li>
-                    <li><a href="#gricia">Gricia</a></li>
-                    <li><a href="#gnocchi">Gnocchi alla Romana</a></li>
-                    <li><a href="#pajata">Rigatoni alla Pajata</a></li>
-                </ul>
-            </div>
-        </section> -->
-
-        <!-- Desserts -->
-     <!--  <!-- <section class="course-section"> 
-            <h2 class="course-title" onclick="toggleCourse(this)">Second course</h2>--> 
-       <!--      <section class="course-section">
-            <h3 class="course-title" onclick="toggleCourse(this)">Second courses</h3>
-            <div class="course-content">
-                <ul class="dish-list">
-                    <li><a href="#coda">Coda alla Vaccinara</a></li>
-                    <li><a href="#saltimbocca">Saltimbocca alla romana</a></li>
-                    <li><a href="#trippa">Trippa alla romana</a></li>
-                    <li><a href="#fagioli">Fagioli con le Cotiche</a></li>
-                    <li><a href="#carciofi-romana">Carciofi alla romana</a></li>
-                    <li><a href="#carciofi-giudia">Carciofi alla Giudia</a></li>
-                </ul>
-            </div>
-                 </section> -->
-      <!--  </section> -->
- <!--    </div>
-    
-        </div>
-    </div>
-    -->
     <div class="cta-subsection">
     <div class="courses-grid">
-        <!-- Snacks -->
+
+      
+
+        <!-- First Course Section -->
         <section class="course-section">
             <h3 class="course-title" onclick="toggleCourse(this)">Snacks</h3>
             <div class="course-content">
                 <ul class="dish-list">
-                    <li><a href="#suppli">Supplì</a></li>
-                    <li><a href="#fiori">Fiore di zucca</a></li>
-                    <li><a href="#baccala">Baccalà alla Romana</a></li>
+                    <li><a href="#friets">Friets</a></li>
+                    <li><a href="#bitterballen">Bitterballen</a></li>
+                    <li><a href="#croquettes">Croquettes</a></li>
+                    <li><a href="#kaassticks">Kaassticks</a></li>
+                    <li><a href="#vlammetjs">Vlammetjs</a></li>
                 </ul>
             </div>
         </section>
 
-        <!-- NEW: Primi Piatti Divider -->
-        <section class="course-section menu-divider">
-            <h3 class="course-title divider-title">Main courses</h3>
-        </section>
+      
 
-        <!-- Snacks -->
+        <!-- Second Course Section -->
         <section class="course-section">
             <h3 class="course-title" onclick="toggleCourse(this)">Main courses</h3>
             <div class="course-content">
                 <ul class="dish-list">
-                    <li><a href="#carbonara">Carbonara</a></li>
-                    <li><a href="#amatriciana">Amatriciana</a></li>
-                    <li><a href="#cacio-e-pepe">Cacio e Pepe</a></li>
-                    <li><a href="#gricia">Gricia</a></li>
-                    <li><a href="#gnocchi">Gnocchi alla Romana</a></li>
-                    <li><a href="#pajata">Rigatoni alla Pajata</a></li>
+                    <li><a href="#stamppot">Stamppot</a></li>
+                    <li><a href="#kibbeling">Kibbeling</a></li>
+                    <li><a href="#snert">Snert</a></li>
+                    <li><a href="#roti">Roti</a></li>
+                    <li><a href="#broodje">Broodje Croquette</a></li>
+                    <li><a href="#broodje">Broodje Haring</a></li>
                 </ul>
             </div>
         </section>
 
-        <!-- NEW: Secondi Divider -->
-        <section class="course-section menu-divider">
-            <h3 class="course-title divider-title">Desserts</h3>
-        </section>
-
-        <!-- Main -->
+        
+        <!-- Desserts -->
         <section class="course-section">
             <h3 class="course-title" onclick="toggleCourse(this)">Desserts</h3>
             <div class="course-content">
                 <ul class="dish-list">
-                    <li><a href="#coda">Coda alla Vaccinara</a></li>
-                    <li><a href="#saltimbocca">Saltimbocca alla romana</a></li>
-                    <li><a href="#trippa">Trippa alla romana</a></li>
-                    <li><a href="#fagioli">Fagioli con le Cotiche</a></li>
-                    <li><a href="#carciofi-romana">Carciofi alla romana</a></li>
-                    <li><a href="#carciofi-giudia">Carciofi alla Giudia</a></li>
+                    <li><a href="#appel">Appeltaart</a></li>
+                    <li><a href="#poff">Poffertjes</a></li>
+                    <li><a href="#wafel">Stroopwafels</a></li>
+                    <li><a href="#vlaai">Vlaai</a></li>
+                    <li><a href="#tompouche">Tompouche</a></li>
+                     <li><a href="#oliebollen">Oliebollen</a></li>
                 </ul>
             </div>
         </section>
 
-        <section class="course-section menu-divider">
-            <h3 class="course-title divider-title">Beer</h3>
-        </section>
 
-        <!-- Beer -->
+        
+      
+   <!-- beers -->
         <section class="course-section">
-            <h3 class="course-title" onclick="toggleCourse(this)">Beer</h3>
+            <h3 class="course-title" onclick="toggleCourse(this)">Beers</h3>
             <div class="course-content">
                 <ul class="dish-list">
-                    <li><a href="#coda">Maritozzo con panna</a></li>
-                    <li><a href="#saltimbocca">Ciambelline al Vino</a></li>
-                    <li><a href="#trippa">Crostata di Ricotta e Visciole</a></li>
-                    <li><a href="#fagioli">Fagioli con le Cotiche</a></li>
-                    <li><a href="#carciofi-romana">Carciofi alla romana</a></li>
-                    <li><a href="#carciofi-giudia">Carciofi alla Giudia</a></li>
+                    <li><a href="#oedipus">Oedipus</a></li>
+                    <li><a href="#tij">Brouwerij 't IJ</a></li>
+                     <li><a href="#trappe">La Trappe</a></li>
                 </ul>
             </div>
         </section>
     </div>
 </div>
-   <!--  </div>-->
-
-    <div class="container">
-        <!-- Appetizers Section -->
-
-        <section class="appetizers-section">
-            <h2 style="text-align:center; font-family:'Playfair Display', serif; font-size:2.5rem; margin-bottom:40px; color:#6B1C29;">Snacks</h2>
-            <div class="appetizers-grid">
-                <!-- Supplì al telefono -->
-                <div class="dish-card" id= "suppli">
-                    <div class="dish-header red" onclick="toggleDetails(this)">
-                        <h2 class="dish-title red">Supplì al telefono</h2>
-                        <p class="dish-description">Golden-fried rice balls filled with rich ragù or vibrant tomato sauce, and a core of mozzarella that stretches with every bite.</p>
-                    </div>
-                    <img src="suppli.jpg" alt="Supplì al telefono" class="dish-image">
-                    <div class="dish-details red">
-                        <div class="dish-section">
-                            <h3>Ingredients:</h3>
-                            <p>Rice, mozzarella, tomato sauce or ragù, eggs, breadcrumbs, olive oil</p>
-                        </div>
-                        <div class="dish-section">
-                            <h3>Where to taste:</h3>
-                            <p>Traditional Roman trattorias and street food vendors throughout Rome</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Fiori di zucca -->
-                <div class="dish-card" id="fiori">
-                    <div class="dish-header green" onclick="toggleDetails(this)">
-                        <h2 class="dish-title green">Fiori di zucca</h2>
-                        <p class="dish-description">Gently stuffed with mozzarella (and anchovies), then lightly fried to a crisp perfection.</p>
-                    </div>
-                    <img src="img_2941.jpg" alt="Fiori di zucca" class="dish-image">
-                    <div class="dish-details green">
-                        <div class="dish-section">
-                            <h3>Ingredients:</h3>
-                            <p>Zucchini flowers, mozzarella, anchovies (optional), flour, sparkling water, olive oil</p>
-                        </div>
-                        <div class="dish-section">
-                            <h3>Where to taste:</h3>
-                            <p>Jewish Quarter (Ghetto), traditional Roman restaurants</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Baccalà fritto -->
-                <div class="dish-card" id="baccala">
-                    <div class="dish-header yellow" onclick="toggleDetails(this)">
-                        <h2 class="dish-title yellow">Baccalà fritto alla romana</h2>
-                        <p class="dish-description">Cod wrapped in a light, golden batter and fried to crisp perfection.</p>
-                    </div>
-                    <img src="Baccala-fritto-alla-romana-in-pastella_650x433_wm.jpg" alt="Baccalà fritto" class="dish-image">
-                    <div class="dish-details yellow">
-                        <div class="dish-section">
-                            <h3>Ingredients:</h3>
-                            <p>Salt cod (baccalà), flour, water, olive oil for frying</p>
-                        </div>
-                        <div class="dish-section">
-                            <h3>Where to taste:</h3>
-                            <p>Testaccio neighborhood, traditional friggitorie (fry shops)</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-<!-- First Course Section -->
-<section class="first-course-section">
-    <h2 style="text-align:center; font-family:'Playfair Display', serif; font-size:2.5rem; margin-bottom:40px; color:#6B1C29;">Main Course</h2>
-
-    <!-- Grid 1 -->
-    <div class="appetizers-grid">
-
-        <!-- Carbonara -->
-        <div class="dish-card" id="carbonara">
-            <div class="dish-header yellow" onclick="toggleDetails(this)">
-                <h2 class="dish-title yellow">Carbonara</h2>
-                <p class="dish-description">Pasta entwined with a luscious, velvety sauce of eggs and Pecorino, studded with crispy, savory guanciale.</p>
-            </div>
-            <img src="Carbonara-ricetta-5328.jpg" alt="Carbonara" class="dish-image">
-            <div class="dish-details yellow">
-                <div class="dish-section">
-                    <h3>Ingredients:</h3>
-                    <p>Pasta (spaghetti, rigatoni or mezze maniche), Guanciale or pancetta, Eggs, Pecorino romano, Black pepper, Salt</p>
-                </div>
-                <div class="dish-section">
-                    <h3>Where to taste:</h3>
-                    <p>Traditional Roman trattorias, especially in Trastevere</p>
-                </div>
-            </div>
-        </div>
-
-        <!-- Amatriciana -->
-        <div class="dish-card" id="amatriciana">
-            <div class="dish-header red" onclick="toggleDetails(this)">
-                <h2 class="dish-title red">Amatriciana</h2>
-                <p class="dish-description">Pasta bathed in tomato sauce slowly simmered to deepen its flavor, enriched by tender guanciale.</p>
-            </div>
-            <img src="hq720.jpg" alt="Amatriciana" class="dish-image">
-            <div class="dish-details red">
-                <div class="dish-section">
-                    <h3>Ingredients:</h3>
-                    <p>Pasta, Tomato sauce, Guanciale, Pecorino cheese, Chili flakes</p>
-                </div>
-                <div class="dish-section">
-                    <h3>Where to taste:</h3>
-                    <p>Rome’s traditional trattorias and Osterie</p>
-                </div>
-            </div>
-        </div>
-
-        <!-- Cacio e Pepe -->
-        <div class="dish-card">
-            <div class="dish-header yellow" onclick="toggleDetails(this)">
-                <h2 class="dish-title yellow">Cacio e Pepe</h2>
-                <p class="dish-description">Pasta wrapped in a creamy Pecorino emulsion with freshly cracked pepper.</p>
-            </div>
-            <img src="IMG_3479.JPG" alt="Cacio e Pepe" class="dish-image">
-            <div class="dish-details yellow">
-                <div class="dish-section">
-                    <h3>Ingredients:</h3>
-                    <p>Pasta, Pecorino cheese, Black pepper, Pasta water</p>
-                </div>
-                <div class="dish-section">
-                    <h3>Where to taste:</h3>
-                    <p>Trattoria da Felice</p>
-                </div>
-            </div>
-        </div>
-
-    </div>
-
-    <!-- Grid 2 -->
-    <div class="appetizers-grid">
-
-        <!-- Gricia -->
-        <div class="dish-card">
-            <div class="dish-header yellow" onclick="toggleDetails(this)">
-                <h2 class="dish-title yellow">Gricia</h2>
-                <p class="dish-description">Pasta tossed with crisp guanciale and a generous snowfall of Pecorino.</p>
-            </div>
-            <img src="IMG_2381.png" alt="Gricia" class="dish-image">
-            <div class="dish-details yellow">
-                <div class="dish-section">
-                    <h3>Ingredients:</h3>
-                    <p>Tonnarelli pasta, Guanciale, Pecorino cheese, Black pepper</p>
-                </div>
-                <div class="dish-section">
-                    <h3>Where to taste:</h3>
-                    <p>Sellero e Ventresca, and trattorias</p>
-                </div>
-            </div>
-        </div>
-
-        <!-- Gnocchi alla Romana -->
-        <div class="dish-card" id="gnocchi">
-            <div class="dish-header yellow" onclick="toggleDetails(this)">
-                <h2 class="dish-title yellow">Gnocchi alla Romana</h2>
-                <p class="dish-description">Soft semolina rounds baked until their edges turn golden, layered with butter and Parmigiano.</p>
-            </div>
-            <img src="gnocchi-alla-romana.jpg" alt="Gnocchi alla Romana" class="dish-image">
-            <div class="dish-details yellow">
-                <div class="dish-section">
-                    <h3>Ingredients:</h3>
-                    <p>Semolina, Butter, Egg yolk, Milk, Parmigiano, Nutmeg, Salt, Black pepper</p>
-                </div>
-                <div class="dish-section">
-                    <h3>Where to taste:</h3>
-                    <p>Classic Roman trattorias, especially in the Campo de' Fiori area</p>
-                </div>
-            </div>
-        </div>
-
-        <!-- Pajata -->
-        <div class="dish-card" id="pajata">
-            <div class="dish-header red" onclick="toggleDetails(this)">
-                <h2 class="dish-title red">Rigatoni alla Pajata</h2>
-                <p class="dish-description">Rigatoni cloaked in a rich, tangy tomato sauce infused with the unique Roman delicacy of pajata.</p>
-            </div>
-            <img src="pajata.jpg" alt="Rigatoni alla Pajata" class="dish-image">
-            <div class="dish-details red">
-                <div class="dish-section">
-                    <h3>Ingredients:</h3>
-                    <p>Rigatoni, Tomato sauce, Veal intestines (pajata), Onion, Celery, White wine, Chili flakes</p>
-                </div>
-                <div class="dish-section">
-                    <h3>Where to taste:</h3>
-                    <p>Classic Roman trattorias, especially in the Campo de' Fiori area</p>
-                </div>
-            </div>
-        </div>
-
-    </div>
-
-</section>
-
-
-
-<section class="second-course-section">
-    <h2 style="text-align:center; font-family:'Playfair Display', serif; font-size:2.5rem; margin-bottom:40px; color:#6B1C29;">Desserts</h2>
-
-    <div class="appetizers-grid">
-
-        <!-- Coda -->
-        <div class="dish-card" id="coda">
-            <div class="dish-header red" onclick="toggleDetails(this)">
-                <h2 class="dish-title red">Coda alla Vaccinara</h2>
-                <p class="dish-description">Slow-cooked oxtail melting into silky strands, in a tomato sauce that gently simmers it into something lush, and utterly comforting.</p>
-            </div>
-            <img src="coda.webp" class="dish-image">
-            <div class="dish-details red">
-                <div class="dish-section">
-                    <h3>Ingredients:</h3>
-                    <p>Oxtail, Tomato sauce, Onion, Celery, Carrot, White wine, Black pepper, Salt, Olive oil</p>
-                </div>
-                <div class="dish-section">
-                    <h3>Where to taste:</h3>
-                    <p>Traditional Roman trattorias, especially in Trastevere</p>
-                </div>
-            </div>
-        </div>
-
-        <!-- Saltimbocca -->
-        <div class="dish-card" id="saltimbocca">
-            <div class="dish-header yellow" onclick="toggleDetails(this)">
-                <h2 class="dish-title yellow">Saltimbocca alla Romana</h2>
-                <p class="dish-description">Thin veal kissed with sage and covered in prosciutto, gently sautéed until the edges turn golden and the flavors fuse into a delicate, savory whisper.</p>
-            </div>
-            <img src="saltimbocca-alla-romana.jpg" class="dish-image">
-            <div class="dish-details yellow">
-                <div class="dish-section">
-                    <h3>Ingredients:</h3>
-                    <p>Veal slices, Sage, Prosciutto crudo, White wine, Butter, Flour, Black pepper, Salt</p>
-                </div>
-                <div class="dish-section">
-                    <h3>Where to taste:</h3>
-                    <p>Traditional Roman trattorias</p>
-                </div>
-            </div>
-        </div>
-
-        <!-- Trippa -->
-        <div class="dish-card" id="trippa">
-            <div class="dish-header red" onclick="toggleDetails(this)">
-                <h2 class="dish-title red">Trippa alla Romana</h2>
-                <p class="dish-description">Tender ribbons of slow-cooked tripe simmered in a fragrant tomato embrace, brightened with mint and crowned with Pecorino.</p>
-            </div>
-            <img src="TRIPPA-ALLA-ROMANA.png" class="dish-image">
-            <div class="dish-details red">
-                <div class="dish-section">
-                    <h3>Ingredients:</h3>
-                    <p>Belly, Pomodori San Marzano, Pecorino Romano, White onion, White wine, Carrot, Celery, Mint, Pepper, Salt</p>
-                </div>
-                <div class="dish-section">
-                    <h3>Where to taste:</h3>
-                    <p>Traditional Roman trattorias, especially in Trastevere</p>
-                </div>
-            </div>
-        </div>
-
-        <!-- Fagioli -->
-        <div class="dish-card" id="fagioli">
-            <div class="dish-header red" onclick="toggleDetails(this)">
-                <h2 class="dish-title red">Fagioli con le Cotiche</h2>
-                <p class="dish-description">Tender beans and succulent strips of pork rind simmered together in a rich, savory sauce that clings to every bite.</p>
-            </div>
-            <img src="fagioli-con-le-cotiche-sito-1.jpg" class="dish-image">
-            <div class="dish-details red">
-                <div class="dish-section">
-                    <h3>Ingredients:</h3>
-                    <p>Borlotti beans, Pork rind, Carrots, White onions, Tomato sauce, Celery, Chili, White wine, Garlic, Salt</p>
-                </div>
-                <div class="dish-section">
-                    <h3>Where to taste:</h3>
-                    <p>Traditional Roman trattorias, especially in Trastevere</p>
-                </div>
-            </div>
-        </div>
-
-        <!-- Carciofi alla Romana -->
-        <div class="dish-card" id="carciofi-romana">
-            <div class="dish-header green" onclick="toggleDetails(this)">
-                <h2 class="dish-title green">Carciofi alla romana</h2>
-                <p class="dish-description">Artichokes gently opened like quiet spring blossoms, filled with herbs and garlic, then braised until yielding and aromatic.</p>
-            </div>
-            <img src="Carciofi-alla-romana.jpg" class="dish-image">
-            <div class="dish-details green">
-                <div class="dish-section">
-                    <h3>Ingredients:</h3>
-                    <p>Artichoke, Mint, Parsley, White wine, Lemon, Garlic, Olive oil, Salt</p>
-                </div>
-                <div class="dish-section">
-                    <h3>Where to taste:</h3>
-                    <p>Traditional Roman trattorias, especially in Trastevere</p>
-                </div>
-            </div>
-        </div>
-
-        <!-- Carciofi alla Giudia -->
-        <div class="dish-card" id="carciofi-giudia">
-            <div class="dish-header green" onclick="toggleDetails(this)">
-                <h2 class="dish-title green">Carciofi alla Giudia</h2>
-                <p class="dish-description">Artichokes, tender on the inside and crisp on the outside, fried with just a touch of salt— from the Roman-Jewish culinary tradition.</p>
-            </div>
-            <img src="carciofi-alla-giudia.webp" class="dish-image">
-            <div class="dish-details green">
-                <div class="dish-section">
-                    <h3>Ingredients:</h3>
-                    <p>Artichoke, Oil, Salt</p>
-                </div>
-                <div class="dish-section">
-                    <h3>Where to taste:</h3>
-                    <p>Traditional Roman trattorias, especially in Trastevere</p>
-                </div>
-            </div>
-        </div>
-
-    </div>
-</section>
-
-    <footer>
-        <p>&copy; 2024 Journey of Flavors. All rights reserved.</p>
-        <p>Discover the authentic taste of Amsterdam food</p>
-    </footer>
-
-    <script>
-        function toggleDetails(element) {
-            const details = element.parentElement.querySelector('.dish-details');
-            details.classList.toggle('active');
-        }
-
-        function toggleCourse(element) {
-            element.classList.toggle('active');
-            const content = element.nextElementSibling;
-            content.classList.toggle('active');
-        }
-
-        // Smooth scroll for links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth'
-                    });
-                }
-            });
-        });
-    </script>
-</body>
-</html>
