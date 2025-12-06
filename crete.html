@@ -50,12 +50,17 @@
             padding: 20px;
         }
 
-        header {
+        /*header {
             text-align: center;
             padding: 60px 20px;
             background: linear-gradient(135deg, #f5f5f5 0%, #fff 100%);
+        }*/
+        header {
+            text-align: center;
+            padding: 60px 20px;
+            background: rgba(255, 255, 255, 0.25);
+            backdrop-filter: blur(5px);
         }
-
         h1 {
             font-size: 3.5rem;
             color: #666;
@@ -64,7 +69,7 @@
         }
 
         h1.main-title {
-            color: #6B1C29;
+            color: #044dc2;
             font-weight: 700;
             margin-bottom: 30px;
         }
@@ -78,7 +83,7 @@
         }
 
         .cta-section {
-            background-color: #6B1C29;
+            background-color: #044dc2;
             color: white;
             padding: 40px;
             text-align: center;
@@ -91,7 +96,7 @@
         }
 
 .cta-subsection {
-    background-color: #6B1C29;
+    background-color: #044dc2;
     color: white;
     padding: 30px 20px;
     text-align: center;
@@ -118,7 +123,7 @@
 .cta-subsection .course-section {
     flex: 1;
     min-width: 200px;
-    background-color: #6B1C29;
+    background-color: #044dc2;
     color: #333;
     border-radius: 8px;
     padding: 15px;
@@ -148,7 +153,7 @@
 }
 
 .cta-subsection .dish-list a {
-    color: #6B1C29;
+    color: #044dc2;
     text-decoration: none;
 }
 
@@ -429,7 +434,7 @@
             position: fixed;
             top: 30px;
             right: 30px;
-            background: #8B2635;
+            background: #044dc2;
             color: white;
             padding: 12px 28px;
             border-radius: 30px;
@@ -442,7 +447,7 @@
         }
 
         .home-btn:hover {
-            background: #6B1C29;
+            background: #044dc2;
             transform: translateY(-2px);
             box-shadow: 0 6px 20px rgba(139, 38, 53, 0.6);
         }
@@ -509,7 +514,7 @@
                 <ul class="dish-list">
                      <li>Feta</li>
                     <li>Graviera</li>
-                    <li>Mizithra/li>
+                    <li>Mizithra</li>
                     <li>Antithotiros</li>
                 </ul>
             </div>
@@ -528,17 +533,17 @@
         </section>
       
         
-        <!-- Desserts
+        <!-- Desserts -->
         <section class="course-section">
             <h3 class="course-title" onclick="toggleCourse(this)">Desserts</h3>
             <div class="course-content">
                 <ul class="dish-list">
-                    <li><a href="#maritozzo">Maritozzo con panna</a></li>
+                    <li><a href="#sfakiani">Sfakiani pita</a></li>
                     <li><a href="#ciambelline">Ciambelline al Vino</a></li>
                     <li><a href="#crostata">Crostata di Ricotta e Visciole</a></li>
                 </ul>
             </div>
-        </section>  -->
+        </section> 
     </div>
 </div>
    <!--  </div>-->
@@ -547,13 +552,13 @@
         <!-- Appetizers Section -->
 
         <section class="appetizers-section">
-            <h2 style="text-align:center; font-family:'Playfair Display', serif; font-size:2.5rem; margin-bottom:40px; color:#6B1C29;">Appetizers</h2>
+            <h2 style="text-align:center; font-family:'Playfair Display', serif; font-size:2.5rem; margin-bottom:40px; color:#044dc2;">Appetizers</h2>
             <div class="appetizers-grid">
                 <!-- Drakos -->
                 <div class="dish-card" id= "dakos">
                     <div class="dish-header red" onclick="toggleDetails(this)">
                         <h2 class="dish-title red">Dakos</h2>
-                        <p class="dish-description">Crisp Cretan barley rusk softened by juicy tomatoes, drenched in fragrant olive oil, and topped with creamy mizithra. Simple, sun-soaked flavors.</p>
+                        <p class="dish-description">Crisp barley rusk softened by juicy tomatoes, and topped with creamy mizithra. Simple, sun-soaked flavors.</p>
                     </div>
                     <img src="dakos.jpg" alt="dakos" class="dish-image">
                     <div class="dish-details red">
@@ -593,7 +598,7 @@
               <div class="dish-card" id="apaki">
                   <div class="dish-header yellow" onclick="toggleDetails(this)">
                       <h2 class="dish-title yellow">Apaki</h2>
-                      <p class="dish-description">Tender pork kissed with the aroma of rosemary. Each bite is smoky, and succulent—like a warm whisper from the Cretan mountains.</p>
+                      <p class="dish-description">Tender pork kissed with the aroma of rosemary. Each bite is smoky, and succulent—like a warm whisper from the mountains.</p>
                   </div>
                   <img src="apaki.jpg" alt="apaki" class="dish-image">
                   <div class="dish-details yellow">
@@ -613,7 +618,7 @@
                 <div class="dish-card" id="kalits">
                     <div class="dish-header yellow" onclick="toggleDetails(this)">
                         <h2 class="dish-title yellow">Kalitsounia</h2>
-                        <p class="dish-description">Little pastries embracing silky Cretan cheese and fresh herbs - a tender bite that melts gently on the tongue.</p>
+                        <p class="dish-description">Little pastries embracing silky Cretan cheese and herbs, gently melting on the tongue.</p>
                     </div>
                     <img src="kalits.jpg" alt="Kalits" class="dish-image">
                     <div class="dish-details yellow">
@@ -632,7 +637,7 @@
                 <div class="dish-card" id="staka">
                     <div class="dish-header yellow" onclick="toggleDetails(this)">
                         <h2 class="dish-title yellow">Staka</h2>
-                        <p class="dish-description">Little pastries embracing silky Cretan cheese and fresh herbs - a tender bite that melts gently on the tongue.</p>
+                        <p class="dish-description">Velvety, creamy sheep’s milk butter, gently cooked until luxuriously thick—warm, and indulgently savory.</p>
                     </div>
                     <img src="staka.webp" alt="staka" class="dish-image">
                     <div class="dish-details yellow">
@@ -669,7 +674,7 @@
 
 <!-- First Course Section -->
 <section class="first-course-section">
-    <h2 style="text-align:center; font-family:'Playfair Display', serif; font-size:2.5rem; margin-bottom:40px; color:#6B1C29;">Main Course</h2>
+    <h2 style="text-align:center; font-family:'Playfair Display', serif; font-size:2.5rem; margin-bottom:40px; color:#044dc2;">Main Course</h2>
 
     <!-- Grid 1 -->
     <div class="appetizers-grid">
@@ -714,12 +719,12 @@
 
   <!-- tsigariasto -->
         <div class="dish-card" id="tsigariasto">
-            <div class="dish-header red" onclick="toggleDetails(this)">
-                <h2 class="dish-title red">Tsigariasto Lamb</h2>
+            <div class="dish-header green" onclick="toggleDetails(this)">
+                <h2 class="dish-title green">Tsigariasto Lamb</h2>
                 <p class="dish-description">Slow-cooked lamb leg, infused with herbs and spices, each bite juicy and deeply savory—flavors that unfold luxuriously.</p>
             </div>
             <img src="tsigariasto.jpg" alt="tsigariasto" class="dish-image">
-            <div class="dish-details red">
+            <div class="dish-details green">
                 <div class="dish-section">
                     <h3>Ingredients:</h3>
                     <p>Lamb, white wine, bay leaves, onion, garlic, salt.</p>
@@ -756,6 +761,95 @@
 
 </section>
 
+
+<!-- First Course Section -->
+<section class="first-course-section">
+    <h2 style="text-align:center; font-family:'Playfair Display', serif; font-size:2.5rem; margin-bottom:40px; color:#044dc2;">Desserts</h2>
+
+    <!-- Grid 1 -->
+    <div class="appetizers-grid">
+
+
+        <!sfakiani -->
+        <div class="dish-card">
+            <div class="dish-header yellow" onclick="toggleDetails(this)">
+                <h2 class="dish-title yellow">Sfakiani pita</h2>
+                <p class="dish-description">Thin pie filled with cheese, griddled until warm and drizzled with honey- each bite a perfect balance of sweet and creamy, soft and seductive.</p>
+            </div>
+            <img src="sfakiani.jpg" alt="sfakiani" class="dish-image">
+            <div class="dish-details yellow">
+                <div class="dish-section">
+                    <h3>Ingredients:</h3>
+                    <p>Flour, myzithra, olive oil, water, salt, raki, honey.</p>
+                </div>
+                <div class="dish-section">
+                    <h3>Where to taste:</h3>
+                    <p>Xani</p>
+                </div>
+            </div>
+        </div>
+       <!-- antikristo 
+              <div class="dish-card" id="antikristo">
+                  <div class="dish-header red" onclick="toggleDetails(this)">
+                      <h2 class="dish-title red">Antikristo Lamb</h2>
+                      <p class="dish-description">Lamb cooked in the ancient Cretan way, set around the fire to slowly kiss the flames.</p>
+                  </div>
+                  <img src="antikristo.jpg" alt="antikristo" class="dish-image">
+                  <div class="dish-details red">
+                      <div class="dish-section">
+                          <h3>Ingredients:</h3>
+                          <p>Lamb, salt.</p>
+                      </div>
+                      <div class="dish-section">
+                          <h3>Where to taste:</h3>
+                          <p></p>
+                      </div>
+                  </div>
+              </div>-->
+
+  <!-- tsigariasto 
+        <div class="dish-card" id="tsigariasto">
+            <div class="dish-header green" onclick="toggleDetails(this)">
+                <h2 class="dish-title green">Tsigariasto Lamb</h2>
+                <p class="dish-description">Slow-cooked lamb leg, infused with herbs and spices, each bite juicy and deeply savory—flavors that unfold luxuriously.</p>
+            </div>
+            <img src="tsigariasto.jpg" alt="tsigariasto" class="dish-image">
+            <div class="dish-details green">
+                <div class="dish-section">
+                    <h3>Ingredients:</h3>
+                    <p>Lamb, white wine, bay leaves, onion, garlic, salt.</p>
+                </div>
+                <div class="dish-section">
+                    <h3>Where to taste:</h3>
+                    <p></p>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- boureki -->
+        <div class="dish-card" id="boureki">
+            <div class="dish-header yellow" onclick="toggleDetails(this)">
+                <h2 class="dish-title yellow">Boureki</h2>
+                <p class="dish-description">Layers of zucchini, potato, and fragrant herbs, baked with molten cheese until golden and irresistible.</p>
+            </div>
+            <img src="boureki.jpg" alt="boureki" class="dish-image">
+            <div class="dish-details yellow">
+                <div class="dish-section">
+                    <h3>Ingredients:</h3>
+                    <p>Potatoes, courgette, feta, graviera, fillo sheets, mint, onion, oregano, salt, pepper.</p>
+                </div>
+                <div class="dish-section">
+                    <h3>Where to taste:</h3>
+                    <p></p>
+                </div>
+            </div>
+        </div>-->
+
+       
+    </div>
+
+</section>
 
         
     <footer>
