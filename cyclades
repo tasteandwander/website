@@ -1,0 +1,879 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Journey of Flavors - The Roman Cuisine</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+   /*    body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #fff;
+        } */
+
+     body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #fff;
+    /* Add background image */
+    background-image: url('https://cretelocals.com/wp-content/uploads/2024/06/Balos_Beach_and_Lagoon_Chania_Crete_Island_1.webp');
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+    }
+
+        /* Add overlay for better readability */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(255, 255, 255, 0.7);
+            z-index: -1;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /*header {
+            text-align: center;
+            padding: 60px 20px;
+            background: linear-gradient(135deg, #f5f5f5 0%, #fff 100%);
+        }*/
+        header {
+            text-align: center;
+            padding: 60px 20px;
+            background: rgba(255, 255, 255, 0.25);
+            backdrop-filter: blur(5px);
+        }
+        h1 {
+            font-size: 3.5rem;
+            color: #666;
+            margin-bottom: 10px;
+            font-weight: 300;
+        }
+
+        h1.main-title {
+            color: #044dc2;
+            font-weight: 700;
+            margin-bottom: 30px;
+        }
+
+        .tagline {
+            font-size: 1.5rem;
+            color: #666;
+            max-width: 900px;
+            margin: 0 auto;
+            font-style: italic;
+        }
+
+        .cta-section {
+            background-color: #044dc2;
+            color: white;
+            padding: 40px;
+            text-align: center;
+            margin: 40px 0;
+        }
+
+        .cta-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 40px;
+        }
+
+.cta-subsection {
+    background-color: #044dc2;
+    color: white;
+    padding: 30px 20px;
+    text-align: center;
+    margin: 40px auto;
+    max-width: 1200px;
+    border-radius: 10px;
+}
+
+.cta-subsection h2 {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    line-height: 1.4;
+}
+
+/* Make the course sections appear in a row - ONLY for cta-subsection */
+.cta-subsection .courses-grid {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px;
+    align-items: flex-start; /* ADD THIS - aligns items at the top */
+}
+
+.cta-subsection .course-section {
+    flex: 1;
+    min-width: 200px;
+    background-color: #044dc2;
+    color: #333;
+    border-radius: 8px;
+    padding: 15px;
+}
+
+.cta-subsection .course-section h3 {
+    font-size: 1.3rem;
+    color: #fff;
+    margin-bottom: 10px;
+}
+
+.cta-subsection .course-content {
+    background-color: white; /* ADD THIS - white background for opened menu */
+    border-radius: 6px;
+    padding: 15px;
+    margin-top: 10px;
+}
+
+.cta-subsection .dish-list {
+    list-style: none;
+    padding: 0;
+}
+
+.cta-subsection .dish-list li {
+    text-align: left;
+    margin-bottom: 6px;
+}
+
+.cta-subsection .dish-list a {
+    color: #044dc2;
+    text-decoration: none;
+}
+
+.cta-subsection .dish-list a:hover {
+    text-decoration: underline;
+}
+
+.menu-divider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.divider-title {
+    font-size: 1.5rem;
+    color: rgba(255, 255, 255, 0.9);
+    font-style: italic;
+    cursor: default;
+    padding: 0;
+}
+
+/* REMOVE THE SECOND .courses-grid - it's conflicting! Delete this: */
+/* .courses-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 20px;
+} */
+
+        .course-section {
+            padding: 40px 0;
+        }
+
+        .course-title {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            padding-left: 20px;
+            position: relative;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .course-title::before {
+            content: '▶';
+            position: absolute;
+            left: 0;
+            transition: transform 0.3s;
+        }
+
+        .course-title.active::before {
+            transform: rotate(90deg);
+        }
+
+        .course-content {
+            display: none;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border-radius: 8px;
+        }
+
+        .course-content.active {
+            display: block;
+        }
+
+        .dish-list {
+            list-style: none;
+        }
+
+        .dish-list li {
+            padding: 12px 0;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .dish-list li:last-child {
+            border-bottom: none;
+        }
+
+        .dish-list a {
+            color: #666;
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: color 0.3s;
+        }
+
+        .dish-list a:hover {
+            color: #d32f2f;
+        }
+
+        .appetizers-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin: 40px 0;
+        }
+
+        .dish-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .dish-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0,0,0,0.2);
+        }
+
+        .dish-header {
+            padding: 20px;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .dish-header.red {
+            background-color: #ffebee;
+        }
+
+        .dish-header.green {
+            background-color: #e8f5e9;
+        }
+
+        .dish-header.yellow {
+            background-color: #f7c672;
+        }
+
+        .dish-title {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            white-space: nowrap;
+        }
+
+        .dish-title::before {
+            content: '▶';
+            font-size: 1rem;
+        }
+
+        .dish-title.red {
+            color: #d32f2f;
+        }
+
+        .dish-title.green {
+            color: #2e7d32;
+        }
+
+        .dish-title.yellow {
+            color: #f57c00;
+        }
+
+        .dish-description {
+            color: #666;
+            line-height: 1.8;
+        }
+
+        .dish-image {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+
+        .dish-details {
+            display: none;
+            padding: 20px;
+            background-color: #fafafa;
+        }
+                /* Color-matched dish details */
+        .dish-details.red h3 {
+            color: #d32f2f;
+        }
+        
+        .dish-details.red {
+            background-color: #ffebee;
+        }
+        
+        .dish-details.green h3 {
+            color: #2e7d32;
+        }
+        
+        .dish-details.green {
+            background-color: #e8f5e9;
+        }
+        
+        .dish-details.yellow h3 {
+            color: #f57c00;
+        }
+        
+        .dish-details.yellow {
+            background-color: #fff9e6;
+        }
+
+        .dish-details.active {
+            display: block;
+        }
+
+        .dish-section {
+            margin-bottom: 20px;
+        }
+
+        .dish-section h3 {
+            color: #d32f2f;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .dish-section h3::before {
+            content: '▶';
+            font-size: 0.8rem;
+        }
+
+        .add-button {
+            background-color: #000;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 1.2rem;
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        footer {
+            background-color: #f5f5f5;
+            padding: 40px 20px;
+            text-align: center;
+            margin-top: 60px;
+            color: #666;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            h1.main-title {
+                font-size: 2.5rem;
+            }
+
+            .tagline {
+                font-size: 1.2rem;
+            }
+
+            .cta-section h2 {
+                font-size: 1.8rem;
+            }
+
+            .appetizers-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        .back-home-container {
+    text-align: center;
+    margin: 20px 0;
+}
+
+.back-home-button {
+    background-color: #d32f2f;
+    color: white;
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 6px;
+    font-size: 1.1rem;
+    transition: background-color 0.3s;
+}
+
+.back-home-button:hover {
+    background-color: #b71c1c;
+}
+        
+        .home-btn {
+            position: fixed;
+            top: 30px;
+            right: 30px;
+            background: #044dc2;
+            color: white;
+            padding: 12px 28px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            box-shadow: 0 4px 15px rgba(139, 38, 53, 0.4);
+            transition: all 0.3s ease;
+            z-index: 1000;
+            font-size: 16px;
+        }
+
+        .home-btn:hover {
+            background: #044dc2;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(139, 38, 53, 0.6);
+        }
+    </style>
+</head>
+<body>
+    <a href="index.html" class="home-btn">← Homepage</a>
+    <header>
+        
+        <h1 class="main-title">Crete</h1>
+       <!-- <p class="tagline">Roman cuisine is full of flavors to delight every palate—you just need to know where to look.</p>
+        -->
+        <p class="tagline"> Dive into the Cyclades and discover island flavors beyond the classic Greek dishes.</p>
+    </header>
+<!-- <div class="back-home-container">
+    <a href="index.html" class="back-home-button">← Back to Homepage</a>
+
+    <div class="cta-section">
+        </div> 
+</div> -->
+ <!--  <div class="cta-subsection"> -->
+        <!-- <h2>Ready to dive in the tradition?</h2> -->
+      <!--  <div class="courses-grid">
+             <section class="course-section">
+            <h3 class="course-title" onclick="toggleCourse(this)">Amorgos</h3>
+            <div class="course-content">
+                <ul class="dish-list">
+                    <li><a href="#patatato">Patatato</a></li>
+                    <li><a href="#fiori">Fiore di zucca</a></li>
+                    <li><a href="#baccala">Baccalà alla Romana</a></li>
+                </ul>
+            </div>
+        </section> -->
+          
+           
+
+    
+    <div class="cta-subsection">
+    <div class="courses-grid">
+        <!-- Appetizers Section -->
+        <section class="course-section">
+            <h3 class="course-title" onclick="toggleCourse(this)">Ios</h3>
+            <div class="course-content">
+                <ul class="dish-list">
+                    <li><a href="#dakos">Dakos</a></li>
+                    <li><a href="#snails">Chochlioi Boubouristi</a></li>
+                    <li><a href="#apaki">Apaki</a></li>
+                    <li><a href="#kalits">Kalitsounia</a></li>
+                    <li><a href="#tiropitakia">Tiropitakia</a></li>
+                    <li><a href="#staka">Staka</a></li>
+                </ul>
+            </div>
+        </section>
+
+
+ <section class="course-section">
+            <h3 class="course-title" onclick="toggleCourse(this)">Mykonos</h3>
+            <div class="course-content">
+                <ul class="dish-list">
+                     <li>Feta</li>
+                    <li>Graviera</li>
+                    <li>Mizithra</li>
+                    <li>Antithotiros</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- First Course Section -->
+        <section class="course-section">
+            <h3 class="course-title" onclick="toggleCourse(this)">Naxos</h3>
+            <div class="course-content">
+                <ul class="dish-list">
+                     <li><a href="#kleftiko">Kleftiko</a></li>
+                    <li><a href="#tsigariasto">Tsigariasto</a></li>
+                    <li><a href="#boureki">Boureki</a></li>
+                </ul>
+            </div>
+        </section>
+      
+        
+        <!-- Desserts -->
+        <section class="course-section">
+            <h3 class="course-title" onclick="toggleCourse(this)">Santorini</h3>
+            <div class="course-content">
+                <ul class="dish-list">
+                    <li><a href="#sfakiani">Sfakiani pita</a></li>
+                    <li><a href="#ciambelline">Ciambelline al Vino</a></li>
+                    <li><a href="#crostata">Crostata di Ricotta e Visciole</a></li>
+                </ul>
+            </div>
+        </section> 
+    </div>
+</div>
+   <!--  </div>-->
+
+    <div class="container">
+        <!-- Appetizers Section -->
+
+        <section class="appetizers-section">
+            <h2 style="text-align:center; font-family:'Playfair Display', serif; font-size:2.5rem; margin-bottom:40px; color:#044dc2;">Amorgos</h2>
+            <div class="appetizers-grid">
+                <!-- Drakos -->
+                <div class="dish-card" id= "patatato">
+                    <div class="dish-header red" onclick="toggleDetails(this)">
+                        <h2 class="dish-title red">Patatato</h2>
+                        <p class="dish-description">Tender meat and slow-cooked potatoes melt together in a rich, fragrant sauce—warm, rustic, and deeply satisfying.</p>
+                    </div>
+                    <img src="patatato.jpg" alt="patatato" class="dish-image">
+                    <div class="dish-details red">
+                        <div class="dish-section">
+                            <h3>Ingredients:</h3>
+                            <p> Lamb or goat meat, tomato paste, tomatoes, spices, garlic, onions, cloves, cinnamon, and hand-peeled potatoes.</p>
+                        </div>
+                        <div class="dish-section">
+                            <h3>Where to taste:</h3>
+                            <p></p>
+                        </div>
+                    </div>
+                </div>
+
+                <!--  -->
+                <div class="dish-card" id="snails">
+                    <div class="dish-header green" onclick="toggleDetails(this)">
+                        <h2 class="dish-title green">Chochlioi Boubouristi</h2>
+                        <p class="dish-description">Snails pan-fried until crackling and golden, kissed with vinegar and perfumed with fresh rosemary.</p>
+                    </div>
+                    <img src="snails.jpg" alt="snails" class="dish-image">
+                    <div class="dish-details green">
+                        <div class="dish-section">
+                            <h3>Ingredients:</h3>
+                            <p>Snails, flour, vinegar, olive oil, garlic, rosemary, salt, pepper.</p>
+                        </div>
+                        <div class="dish-section">
+                            <h3>Where to taste:</h3>
+                            <p></p>
+                        </div>
+                    </div>
+                </div>
+
+
+
+              <!-- apaki -->
+              <div class="dish-card" id="apaki">
+                  <div class="dish-header yellow" onclick="toggleDetails(this)">
+                      <h2 class="dish-title yellow">Apaki</h2>
+                      <p class="dish-description">Tender pork kissed with the aroma of rosemary. Each bite is smoky, and succulent—like a warm whisper from the mountains.</p>
+                  </div>
+                  <img src="apaki.jpg" alt="apaki" class="dish-image">
+                  <div class="dish-details yellow">
+                      <div class="dish-section">
+                          <h3>Ingredients:</h3>
+                          <p>pork (tenderloin or leg), coarse salt, pepper, cumin, oregano, thyme, laurel leaves, vinegar.</p>
+                      </div>
+                      <div class="dish-section">
+                          <h3>Where to taste:</h3>
+                          <p>Traditional Roman trattorias, especially in Trastevere</p>
+                      </div>
+                  </div>
+              </div>
+          </div>
+ <div class="appetizers-grid">
+                <!-- kalits -->
+                <div class="dish-card" id="kalits">
+                    <div class="dish-header yellow" onclick="toggleDetails(this)">
+                        <h2 class="dish-title yellow">Kalitsounia</h2>
+                        <p class="dish-description">Little pastries embracing silky Cretan cheese and herbs, gently melting on the tongue.</p>
+                    </div>
+                    <img src="kalits.jpg" alt="Kalits" class="dish-image">
+                    <div class="dish-details yellow">
+                        <div class="dish-section">
+                            <h3>Ingredients:</h3>
+                            <p>Pasta fillo, cheese, egg, butter, honey.</p>
+                        </div>
+                        <div class="dish-section">
+                            <h3>Where to taste:</h3>
+                            <p></p>
+                        </div>
+                    </div>
+                </div>
+
+<!-- staka -->
+                <div class="dish-card" id="staka">
+                    <div class="dish-header yellow" onclick="toggleDetails(this)">
+                        <h2 class="dish-title yellow">Staka</h2>
+                        <p class="dish-description">Velvety, creamy sheep’s milk butter, gently cooked until luxuriously thick—warm, and indulgently savory.</p>
+                    </div>
+                    <img src="staka.webp" alt="staka" class="dish-image">
+                    <div class="dish-details yellow">
+                        <div class="dish-section">
+                            <h3>Ingredients:</h3>
+                            <p>Creta sheep cream cheese.</p>
+                        </div>
+                        <div class="dish-section">
+                            <h3>Where to taste:</h3>
+                            <p></p>
+                        </div>
+                    </div>
+                </div>
+
+ <div class="dish-card" id="tiropitakia">
+                    <div class="dish-header yellow" onclick="toggleDetails(this)">
+                        <h2 class="dish-title yellow">Tiropitakia</h2>
+                        <p class="dish-description">Golden, flaky pastries bursting with creamy cheese— a little pocket of savory pleasure.</p>
+                    </div>
+                    <img src="tiropitakia.jpg" alt="tiropitakia" class="dish-image">
+                    <div class="dish-details yellow">
+                        <div class="dish-section">
+                            <h3>Ingredients:</h3>
+                            <p>Fillo pastry, egg, butter, feta.</p>
+                        </div>
+                        <div class="dish-section">
+                            <h3>Where to taste:</h3>
+                            <p></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+<!-- First Course Section -->
+<section class="first-course-section">
+    <h2 style="text-align:center; font-family:'Playfair Display', serif; font-size:2.5rem; margin-bottom:40px; color:#044dc2;">Main Course</h2>
+
+    <!-- Grid 1 -->
+    <div class="appetizers-grid">
+
+
+        <!--Kleftiko -->
+        <div class="dish-card">
+            <div class="dish-header yellow" onclick="toggleDetails(this)">
+                <h2 class="dish-title yellow">Kleftiko</h2>
+                <p class="dish-description">Slow-cooked lamb wrapped in parchment or foil, infused with garlic, herbs, and olive oil—each bite meltingly soft, rich.</p>
+            </div>
+            <img src="kleftiko.jpg" alt="kleftiko" class="dish-image">
+            <div class="dish-details yellow">
+                <div class="dish-section">
+                    <h3>Ingredients:</h3>
+                    <p>Lamb, oregano, thyme, parsley, cloves, lemon, potatoes, vinegar, onion, feta.</p>
+                </div>
+                <div class="dish-section">
+                    <h3>Where to taste:</h3>
+                    <p>Xani</p>
+                </div>
+            </div>
+        </div>
+       <!-- antikristo 
+              <div class="dish-card" id="antikristo">
+                  <div class="dish-header red" onclick="toggleDetails(this)">
+                      <h2 class="dish-title red">Antikristo Lamb</h2>
+                      <p class="dish-description">Lamb cooked in the ancient Cretan way, set around the fire to slowly kiss the flames.</p>
+                  </div>
+                  <img src="antikristo.jpg" alt="antikristo" class="dish-image">
+                  <div class="dish-details red">
+                      <div class="dish-section">
+                          <h3>Ingredients:</h3>
+                          <p>Lamb, salt.</p>
+                      </div>
+                      <div class="dish-section">
+                          <h3>Where to taste:</h3>
+                          <p></p>
+                      </div>
+                  </div>
+              </div>-->
+
+  <!-- tsigariasto -->
+        <div class="dish-card" id="tsigariasto">
+            <div class="dish-header green" onclick="toggleDetails(this)">
+                <h2 class="dish-title green">Tsigariasto Lamb</h2>
+                <p class="dish-description">Slow-cooked lamb leg, infused with herbs and spices, each bite juicy and deeply savory—flavors that unfold luxuriously.</p>
+            </div>
+            <img src="tsigariasto.jpg" alt="tsigariasto" class="dish-image">
+            <div class="dish-details green">
+                <div class="dish-section">
+                    <h3>Ingredients:</h3>
+                    <p>Lamb, white wine, bay leaves, onion, garlic, salt.</p>
+                </div>
+                <div class="dish-section">
+                    <h3>Where to taste:</h3>
+                    <p></p>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- boureki -->
+        <div class="dish-card" id="boureki">
+            <div class="dish-header yellow" onclick="toggleDetails(this)">
+                <h2 class="dish-title yellow">Boureki</h2>
+                <p class="dish-description">Layers of zucchini, potato, and fragrant herbs, baked with molten cheese until golden and irresistible.</p>
+            </div>
+            <img src="boureki.jpg" alt="boureki" class="dish-image">
+            <div class="dish-details yellow">
+                <div class="dish-section">
+                    <h3>Ingredients:</h3>
+                    <p>Potatoes, courgette, feta, graviera, fillo sheets, mint, onion, oregano, salt, pepper.</p>
+                </div>
+                <div class="dish-section">
+                    <h3>Where to taste:</h3>
+                    <p></p>
+                </div>
+            </div>
+        </div>
+
+       
+    </div>
+
+</section>
+
+
+<!-- First Course Section -->
+<section class="first-course-section">
+    <h2 style="text-align:center; font-family:'Playfair Display', serif; font-size:2.5rem; margin-bottom:40px; color:#044dc2;">Desserts</h2>
+
+    <!-- Grid 1 -->
+    <div class="appetizers-grid">
+
+
+        <!sfakiani -->
+        <div class="dish-card">
+            <div class="dish-header yellow" onclick="toggleDetails(this)">
+                <h2 class="dish-title yellow">Sfakiani pita</h2>
+                <p class="dish-description">Thin pie filled with cheese, griddled until warm and drizzled with honey- each bite a perfect balance of sweet and creamy, soft and seductive.</p>
+            </div>
+            <img src="sfakiani.jpg" alt="sfakiani" class="dish-image">
+            <div class="dish-details yellow">
+                <div class="dish-section">
+                    <h3>Ingredients:</h3>
+                    <p>Flour, myzithra, olive oil, water, salt, raki, honey.</p>
+                </div>
+                <div class="dish-section">
+                    <h3>Where to taste:</h3>
+                    <p>Xani</p>
+                </div>
+            </div>
+        </div>
+       <!-- antikristo 
+              <div class="dish-card" id="antikristo">
+                  <div class="dish-header red" onclick="toggleDetails(this)">
+                      <h2 class="dish-title red">Antikristo Lamb</h2>
+                      <p class="dish-description">Lamb cooked in the ancient Cretan way, set around the fire to slowly kiss the flames.</p>
+                  </div>
+                  <img src="antikristo.jpg" alt="antikristo" class="dish-image">
+                  <div class="dish-details red">
+                      <div class="dish-section">
+                          <h3>Ingredients:</h3>
+                          <p>Lamb, salt.</p>
+                      </div>
+                      <div class="dish-section">
+                          <h3>Where to taste:</h3>
+                          <p></p>
+                      </div>
+                  </div>
+              </div>-->
+
+  <!-- tsigariasto -->
+        <div class="dish-card" id="patouda">
+            <div class="dish-header green" onclick="toggleDetails(this)">
+                <h2 class="dish-title green">Patouda</h2>
+                <p class="dish-description">Fragrant pastries filled with crushed nuts, cinnamon, and honey —each bite a warm, aromatic burst of crunch and sweetness.</p>
+            </div>
+            <img src="patouda.webp" alt="patouda" class="dish-image">
+            <div class="dish-details green">
+                <div class="dish-section">
+                    <h3>Ingredients:</h3>
+                    <p>Flour, egg, sugar, milk, raki, olive oil, honey, walnut, almond, sesame, nutmeg, dates.</p>
+                </div>
+                <div class="dish-section">
+                    <h3>Where to taste:</h3>
+                    <p></p>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- boureki -->
+        <div class="dish-card" id="sarikopitakia">
+            <div class="dish-header yellow" onclick="toggleDetails(this)">
+                <h2 class="dish-title yellow">Sarikopitakia</h2>
+                <p class="dish-description">Spirals flaky, warm, and irresistible, each bite a playful swirl of texture and flavor that seduces the senses.</p>
+            </div>
+            <img src="sarikopitakia.webp" alt="sarikopitakia" class="dish-image">
+            <div class="dish-details yellow">
+                <div class="dish-section">
+                    <h3>Ingredients:</h3>
+                    <p>Flour, water, olive oil, vinegar, salt, mizithra, honey.</p>
+                </div>
+                <div class="dish-section">
+                    <h3>Where to taste:</h3>
+                    <p></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+
+        
+    <footer>
+        <p>&copy; 2025 Journey of Flavors. All rights reserved.</p>
+        <p>Discover the authentic taste of Cyclades</p>
+    </footer>
+
+    <script>
+        function toggleDetails(element) {
+            const details = element.parentElement.querySelector('.dish-details');
+            details.classList.toggle('active');
+        }
+
+        function toggleCourse(element) {
+            element.classList.toggle('active');
+            const content = element.nextElementSibling;
+            content.classList.toggle('active');
+        }
+
+        // Smooth scroll for links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
