@@ -1,0 +1,1226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Taste & Wander — Traditional Dishes of Rome</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #f5f0e8;
+    --warm-white: #faf8f3;
+    --terracotta: #c4623a;
+    --terracotta-dark: #a04e2c;
+    --ochre: #d4a843;
+    --deep-red: #7a1f1f;
+    --charcoal: #2a2420;
+    --stone: #8c7b6b;
+    --stone-light: #c4b5a5;
+    --parchment: #e8dfd0;
+    --shadow: rgba(42,36,32,0.12);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--cream);
+    color: var(--charcoal);
+    font-family: 'Cormorant Garamond', serif;
+    overflow-x: hidden;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    position: relative;
+    min-height: 60vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 4rem 2rem;
+    overflow: hidden;
+  }
+  .hero-photo {
+    position: absolute; inset: 0;
+    background-image: url('https://cms.througheternity.com/upload/CONF83/20220619/via_margutta_rome.jpg');
+    background-size: cover;
+    background-position: center 40%;
+  }
+  .hero-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(
+      to bottom,
+      rgba(30,22,18,0.15) 0%,
+      rgba(30,22,18,0.30) 60%,
+      rgba(30,22,18,0.65) 100%
+    );
+  }
+  .hero-eyebrow {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--ochre);
+    margin-bottom: 1rem;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.2s ease forwards;
+  }
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.8rem, 7vw, 6rem);
+    font-weight: 900;
+    line-height: 0.95;
+    color: var(--cream);
+    letter-spacing: -0.02em;
+    opacity: 0;
+    animation: fadeUp 0.9s 0.4s ease forwards;
+    text-shadow: 0 2px 30px rgba(0,0,0,0.35);
+  }
+  .hero h1 em { font-style: italic; color: var(--terracotta); }
+  .hero-sub {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: clamp(1rem, 2.2vw, 1.35rem);
+    color: rgba(245,240,232,0.88);
+    margin-top: 1.2rem;
+    max-width: 560px;
+    line-height: 1.55;
+    opacity: 0;
+    animation: fadeUp 0.9s 0.6s ease forwards;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* ── STICKY NAV BAR ── */
+  .top-bar {
+    background: var(--parchment);
+    border-bottom: 1px solid rgba(140,123,107,0.25);
+    padding: 0.75rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  .top-bar-title {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--stone);
+  }
+  .back-btn {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    background: var(--terracotta);
+    color: var(--cream);
+    border: none;
+    padding: 0.5rem 1.2rem;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    transition: background 0.2s, transform 0.2s;
+  }
+  .back-btn:hover { background: var(--terracotta-dark); transform: translateY(-1px); }
+
+  /* ── COURSE NAV TABS ── */
+  .nav-section {
+    background: var(--warm-white);
+    border-bottom: 1px solid rgba(140,123,107,0.2);
+    padding: 0 2rem;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .nav-section::-webkit-scrollbar { display: none; }
+  .nav-tabs { display: flex; list-style: none; min-width: max-content; }
+  .nav-tab {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 1rem 1.4rem;
+    cursor: pointer;
+    color: var(--stone);
+    border-bottom: 2px solid transparent;
+    transition: all 0.2s;
+    white-space: nowrap;
+    background: none;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+  }
+  .nav-tab:hover { color: var(--charcoal); }
+  .nav-tab.active { color: var(--terracotta); border-bottom-color: var(--terracotta); }
+
+  /* ── MAIN ── */
+  .main {
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 4rem 2rem;
+  }
+
+  /* Course sections */
+  .course-section { display: none; animation: fadeIn 0.4s ease; }
+  .course-section.active { display: block; }
+
+  /* ── SECTION HEADER ── */
+  .course-header {
+    margin-bottom: 3rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--parchment);
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: end;
+    gap: 2rem;
+  }
+  .course-eyebrow {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.62rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--terracotta);
+    margin-bottom: 0.5rem;
+  }
+  .course-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 4vw, 3.2rem);
+    font-weight: 900;
+    line-height: 1;
+    color: var(--charcoal);
+  }
+  .course-title em { font-style: italic; color: var(--terracotta); }
+  .course-desc {
+    font-size: 1.05rem;
+    font-style: italic;
+    color: var(--stone);
+    max-width: 520px;
+    line-height: 1.65;
+    margin-top: 0.6rem;
+  }
+  .course-count {
+    text-align: right;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--stone);
+  }
+  .course-count span {
+    display: block;
+    font-size: 2.2rem;
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    color: var(--charcoal);
+    line-height: 1;
+  }
+
+  /* ── DISH CARDS GRID ── */
+  .dishes-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 4rem;
+  }
+
+  .dish-card {
+    background: var(--warm-white);
+    border: 1px solid rgba(140,123,107,0.18);
+    overflow: hidden;
+    transition: all 0.3s ease;
+    cursor: pointer;
+  }
+  .dish-card:hover {
+    border-color: var(--terracotta);
+    transform: translateY(-3px);
+    box-shadow: 0 12px 40px var(--shadow);
+  }
+
+  /* Photo area */
+  .dish-photo-wrap {
+    position: relative;
+    height: 200px;
+    overflow: hidden;
+  }
+  .dish-photo-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.5s ease, filter 0.4s ease;
+    filter: brightness(0.9) saturate(0.85);
+  }
+  .dish-card:hover .dish-photo-wrap img {
+    transform: scale(1.05);
+    filter: brightness(0.82) saturate(0.8);
+  }
+  .dish-photo-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(to top, rgba(22,14,9,0.7) 0%, transparent 55%);
+  }
+  .dish-photo-label {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    padding: 1rem 1.2rem;
+  }
+  .dish-photo-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #fff;
+    line-height: 1.15;
+    text-shadow: 0 1px 8px rgba(0,0,0,0.4);
+  }
+
+  /* Card body */
+  .dish-card-top {
+    padding: 1.1rem 1.3rem 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+  .dish-type {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.58rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--terracotta);
+    background: rgba(196,98,58,0.1);
+    padding: 0.2rem 0.55rem;
+  }
+  .dish-season {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.58rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--stone);
+  }
+  .dish-card-body { padding: 0.8rem 1.3rem 1.3rem; }
+  .dish-desc {
+    font-size: 0.95rem;
+    font-style: italic;
+    color: var(--stone);
+    line-height: 1.55;
+    margin-bottom: 0.9rem;
+  }
+  .dish-ingredients {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+    margin-bottom: 0.9rem;
+  }
+  .ing-tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.55rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--charcoal);
+    background: var(--parchment);
+    padding: 0.2rem 0.5rem;
+    border: 1px solid rgba(140,123,107,0.2);
+  }
+  .dish-where {
+    font-size: 0.85rem;
+    color: var(--stone);
+    line-height: 1.5;
+    padding-top: 0.8rem;
+    border-top: 1px solid var(--parchment);
+  }
+  .dish-where strong {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.58rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ochre);
+    display: block;
+    margin-bottom: 0.2rem;
+  }
+
+  /* ── EXPAND / COLLAPSE for details ── */
+  .dish-toggle-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--terracotta);
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    margin-bottom: 0.8rem;
+    transition: opacity 0.2s;
+  }
+  .dish-toggle-btn:hover { opacity: 0.7; }
+  .dish-toggle-btn .arrow {
+    display: inline-block;
+    transition: transform 0.3s;
+    font-size: 0.7rem;
+  }
+  .dish-toggle-btn.open .arrow { transform: rotate(90deg); }
+
+  .dish-expandable {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease;
+  }
+  .dish-expandable.open { max-height: 400px; }
+
+  /* ── SECTION DIVIDER ── */
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--charcoal);
+    margin-bottom: 1.2rem;
+    padding-bottom: 0.8rem;
+    border-bottom: 1px solid var(--parchment);
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  .section-title::after { content: ''; flex: 1; height: 1px; background: var(--parchment); }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 768px) {
+    .course-header { grid-template-columns: 1fr; }
+    .course-count { text-align: left; }
+    .dishes-grid { grid-template-columns: 1fr; }
+  }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+  }
+
+  /* ── FOOTER ── */
+  .footer {
+    background: var(--charcoal);
+    color: var(--stone);
+    padding: 3rem 2rem;
+    text-align: center;
+  }
+  .footer-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    font-style: italic;
+    color: var(--cream);
+    margin-bottom: 0.5rem;
+  }
+  .footer-sub {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.62rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--stone);
+    margin-bottom: 1.5rem;
+  }
+  .footer-links { display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap; }
+  .footer-links a {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.62rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--stone);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .footer-links a:hover { color: var(--terracotta); }
+</style>
+</head>
+<body>
+
+<!-- ═══════════ HERO ═══════════ -->
+<section class="hero">
+  <div class="hero-photo"></div>
+  <div class="hero-overlay"></div>
+  <div style="position:relative;z-index:2;">
+    <p class="hero-eyebrow">Taste &amp; Wander · Roma</p>
+    <h1>The Flavor<br>of <em>Rome</em></h1>
+    <p class="hero-sub">Roman cuisine is full of flavors — you just need to know where to look.</p>
+  </div>
+</section>
+
+<!-- ═══════════ TOP BAR ═══════════ -->
+<div class="top-bar">
+  <span class="top-bar-title">Traditional Dishes · Rome</span>
+  <a href="rome-neighborhoods.html" class="back-btn">← By Neighbourhood</a>
+</div>
+
+<!-- ═══════════ COURSE TABS ═══════════ -->
+<nav class="nav-section">
+  <ul class="nav-tabs">
+    <li><button class="nav-tab active" onclick="switchCourse('appetizers', this)">Appetizers</button></li>
+    <li><button class="nav-tab" onclick="switchCourse('first', this)">First Course</button></li>
+    <li><button class="nav-tab" onclick="switchCourse('second', this)">Second Course</button></li>
+    <li><button class="nav-tab" onclick="switchCourse('doughs', this)">Doughs</button></li>
+    <li><button class="nav-tab" onclick="switchCourse('desserts', this)">Desserts</button></li>
+  </ul>
+</nav>
+
+<!-- ═══════════ MAIN ═══════════ -->
+<main class="main">
+
+<!-- ════════ APPETIZERS ════════ -->
+<div class="course-section active" id="course-appetizers">
+  <div class="course-header">
+    <div>
+      <div class="course-eyebrow">To begin</div>
+      <h2 class="course-title">Appeti<em>zers</em></h2>
+      <p class="course-desc">The Roman table opens with fried things. Salt cod, rice balls, zucchini flowers — battered, golden, eaten standing. The best appetizer in Rome costs less than a coffee and disappears in two bites.</p>
+    </div>
+    <div class="course-count"><span>3</span>dishes</div>
+  </div>
+
+  <div class="dishes-grid">
+
+    <!-- Supplì -->
+    <div class="dish-card" id="suppli">
+      <div class="dish-photo-wrap">
+        <img src="https://tasteandwander.github.io/website/suppli.jpg" alt="Supplì al telefono">
+        <div class="dish-photo-overlay"></div>
+        <div class="dish-photo-label">
+          <div class="dish-photo-name">Supplì al Telefono</div>
+        </div>
+      </div>
+      <div class="dish-card-top">
+        <span class="dish-type">Street food</span>
+        <span class="dish-season">Year-round</span>
+      </div>
+      <div class="dish-card-body">
+        <p class="dish-desc">Golden-fried rice balls filled with rich ragù or vibrant tomato sauce, and a core of mozzarella that stretches with every bite — like a telephone cord, hence the name.</p>
+        <button class="dish-toggle-btn" onclick="toggleDish(this)">
+          <span class="arrow">▶</span> Ingredients &amp; where to taste
+        </button>
+        <div class="dish-expandable">
+          <div class="dish-ingredients">
+            <span class="ing-tag">Rice</span><span class="ing-tag">Mozzarella</span><span class="ing-tag">Ragù</span><span class="ing-tag">Eggs</span><span class="ing-tag">Breadcrumbs</span><span class="ing-tag">Olive oil</span>
+          </div>
+          <div class="dish-where">
+            <strong>Where to taste</strong>
+            Supplì Roma, Via di S. Francesco a Ripa 137, Trastevere — no sign, just the queue
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Fiori di Zucca -->
+    <div class="dish-card" id="fiori">
+      <div class="dish-photo-wrap">
+        <img src="https://tasteandwander.github.io/website/img_2941.jpg" alt="Fiori di zucca">
+        <div class="dish-photo-overlay"></div>
+        <div class="dish-photo-label">
+          <div class="dish-photo-name">Fiori di Zucca</div>
+        </div>
+      </div>
+      <div class="dish-card-top">
+        <span class="dish-type">Jewish Ghetto</span>
+        <span class="dish-season">Spring · Summer</span>
+      </div>
+      <div class="dish-card-body">
+        <p class="dish-desc">Zucchini blossoms gently stuffed with mozzarella and a whisper of anchovy, dipped in a gossamer batter and fried until just crisp. Born in the Ghetto, eaten everywhere.</p>
+        <button class="dish-toggle-btn" onclick="toggleDish(this)">
+          <span class="arrow">▶</span> Ingredients &amp; where to taste
+        </button>
+        <div class="dish-expandable">
+          <div class="dish-ingredients">
+            <span class="ing-tag">Zucchini flowers</span><span class="ing-tag">Mozzarella</span><span class="ing-tag">Anchovy</span><span class="ing-tag">Flour</span><span class="ing-tag">Sparkling water</span>
+          </div>
+          <div class="dish-where">
+            <strong>Where to taste</strong>
+            Jewish Quarter (Ghetto) trattorias — Nonna Betta is the benchmark
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Baccalà fritto -->
+    <div class="dish-card" id="baccala">
+      <div class="dish-photo-wrap">
+        <img src="https://tasteandwander.github.io/website/Baccala-fritto-alla-romana-in-pastella_650x433_wm.jpg" alt="Baccalà fritto">
+        <div class="dish-photo-overlay"></div>
+        <div class="dish-photo-label">
+          <div class="dish-photo-name">Baccalà Fritto alla Romana</div>
+        </div>
+      </div>
+      <div class="dish-card-top">
+        <span class="dish-type">Friggitoria</span>
+        <span class="dish-season">Year-round</span>
+      </div>
+      <div class="dish-card-body">
+        <p class="dish-desc">Salt cod wrapped in a light, barely-there batter and fried to a pale gold. A dish from the Jewish-Roman kitchen that escaped the Ghetto and conquered the whole city.</p>
+        <button class="dish-toggle-btn" onclick="toggleDish(this)">
+          <span class="arrow">▶</span> Ingredients &amp; where to taste
+        </button>
+        <div class="dish-expandable">
+          <div class="dish-ingredients">
+            <span class="ing-tag">Salt cod</span><span class="ing-tag">Flour</span><span class="ing-tag">Water</span><span class="ing-tag">Olive oil</span>
+          </div>
+          <div class="dish-where">
+            <strong>Where to taste</strong>
+            Testaccio and Jewish Ghetto — look for friggitorie, not restaurants
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div><!-- /appetizers -->
+
+
+<!-- ════════ FIRST COURSE ════════ -->
+<div class="course-section" id="course-first">
+  <div class="course-header">
+    <div>
+      <div class="course-eyebrow">Primi piatti</div>
+      <h2 class="course-title">First <em>Course</em></h2>
+      <p class="course-desc">Four ingredients, infinite arguments. The Roman pasta canon — carbonara, amatriciana, gricia, cacio e pepe — is built on guanciale, Pecorino, black pepper, and pasta water. Nothing imported, nothing hidden, no cream.</p>
+    </div>
+    <div class="course-count"><span>6</span>dishes</div>
+  </div>
+
+  <div class="dishes-grid">
+
+    <!-- Carbonara -->
+    <div class="dish-card" id="carbonara">
+      <div class="dish-photo-wrap">
+        <img src="https://tasteandwander.github.io/website/Carbonara-ricetta-5328.jpg" alt="Carbonara">
+        <div class="dish-photo-overlay"></div>
+        <div class="dish-photo-label">
+          <div class="dish-photo-name">Carbonara</div>
+        </div>
+      </div>
+      <div class="dish-card-top">
+        <span class="dish-type">Roman icon</span>
+        <span class="dish-season">No cream · Ever</span>
+      </div>
+      <div class="dish-card-body">
+        <p class="dish-desc">Pasta entwined with a luscious, velvety sauce of eggs and Pecorino, studded with crispy guanciale. The most debated dish in Italian gastronomy — Rome holds the only correct answer.</p>
+        <button class="dish-toggle-btn" onclick="toggleDish(this)">
+          <span class="arrow">▶</span> Ingredients &amp; where to taste
+        </button>
+        <div class="dish-expandable">
+          <div class="dish-ingredients">
+            <span class="ing-tag">Spaghetti / Rigatoni</span><span class="ing-tag">Guanciale</span><span class="ing-tag">Eggs</span><span class="ing-tag">Pecorino Romano</span><span class="ing-tag">Black pepper</span>
+          </div>
+          <div class="dish-where">
+            <strong>Where to taste</strong>
+            Tonnarello (Trastevere) · Nannarella (Trastevere) · Felice a Testaccio
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Amatriciana -->
+    <div class="dish-card" id="amatriciana">
+      <div class="dish-photo-wrap">
+        <img src="https://tasteandwander.github.io/website/hq720.jpg" alt="Amatriciana">
+        <div class="dish-photo-overlay"></div>
+        <div class="dish-photo-label">
+          <div class="dish-photo-name">Amatriciana</div>
+        </div>
+      </div>
+      <div class="dish-card-top">
+        <span class="dish-type">Pasta</span>
+        <span class="dish-season">From Amatrice</span>
+      </div>
+      <div class="dish-card-body">
+        <p class="dish-desc">Pasta bathed in tomato sauce slowly simmered to deepen its flavor, enriched by crispy guanciale. Gricia's older sibling, once the tomato arrived from the New World.</p>
+        <button class="dish-toggle-btn" onclick="toggleDish(this)">
+          <span class="arrow">▶</span> Ingredients &amp; where to taste
+        </button>
+        <div class="dish-expandable">
+          <div class="dish-ingredients">
+            <span class="ing-tag">Bucatini / Rigatoni</span><span class="ing-tag">Guanciale</span><span class="ing-tag">Tomato</span><span class="ing-tag">Pecorino</span><span class="ing-tag">Chili flakes</span>
+          </div>
+          <div class="dish-where">
+            <strong>Where to taste</strong>
+            Ristorante Roscioli · Campo de' Fiori area trattorias
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Cacio e Pepe -->
+    <div class="dish-card" id="cacio-e-pepe">
+      <div class="dish-photo-wrap">
+        <img src="https://tasteandwander.github.io/website/IMG_3479.JPG" alt="Cacio e Pepe">
+        <div class="dish-photo-overlay"></div>
+        <div class="dish-photo-label">
+          <div class="dish-photo-name">Cacio e Pepe</div>
+        </div>
+      </div>
+      <div class="dish-card-top">
+        <span class="dish-type">Pasta</span>
+        <span class="dish-season">3 ingredients only</span>
+      </div>
+      <div class="dish-card-body">
+        <p class="dish-desc">Pasta wrapped in a creamy Pecorino emulsion with freshly cracked pepper. Three ingredients — pasta, cheese, pepper — that require more technique than anything with twenty.</p>
+        <button class="dish-toggle-btn" onclick="toggleDish(this)">
+          <span class="arrow">▶</span> Ingredients &amp; where to taste
+        </button>
+        <div class="dish-expandable">
+          <div class="dish-ingredients">
+            <span class="ing-tag">Tonnarelli</span><span class="ing-tag">Pecorino Romano</span><span class="ing-tag">Black pepper</span><span class="ing-tag">Pasta water</span>
+          </div>
+          <div class="dish-where">
+            <strong>Where to taste</strong>
+            Felice a Testaccio — prepared tableside
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Gricia -->
+    <div class="dish-card" id="gricia">
+      <div class="dish-photo-wrap">
+        <img src="https://tasteandwander.github.io/website/IMG_2381.png" alt="Gricia">
+        <div class="dish-photo-overlay"></div>
+        <div class="dish-photo-label">
+          <div class="dish-photo-name">Gricia</div>
+        </div>
+      </div>
+      <div class="dish-card-top">
+        <span class="dish-type">Pasta</span>
+        <span class="dish-season">The oldest of four</span>
+      </div>
+      <div class="dish-card-body">
+        <p class="dish-desc">Pasta tossed with crisp guanciale and a generous snowfall of Pecorino. The ancestor of both carbonara and amatriciana — pre-tomato, pre-egg, purely Roman.</p>
+        <button class="dish-toggle-btn" onclick="toggleDish(this)">
+          <span class="arrow">▶</span> Ingredients &amp; where to taste
+        </button>
+        <div class="dish-expandable">
+          <div class="dish-ingredients">
+            <span class="ing-tag">Tonnarelli</span><span class="ing-tag">Guanciale</span><span class="ing-tag">Pecorino</span><span class="ing-tag">Black pepper</span>
+          </div>
+          <div class="dish-where">
+            <strong>Where to taste</strong>
+            Sellero &amp; Ventresca · traditional trattorias
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Gnocchi alla Romana -->
+    <div class="dish-card" id="gnocchi">
+      <div class="dish-photo-wrap">
+        <img src="https://tasteandwander.github.io/website/gnocchi-alla-romana.jpg" alt="Gnocchi alla Romana">
+        <div class="dish-photo-overlay"></div>
+        <div class="dish-photo-label">
+          <div class="dish-photo-name">Gnocchi alla Romana</div>
+        </div>
+      </div>
+      <div class="dish-card-top">
+        <span class="dish-type">Semolina</span>
+        <span class="dish-season">Thursday dish</span>
+      </div>
+      <div class="dish-card-body">
+        <p class="dish-desc">Soft semolina rounds baked until their edges turn golden, layered with butter and Parmigiano. Not potato gnocchi — something older, heavier, and more comforting.</p>
+        <button class="dish-toggle-btn" onclick="toggleDish(this)">
+          <span class="arrow">▶</span> Ingredients &amp; where to taste
+        </button>
+        <div class="dish-expandable">
+          <div class="dish-ingredients">
+            <span class="ing-tag">Semolina</span><span class="ing-tag">Butter</span><span class="ing-tag">Egg yolk</span><span class="ing-tag">Milk</span><span class="ing-tag">Parmigiano</span><span class="ing-tag">Nutmeg</span>
+          </div>
+          <div class="dish-where">
+            <strong>Where to taste</strong>
+            Classic Roman trattorias in Campo de' Fiori area
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Rigatoni alla Pajata -->
+    <div class="dish-card" id="pajata">
+      <div class="dish-photo-wrap">
+        <img src="https://tasteandwander.github.io/website/pajata.jpg" alt="Rigatoni alla Pajata">
+        <div class="dish-photo-overlay"></div>
+        <div class="dish-photo-label">
+          <div class="dish-photo-name">Rigatoni alla Pajata</div>
+        </div>
+      </div>
+      <div class="dish-card-top">
+        <span class="dish-type">Quinto quarto</span>
+        <span class="dish-season">Rare · Testaccio</span>
+      </div>
+      <div class="dish-card-body">
+        <p class="dish-desc">Rigatoni in a rich tomato sauce infused with veal intestines still containing the mother's milk — pajata. One of the most Roman dishes that exists. Available in very few places now.</p>
+        <button class="dish-toggle-btn" onclick="toggleDish(this)">
+          <span class="arrow">▶</span> Ingredients &amp; where to taste
+        </button>
+        <div class="dish-expandable">
+          <div class="dish-ingredients">
+            <span class="ing-tag">Rigatoni</span><span class="ing-tag">Pajata (veal intestine)</span><span class="ing-tag">Tomato</span><span class="ing-tag">Onion</span><span class="ing-tag">White wine</span>
+          </div>
+          <div class="dish-where">
+            <strong>Where to taste</strong>
+            Testaccio trattorias — ask before expecting it on the menu
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div><!-- /first -->
+
+
+<!-- ════════ SECOND COURSE ════════ -->
+<div class="course-section" id="course-second">
+  <div class="course-header">
+    <div>
+      <div class="course-eyebrow">Secondi piatti · Il quinto quarto</div>
+      <h2 class="course-title">Second <em>Course</em></h2>
+      <p class="course-desc">This is where Rome's true character shows. The slaughterhouse workers of Testaccio were paid partly in offal — the parts the rich refused. They turned them into something extraordinary. The fifth quarter is the first course of Roman identity.</p>
+    </div>
+    <div class="course-count"><span>6</span>dishes</div>
+  </div>
+
+  <div class="dishes-grid">
+
+    <!-- Coda alla Vaccinara -->
+    <div class="dish-card" id="coda">
+      <div class="dish-photo-wrap">
+        <img src="https://tasteandwander.github.io/website/coda.webp" alt="Coda alla Vaccinara">
+        <div class="dish-photo-overlay"></div>
+        <div class="dish-photo-label">
+          <div class="dish-photo-name">Coda alla Vaccinara</div>
+        </div>
+      </div>
+      <div class="dish-card-top">
+        <span class="dish-type">Slow-braised</span>
+        <span class="dish-season">Winter · Sundays</span>
+      </div>
+      <div class="dish-card-body">
+        <p class="dish-desc">Slow-cooked oxtail melting into silky strands, in a tomato sauce with celery, cocoa, and pine nuts that gently simmers it into something lush, comforting, and quietly irresistible.</p>
+        <button class="dish-toggle-btn" onclick="toggleDish(this)">
+          <span class="arrow">▶</span> Ingredients &amp; where to taste
+        </button>
+        <div class="dish-expandable">
+          <div class="dish-ingredients">
+            <span class="ing-tag">Oxtail</span><span class="ing-tag">Tomato</span><span class="ing-tag">Celery</span><span class="ing-tag">Carrot</span><span class="ing-tag">Cocoa</span><span class="ing-tag">Pine nuts</span><span class="ing-tag">White wine</span>
+          </div>
+          <div class="dish-where">
+            <strong>Where to taste</strong>
+            Tonnarello · Nannarella · traditional Trastevere trattorias
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Saltimbocca -->
+    <div class="dish-card" id="saltimbocca">
+      <div class="dish-photo-wrap">
+        <img src="https://tasteandwander.github.io/website/saltimbocca-alla-romana.jpg" alt="Saltimbocca alla Romana">
+        <div class="dish-photo-overlay"></div>
+        <div class="dish-photo-label">
+          <div class="dish-photo-name">Saltimbocca alla Romana</div>
+        </div>
+      </div>
+      <div class="dish-card-top">
+        <span class="dish-type">Veal</span>
+        <span class="dish-season">"Jumps in the mouth"</span>
+      </div>
+      <div class="dish-card-body">
+        <p class="dish-desc">Thin veal kissed with sage and covered in prosciutto, gently sautéed until the edges turn golden and the flavors fuse into a delicate, savory whisper. The name says everything.</p>
+        <button class="dish-toggle-btn" onclick="toggleDish(this)">
+          <span class="arrow">▶</span> Ingredients &amp; where to taste
+        </button>
+        <div class="dish-expandable">
+          <div class="dish-ingredients">
+            <span class="ing-tag">Veal</span><span class="ing-tag">Prosciutto crudo</span><span class="ing-tag">Sage</span><span class="ing-tag">Butter</span><span class="ing-tag">White wine</span>
+          </div>
+          <div class="dish-where">
+            <strong>Where to taste</strong>
+            Traditional Roman trattorias — Prati has reliable versions
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Trippa alla Romana -->
+    <div class="dish-card" id="trippa">
+      <div class="dish-photo-wrap">
+        <img src="https://tasteandwander.github.io/website/TRIPPA-ALLA-ROMANA.png" alt="Trippa alla Romana">
+        <div class="dish-photo-overlay"></div>
+        <div class="dish-photo-label">
+          <div class="dish-photo-name">Trippa alla Romana</div>
+        </div>
+      </div>
+      <div class="dish-card-top">
+        <span class="dish-type">Quinto quarto</span>
+        <span class="dish-season">Saturday dish</span>
+      </div>
+      <div class="dish-card-body">
+        <p class="dish-desc">Tender ribbons of slow-cooked tripe simmered in fragrant tomato, brightened with mint and crowned with Pecorino. The gentlest entry into offal Rome — rich, bright, not confrontational.</p>
+        <button class="dish-toggle-btn" onclick="toggleDish(this)">
+          <span class="arrow">▶</span> Ingredients &amp; where to taste
+        </button>
+        <div class="dish-expandable">
+          <div class="dish-ingredients">
+            <span class="ing-tag">Tripe</span><span class="ing-tag">San Marzano tomato</span><span class="ing-tag">Pecorino Romano</span><span class="ing-tag">Mint</span><span class="ing-tag">White wine</span><span class="ing-tag">Celery</span>
+          </div>
+          <div class="dish-where">
+            <strong>Where to taste</strong>
+            Felice a Testaccio · Sellero &amp; Ventresca · Testaccio trattorias
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Fagioli con le Cotiche -->
+    <div class="dish-card" id="fagioli">
+      <div class="dish-photo-wrap">
+        <img src="https://tasteandwander.github.io/website/fagioli-con-le-cotiche-sito-1.jpg" alt="Fagioli con le Cotiche">
+        <div class="dish-photo-overlay"></div>
+        <div class="dish-photo-label">
+          <div class="dish-photo-name">Fagioli con le Cotiche</div>
+        </div>
+      </div>
+      <div class="dish-card-top">
+        <span class="dish-type">Peasant dish</span>
+        <span class="dish-season">Winter · Monti</span>
+      </div>
+      <div class="dish-card-body">
+        <p class="dish-desc">Tender borlotti beans and strips of pork rind simmered in a rich savory sauce that clings to every bite. Warming, ancient, entirely Roman — the definition of cucina povera done right.</p>
+        <button class="dish-toggle-btn" onclick="toggleDish(this)">
+          <span class="arrow">▶</span> Ingredients &amp; where to taste
+        </button>
+        <div class="dish-expandable">
+          <div class="dish-ingredients">
+            <span class="ing-tag">Borlotti beans</span><span class="ing-tag">Pork rind</span><span class="ing-tag">Tomato</span><span class="ing-tag">Onion</span><span class="ing-tag">Celery</span><span class="ing-tag">Garlic</span>
+          </div>
+          <div class="dish-where">
+            <strong>Where to taste</strong>
+            Monti trattorias · traditional Trastevere osterie
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Carciofi alla Romana -->
+    <div class="dish-card" id="carciofi-romana">
+      <div class="dish-photo-wrap">
+        <img src="https://tasteandwander.github.io/website/Carciofi-alla-romana.jpg" alt="Carciofi alla Romana">
+        <div class="dish-photo-overlay"></div>
+        <div class="dish-photo-label">
+          <div class="dish-photo-name">Carciofi alla Romana</div>
+        </div>
+      </div>
+      <div class="dish-card-top">
+        <span class="dish-type">Vegetable</span>
+        <span class="dish-season">Feb – May only</span>
+      </div>
+      <div class="dish-card-body">
+        <p class="dish-desc">Artichokes gently opened like quiet spring blossoms, filled with mint, parsley, and garlic, then braised in wine and olive oil until yielding and deeply aromatic.</p>
+        <button class="dish-toggle-btn" onclick="toggleDish(this)">
+          <span class="arrow">▶</span> Ingredients &amp; where to taste
+        </button>
+        <div class="dish-expandable">
+          <div class="dish-ingredients">
+            <span class="ing-tag">Romanesco artichoke</span><span class="ing-tag">Mint</span><span class="ing-tag">Parsley</span><span class="ing-tag">Garlic</span><span class="ing-tag">White wine</span><span class="ing-tag">Olive oil</span>
+          </div>
+          <div class="dish-where">
+            <strong>Where to taste</strong>
+            Any Roman trattoria in season — insist on Romanesco variety
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Carciofi alla Giudia -->
+    <div class="dish-card" id="carciofi-giudia">
+      <div class="dish-photo-wrap">
+        <img src="https://tasteandwander.github.io/website/carciofi-alla-giudia.webp" alt="Carciofi alla Giudia">
+        <div class="dish-photo-overlay"></div>
+        <div class="dish-photo-label">
+          <div class="dish-photo-name">Carciofi alla Giudia</div>
+        </div>
+      </div>
+      <div class="dish-card-top">
+        <span class="dish-type">Jewish Ghetto</span>
+        <span class="dish-season">Feb – May · Since 1555</span>
+      </div>
+      <div class="dish-card-body">
+        <p class="dish-desc">Artichoke deep-fried whole until the petals crisp like chips while the heart stays tender. Just salt — no batter, no gilding. Born in the Ghetto, adopted by all of Rome.</p>
+        <button class="dish-toggle-btn" onclick="toggleDish(this)">
+          <span class="arrow">▶</span> Ingredients &amp; where to taste
+        </button>
+        <div class="dish-expandable">
+          <div class="dish-ingredients">
+            <span class="ing-tag">Romanesco artichoke</span><span class="ing-tag">Olive oil</span><span class="ing-tag">Salt</span>
+          </div>
+          <div class="dish-where">
+            <strong>Where to taste</strong>
+            Nonna Betta, Via del Portico d'Ottavia 16 · Jewish Ghetto
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div><!-- /second -->
+
+
+<!-- ════════ DOUGHS ════════ -->
+<div class="course-section" id="course-doughs">
+  <div class="course-header">
+    <div>
+      <div class="course-eyebrow">Pane e impasti</div>
+      <h2 class="course-title">Doughs &amp; <em>Breads</em></h2>
+      <p class="course-desc">Roman dough is thin, honest, and fiercely local. Pizza al taglio sold by weight at the counter, crisp Roman-style rounds baked in wood-fired ovens, and the ciriola — the city's own bread roll with a crackle outside and tenderness within.</p>
+    </div>
+    <div class="course-count"><span>3</span>dishes</div>
+  </div>
+
+  <div class="dishes-grid">
+
+    <!-- Pizza al Taglio -->
+    <div class="dish-card" id="taglio">
+      <div class="dish-photo-wrap">
+        <img src="https://tasteandwander.github.io/website/taglio.webp" alt="Pizza al taglio">
+        <div class="dish-photo-overlay"></div>
+        <div class="dish-photo-label">
+          <div class="dish-photo-name">Pizza al Taglio</div>
+        </div>
+      </div>
+      <div class="dish-card-top">
+        <span class="dish-type">Sold by weight</span>
+        <span class="dish-season">Year-round</span>
+      </div>
+      <div class="dish-card-body">
+        <p class="dish-desc">Slices of airy, long-fermented dough baked in rectangular pans, toppings like edible mosaics. Eaten standing at the counter. The democratic lunch of Rome.</p>
+        <button class="dish-toggle-btn" onclick="toggleDish(this)">
+          <span class="arrow">▶</span> Ingredients &amp; where to taste
+        </button>
+        <div class="dish-expandable">
+          <div class="dish-ingredients">
+            <span class="ing-tag">Flour</span><span class="ing-tag">Beer yeast</span><span class="ing-tag">Water</span><span class="ing-tag">Salt</span><span class="ing-tag">Olive oil</span>
+          </div>
+          <div class="dish-where">
+            <strong>Where to taste</strong>
+            Antico Forno Roscioli, Via dei Chiavari 34 — go before noon
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Pizza Romana -->
+    <div class="dish-card" id="romana">
+      <div class="dish-photo-wrap">
+        <img src="https://tasteandwander.github.io/website/romana.jpg" alt="Pizza Romana">
+        <div class="dish-photo-overlay"></div>
+        <div class="dish-photo-label">
+          <div class="dish-photo-name">Pizza Romana</div>
+        </div>
+      </div>
+      <div class="dish-card-top">
+        <span class="dish-type">Thin &amp; crisp</span>
+        <span class="dish-season">Not Neapolitan</span>
+      </div>
+      <div class="dish-card-body">
+        <p class="dish-desc">Thin, crisp, a sheet of golden dough — a canvas for generous toppings. The Roman answer to Naples: less air, more crunch, eaten flat without the fold. An affront to compare them.</p>
+        <button class="dish-toggle-btn" onclick="toggleDish(this)">
+          <span class="arrow">▶</span> Ingredients &amp; where to taste
+        </button>
+        <div class="dish-expandable">
+          <div class="dish-ingredients">
+            <span class="ing-tag">Flour</span><span class="ing-tag">Beer yeast</span><span class="ing-tag">Water</span><span class="ing-tag">Salt</span>
+          </div>
+          <div class="dish-where">
+            <strong>Where to taste</strong>
+            Roman pizzerie al taglio and wood-fired forno throughout the city
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Ciriola -->
+    <div class="dish-card" id="ciriola">
+      <div class="dish-photo-wrap">
+        <img src="https://tasteandwander.github.io/website/ciriola.png" alt="Ciriola">
+        <div class="dish-photo-overlay"></div>
+        <div class="dish-photo-label">
+          <div class="dish-photo-name">Ciriola</div>
+        </div>
+      </div>
+      <div class="dish-card-top">
+        <span class="dish-type">Bread roll</span>
+        <span class="dish-season">Roman morning</span>
+      </div>
+      <div class="dish-card-body">
+        <p class="dish-desc">Rome's own bread roll — airy with a gentle crackle outside and a soft, yielding heart. The vessel of choice for a porchetta sandwich or simply eaten warm from the forno.</p>
+        <button class="dish-toggle-btn" onclick="toggleDish(this)">
+          <span class="arrow">▶</span> Ingredients &amp; where to taste
+        </button>
+        <div class="dish-expandable">
+          <div class="dish-ingredients">
+            <span class="ing-tag">Flour</span><span class="ing-tag">Sourdough starter</span><span class="ing-tag">Water</span><span class="ing-tag">Salt</span>
+          </div>
+          <div class="dish-where">
+            <strong>Where to taste</strong>
+            Any forno in the city from 7am — also available at supermarkets
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div><!-- /doughs -->
+
+
+<!-- ════════ DESSERTS ════════ -->
+<div class="course-section" id="course-desserts">
+  <div class="course-header">
+    <div>
+      <div class="course-eyebrow">Dolci romani</div>
+      <h2 class="course-title"><em>Desserts</em></h2>
+      <p class="course-desc">Roman desserts are not elaborate. A bun split open and filled with cream. A crunchy wine ring. A pastry holding ricotta and sour cherries. Simple, ancient, precise. The kind of sweetness that works best at a bar counter at 8am.</p>
+    </div>
+    <div class="course-count"><span>3</span>dishes</div>
+  </div>
+
+  <div class="dishes-grid">
+
+    <!-- Maritozzo -->
+    <div class="dish-card" id="maritozzo">
+      <div class="dish-photo-wrap">
+        <img src="https://tasteandwander.github.io/website/maritozzo.jpeg" alt="Maritozzo con Panna">
+        <div class="dish-photo-overlay"></div>
+        <div class="dish-photo-label">
+          <div class="dish-photo-name">Maritozzo con Panna</div>
+        </div>
+      </div>
+      <div class="dish-card-top">
+        <span class="dish-type">Breakfast pastry</span>
+        <span class="dish-season">Before 10am</span>
+      </div>
+      <div class="dish-card-body">
+        <p class="dish-desc">A soft, slightly sweet bun split open and filled with an unreasonable amount of fresh whipped cream. The Roman breakfast — eaten standing at a bar, coffee in the other hand.</p>
+        <button class="dish-toggle-btn" onclick="toggleDish(this)">
+          <span class="arrow">▶</span> Ingredients &amp; where to taste
+        </button>
+        <div class="dish-expandable">
+          <div class="dish-ingredients">
+            <span class="ing-tag">Flour</span><span class="ing-tag">Eggs</span><span class="ing-tag">Milk</span><span class="ing-tag">Butter</span><span class="ing-tag">Sugar</span><span class="ing-tag">Orange zest</span><span class="ing-tag">Whipped cream</span>
+          </div>
+          <div class="dish-where">
+            <strong>Where to taste</strong>
+            Regoli Pasticceria, Via dello Statuto 60 — go early, they sell out
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Ciambelline al Vino -->
+    <div class="dish-card" id="ciambelline">
+      <div class="dish-photo-wrap">
+        <img src="https://tasteandwander.github.io/website/ciambelline.jpg" alt="Ciambelline al Vino">
+        <div class="dish-photo-overlay"></div>
+        <div class="dish-photo-label">
+          <div class="dish-photo-name">Ciambelline al Vino</div>
+        </div>
+      </div>
+      <div class="dish-card-top">
+        <span class="dish-type">Biscuit</span>
+        <span class="dish-season">Castelli Romani</span>
+      </div>
+      <div class="dish-card-body">
+        <p class="dish-desc">Crunchy, fragrant rings kissed with red or white wine, sugar, and a whisper of anise. From the Castelli Romani hills outside the city — ancient, humble, addictive with a glass of the same wine used to make them.</p>
+        <button class="dish-toggle-btn" onclick="toggleDish(this)">
+          <span class="arrow">▶</span> Ingredients &amp; where to taste
+        </button>
+        <div class="dish-expandable">
+          <div class="dish-ingredients">
+            <span class="ing-tag">Flour</span><span class="ing-tag">Sugar</span><span class="ing-tag">Oil</span><span class="ing-tag">Red or white wine</span><span class="ing-tag">Anise seeds</span>
+          </div>
+          <div class="dish-where">
+            <strong>Where to taste</strong>
+            Bakeries and forno throughout Rome · osterie in the Castelli Romani
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Crostata Ricotta e Visciole -->
+    <div class="dish-card" id="crostata">
+      <div class="dish-photo-wrap">
+        <img src="https://tasteandwander.github.io/website/crostata.jpg" alt="Crostata Ricotta e Visciole">
+        <div class="dish-photo-overlay"></div>
+        <div class="dish-photo-label">
+          <div class="dish-photo-name">Crostata Ricotta e Visciole</div>
+        </div>
+      </div>
+      <div class="dish-card-top">
+        <span class="dish-type">Jewish Ghetto</span>
+        <span class="dish-season">Year-round</span>
+      </div>
+      <div class="dish-card-body">
+        <p class="dish-desc">Delicate shortcrust pastry holding a duet of creamy sheep's ricotta and tangy sour cherry jam. A Jewish-Roman dessert of remarkable subtlety — the ricotta is hidden inside, revealed only when you cut it.</p>
+        <button class="dish-toggle-btn" onclick="toggleDish(this)">
+          <span class="arrow">▶</span> Ingredients &amp; where to taste
+        </button>
+        <div class="dish-expandable">
+          <div class="dish-ingredients">
+            <span class="ing-tag">Flour</span><span class="ing-tag">Butter</span><span class="ing-tag">Sugar</span><span class="ing-tag">Sheep ricotta</span><span class="ing-tag">Sour cherry jam</span><span class="ing-tag">Eggs</span>
+          </div>
+          <div class="dish-where">
+            <strong>Where to taste</strong>
+            Regoli Pasticceria · Il Forno del Ghetto · Antico Forno Roscioli
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div><!-- /desserts -->
+
+</main>
+
+<!-- ═══ FOOTER ═══ -->
+<footer class="footer">
+  <div class="footer-logo">Taste &amp; Wander</div>
+  <p class="footer-sub">Traditional food guides for the curious traveller</p>
+  <div class="footer-links">
+    <a href="rome-neighborhoods.html">← Rome by Neighbourhood</a>
+    <a href="index.html">Homepage</a>
+    <a href="#">Amsterdam</a>
+  </div>
+</footer>
+
+<script>
+function switchCourse(id, btn) {
+  document.querySelectorAll('.course-section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+  document.getElementById('course-' + id).classList.add('active');
+  btn.classList.add('active');
+  // Scroll to top of main on mobile
+  if (window.innerWidth < 768) {
+    document.querySelector('.main').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+}
+
+function toggleDish(btn) {
+  btn.classList.toggle('open');
+  const exp = btn.nextElementSibling;
+  exp.classList.toggle('open');
+}
+</script>
+</body>
+</html>
