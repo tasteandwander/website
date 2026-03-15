@@ -56,9 +56,9 @@
     position: absolute; inset: 0;
     background: linear-gradient(
       to bottom,
-      rgba(30,22,18,0.05) 0%,
-      rgba(30,22,18,0.2) 60%,
-      rgba(30,22,18,0.4) 100%
+      rgba(30,22,18,0.02) 0%,
+      rgba(30,22,18,0.10) 60%,
+      rgba(30,22,18,0.30) 100%
     );
   }
   .hero-tint {
@@ -155,6 +155,27 @@
     background: linear-gradient(to bottom, rgba(196,181,165,0.7), transparent);
     animation: scrollPulse 1.8s ease-in-out infinite;
   }
+  
+  .nbh-back-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: 'DM Mono', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--stone);
+  text-decoration: none;
+  border: 1px solid var(--stone-light);
+  padding: 0.45rem 1rem;
+  margin-bottom: 2rem;
+  transition: all 0.2s;
+  background: var(--warm-white);
+}
+.nbh-back-btn:hover {
+  border-color: var(--terracotta);
+  color: var(--terracotta);
+}
 
   /* ── LOCATION BAR ── */
   .location-bar {
@@ -972,7 +993,7 @@
       </div>
     </div>
   </div>
-
+    <a href="index_rome.html" class="nbh-back-btn">← All neighbourhoods</a>
   <div class="nearest-highlight" id="nearest-trastevere">
     <span class="arrow">📍</span>
     <span>You're closest to this neighbourhood — these are your best options right now.</span>
@@ -1041,6 +1062,7 @@
 <div class="neighbourhood" id="tab-testaccio">
 
   <div class="neighbourhood-header">
+
     <img class="nbh-photo-strip"
          src="https://images.unsplash.com/photo-1555992457-b8fefdd09069?w=1400&q=80&auto=format&fit=crop"
          alt="Testaccio Rome market food"
@@ -1058,7 +1080,7 @@
       </div>
     </div>
   </div>
-
+        <a href="index_rome.html" class="nbh-back-btn">← All neighbourhoods</a>
   <div class="nearest-highlight" id="nearest-testaccio">
     <span class="arrow">📍</span>
     <span>You're closest to this neighbourhood — these are your best options right now.</span>
@@ -1148,6 +1170,7 @@
       </div>
     </div>
   </div>
+        <a href="index_rome.html" class="nbh-back-btn">← All neighbourhoods</a>
 
   <div class="nearest-highlight" id="nearest-ghetto">
     <span class="arrow">📍</span>
@@ -1218,6 +1241,7 @@
       </div>
     </div>
   </div>
+        <a href="index_rome.html" class="nbh-back-btn">← All neighbourhoods</a>
 
   <div class="nearest-highlight" id="nearest-prati">
     <span class="arrow">📍</span>
@@ -1312,7 +1336,7 @@
       </div>
     </div>
   </div>
-
+        <a href="index_rome.html" class="nbh-back-btn">← All neighbourhoods</a>
   <div class="nearest-highlight" id="nearest-campo">
     <span class="arrow">📍</span>
     <span>You're closest to this neighbourhood — these are your best options right now.</span>
@@ -1374,6 +1398,7 @@
       </div>
     </div>
   </div>
+        <a href="index_rome.html" class="nbh-back-btn">← All neighbourhoods</a>
 
   <div class="nearest-highlight" id="nearest-monti">
     <span class="arrow">📍</span>
@@ -1415,7 +1440,9 @@ const neighbourhoods = [
   { id: 'ghetto',     name: 'Jewish Ghetto',    lat: 41.8934, lng: 12.4766 },
   { id: 'prati',      name: 'Prati',            lat: 41.9065, lng: 12.4644 },
   { id: 'campo',      name: "Campo de' Fiori",  lat: 41.8955, lng: 12.4722 },
-  { id: 'monti',      name: 'Monti',            lat: 41.8942, lng: 12.4920 }
+  { id: 'monti',      name: 'Monti',            lat: 41.8942, lng: 12.4920 },
+  { id: 'garba',      name: 'Garbatella',       lat: 41.8611, lng: 12.4875 },
+  { id: 'sangio',      name: 'San Giovanni',    lat: 41.8859, lng: 12.5056 }
 ];
 
 function haversineKm(lat1, lng1, lat2, lng2) {
