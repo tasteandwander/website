@@ -10,6 +10,7 @@
 <style>
   :root {
     --cream: #f5f0e8;
+    --darkcream: #eddcb3;
     --warm-white: #faf8f3;
     --terracotta: #c4623a;
     --terracotta-dark: #a04e2c;
@@ -507,6 +508,7 @@
   .tip-card { padding: 1.2rem 1.4rem; background: var(--charcoal); color: var(--cream); }
   .tip-card.ochre { background: var(--ochre); color: var(--charcoal); }
   .tip-card.red { background: var(--deep-red); }
+  .tip-card.darkcream { background: var(--darkcream); color: var(--charcoal); }
   .tip-card.ochrelight { background: var(--ochrelight); color: var(--charcoal); }
   .tip-card.ochrelighter { background: var(--ochrelighter); color: var(--charcoal); }
   .tip-label {
@@ -843,6 +845,9 @@
     <li class="nav-tab"        data-tab="monti"       onclick="switchTab('monti',this)">Monti</li>
     <li class="nav-tab"        data-tab="garba"       onclick="switchTab('garbatella',this)">Garbatella</li>
     <li class="nav-tab"        data-tab="sangio"       onclick="switchTab('sangio',this)">San Giovanni</li>
+    <li class="nav-tab"        data-tab="coppede"       onclick="switchTab('coppede',this)">Coppedè</li>
+    <li class="nav-tab"        data-tab="sanlollo"       onclick="switchTab('sanlollo',this)">San Lorenzo</li>
+
   </ul>
 </nav>
 
@@ -893,6 +898,14 @@
      <a class="nbh-card" onclick="switchTab('sangio',document.querySelector('[data-tab=sangio]'))">
       <div class="nbh-card-name">San Giovanni</div>
       <div class="nbh-card-tagline">Crowned by the legendary Via Appia Antica, the Regina Viarum, this district is rich of monumental archaeological sites.</div>
+    </a>
+     <a class="nbh-card" onclick="switchTab('sanlollo',document.querySelector('[data-tab=sanlollo]'))">
+      <div class="nbh-card-name">San Lorenzo</div>
+      <div class="nbh-card-tagline">TBC.</div>
+    </a>
+     <a class="nbh-card" onclick="switchTab('coppede',document.querySelector('[data-tab=coppede]'))">
+      <div class="nbh-card-name">Coppedè</div>
+      <div class="nbh-card-tagline">TBC.</div>
     </a>
   </div>
 
