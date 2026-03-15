@@ -23,9 +23,7 @@
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
-
   html { scroll-behavior: smooth; }
-
   body {
     background: var(--cream);
     color: var(--charcoal);
@@ -43,25 +41,30 @@
     align-items: center;
     text-align: center;
     padding: 4rem 2rem;
-    background: var(--charcoal);
     overflow: hidden;
   }
-
-  .hero-texture {
+  .hero-photo {
     position: absolute; inset: 0;
-    background-image:
-      radial-gradient(ellipse at 20% 50%, rgba(196,98,58,0.18) 0%, transparent 60%),
-      radial-gradient(ellipse at 80% 30%, rgba(212,168,67,0.12) 0%, transparent 55%),
-      radial-gradient(ellipse at 50% 80%, rgba(122,31,31,0.2) 0%, transparent 50%);
+    background-image: url('https://cms.througheternity.com/upload/CONF83/20220619/via_margutta_rome.jpg');
+    background-size: cover;
+    background-position: center 40%;
+    background-repeat: no-repeat;
   }
-
-  .hero-grid {
+  .hero-overlay {
     position: absolute; inset: 0;
-    background-image: linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
-                      linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
-    background-size: 60px 60px;
+    background: linear-gradient(
+      to bottom,
+      rgba(30,22,18,0.50) 0%,
+      rgba(30,22,18,0.62) 60%,
+      rgba(30,22,18,0.88) 100%
+    );
   }
-
+  .hero-tint {
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse at 20% 50%, rgba(196,98,58,0.1) 0%, transparent 60%),
+      radial-gradient(ellipse at 80% 30%, rgba(212,168,67,0.07) 0%, transparent 55%);
+  }
   .hero-eyebrow {
     font-family: 'DM Mono', monospace;
     font-size: 0.7rem;
@@ -72,7 +75,6 @@
     opacity: 0;
     animation: fadeUp 0.8s 0.2s ease forwards;
   }
-
   .hero h1 {
     font-family: 'Playfair Display', serif;
     font-size: clamp(3rem, 9vw, 7.5rem);
@@ -82,25 +84,20 @@
     letter-spacing: -0.02em;
     opacity: 0;
     animation: fadeUp 0.9s 0.4s ease forwards;
+    text-shadow: 0 2px 30px rgba(0,0,0,0.4);
   }
-
-  .hero h1 em {
-    font-style: italic;
-    color: var(--terracotta);
-  }
-
+  .hero h1 em { font-style: italic; color: var(--terracotta); }
   .hero-sub {
     font-family: 'Cormorant Garamond', serif;
     font-style: italic;
     font-size: clamp(1.1rem, 2.5vw, 1.5rem);
-    color: var(--stone-light);
+    color: rgba(245,240,232,0.88);
     margin-top: 1.5rem;
     max-width: 480px;
     line-height: 1.5;
     opacity: 0;
     animation: fadeUp 0.9s 0.6s ease forwards;
   }
-
   .hero-cta {
     margin-top: 2.5rem;
     display: flex;
@@ -110,7 +107,6 @@
     opacity: 0;
     animation: fadeUp 0.9s 0.8s ease forwards;
   }
-
   .btn {
     font-family: 'DM Mono', monospace;
     font-size: 0.72rem;
@@ -123,24 +119,17 @@
     text-decoration: none;
     display: inline-block;
   }
-
-  .btn-primary {
-    background: var(--terracotta);
-    color: var(--cream);
-  }
+  .btn-primary { background: var(--terracotta); color: var(--cream); }
   .btn-primary:hover { background: var(--terracotta-dark); transform: translateY(-2px); }
-
   .btn-ghost {
     background: transparent;
     color: var(--stone-light);
-    border: 1px solid rgba(196,181,165,0.35);
+    border: 1px solid rgba(196,181,165,0.5);
   }
   .btn-ghost:hover { border-color: var(--stone-light); color: var(--cream); }
-
   .scroll-hint {
     position: absolute;
-    bottom: 2rem;
-    left: 50%;
+    bottom: 2rem; left: 50%;
     transform: translateX(-50%);
     display: flex;
     flex-direction: column;
@@ -149,19 +138,16 @@
     opacity: 0;
     animation: fadeUp 1s 1.2s ease forwards;
   }
-
   .scroll-hint span {
     font-family: 'DM Mono', monospace;
     font-size: 0.6rem;
     letter-spacing: 0.25em;
     text-transform: uppercase;
-    color: var(--stone);
+    color: rgba(196,181,165,0.7);
   }
-
   .scroll-line {
-    width: 1px;
-    height: 40px;
-    background: linear-gradient(to bottom, var(--stone), transparent);
+    width: 1px; height: 40px;
+    background: linear-gradient(to bottom, rgba(196,181,165,0.7), transparent);
     animation: scrollPulse 1.8s ease-in-out infinite;
   }
 
@@ -178,9 +164,7 @@
     position: sticky;
     top: 0;
     z-index: 100;
-    backdrop-filter: blur(8px);
   }
-
   .location-status {
     display: flex;
     align-items: center;
@@ -190,17 +174,15 @@
     letter-spacing: 0.1em;
     color: var(--stone);
   }
-
   .location-dot {
     width: 8px; height: 8px;
     border-radius: 50%;
     background: var(--stone-light);
     transition: background 0.4s;
+    flex-shrink: 0;
   }
-
   .location-dot.active { background: #5aad6e; box-shadow: 0 0 0 3px rgba(90,173,110,0.25); }
-  .location-dot.error { background: var(--terracotta); }
-
+  .location-dot.error  { background: var(--terracotta); }
   .nearest-badge {
     display: none;
     align-items: center;
@@ -213,9 +195,7 @@
     letter-spacing: 0.15em;
     text-transform: uppercase;
   }
-
   .nearest-badge.show { display: flex; }
-
   .locate-btn {
     font-family: 'DM Mono', monospace;
     font-size: 0.65rem;
@@ -240,14 +220,7 @@
     scrollbar-width: none;
   }
   .nav-section::-webkit-scrollbar { display: none; }
-
-  .nav-tabs {
-    display: flex;
-    gap: 0;
-    list-style: none;
-    min-width: max-content;
-  }
-
+  .nav-tabs { display: flex; list-style: none; min-width: max-content; }
   .nav-tab {
     font-family: 'DM Mono', monospace;
     font-size: 0.65rem;
@@ -260,82 +233,86 @@
     transition: all 0.2s;
     white-space: nowrap;
   }
-
   .nav-tab:hover { color: var(--charcoal); }
   .nav-tab.active { color: var(--terracotta); border-bottom-color: var(--terracotta); }
 
-  /* ── MAIN CONTENT ── */
+  /* ── MAIN ── */
   .main {
     max-width: 1300px;
     margin: 0 auto;
     padding: 4rem 2rem;
   }
-
-  /* neighbourhood panels */
-  .neighbourhood {
-    display: none;
-    animation: fadeIn 0.4s ease;
-  }
+  .neighbourhood { display: none; animation: fadeIn 0.4s ease; }
   .neighbourhood.active { display: block; }
 
+  /* ── NEIGHBOURHOOD PHOTO HEADER BANNER ── */
   .neighbourhood-header {
-    display: grid;
-    grid-template-columns: 1fr auto;
-    gap: 2rem;
-    align-items: end;
+    position: relative;
+    overflow: hidden;
     margin-bottom: 3rem;
-    padding-bottom: 2rem;
-    border-bottom: 1px solid var(--parchment);
   }
-
+  .nbh-photo-strip {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    display: block;
+    filter: brightness(0.65) saturate(0.85);
+  }
+  /* Fallback solid bg if image fails */
+  .nbh-photo-fallback {
+    width: 100%;
+    height: 220px;
+    background: var(--charcoal);
+    display: block;
+  }
+  .nbh-header-content {
+    position: absolute; inset: 0;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    padding: 1.8rem 2rem;
+    background: linear-gradient(to top, rgba(20,14,10,0.85) 0%, rgba(20,14,10,0.25) 55%, transparent 100%);
+  }
   .nbh-eyebrow {
     font-family: 'DM Mono', monospace;
-    font-size: 0.65rem;
+    font-size: 0.6rem;
     letter-spacing: 0.3em;
     text-transform: uppercase;
-    color: var(--terracotta);
-    margin-bottom: 0.6rem;
+    color: var(--ochre);
+    margin-bottom: 0.4rem;
   }
-
   .nbh-title {
     font-family: 'Playfair Display', serif;
-    font-size: clamp(2.2rem, 5vw, 4rem);
+    font-size: clamp(2rem, 4.5vw, 3.5rem);
     font-weight: 900;
     line-height: 1;
-    color: var(--charcoal);
+    color: #fff;
+    text-shadow: 0 2px 20px rgba(0,0,0,0.5);
   }
-
-  .nbh-title em { font-style: italic; color: var(--terracotta); }
-
-  .nbh-desc {
-    font-size: 1.15rem;
+  .nbh-title em { font-style: italic; color: var(--ochre); }
+  .nbh-desc-overlay {
+    font-size: 0.92rem;
     font-style: italic;
-    color: var(--stone);
-    max-width: 560px;
-    line-height: 1.65;
-    margin-top: 0.8rem;
+    color: rgba(245,240,232,0.78);
+    max-width: 420px;
+    line-height: 1.5;
+    margin-top: 0.4rem;
   }
-
-  .nbh-stats {
-    text-align: right;
-  }
-
+  .nbh-stats { text-align: right; flex-shrink: 0; }
   .stat-item {
     font-family: 'DM Mono', monospace;
-    font-size: 0.65rem;
+    font-size: 0.58rem;
     letter-spacing: 0.1em;
     text-transform: uppercase;
-    color: var(--stone);
+    color: rgba(245,240,232,0.6);
     line-height: 2;
   }
-
   .stat-val {
     display: block;
-    font-size: 1.8rem;
+    font-size: 1.5rem;
     font-family: 'Playfair Display', serif;
     font-weight: 700;
-    letter-spacing: -0.02em;
-    color: var(--charcoal);
+    color: #fff;
     line-height: 1;
   }
 
@@ -355,35 +332,30 @@
   .nearest-highlight.show { display: flex; }
   .nearest-highlight .arrow { font-size: 1.4rem; }
 
-  /* restaurant cards grid */
+  /* ── RESTAURANT CARDS ── */
   .restaurants-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
     gap: 1.5rem;
     margin-bottom: 3rem;
   }
-
   .restaurant-card {
     background: var(--warm-white);
     border: 1px solid rgba(140,123,107,0.18);
     overflow: hidden;
     transition: all 0.3s ease;
-    position: relative;
   }
-
   .restaurant-card:hover {
     border-color: var(--terracotta);
     transform: translateY(-3px);
     box-shadow: 0 12px 40px var(--shadow);
   }
-
   .card-top {
     padding: 1.4rem 1.4rem 0;
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
   }
-
   .card-type {
     font-family: 'DM Mono', monospace;
     font-size: 0.6rem;
@@ -393,17 +365,9 @@
     background: rgba(196,98,58,0.1);
     padding: 0.25rem 0.6rem;
   }
-
-  .card-price {
-    font-family: 'DM Mono', monospace;
-    font-size: 0.75rem;
-    color: var(--stone);
-  }
-
+  .card-price { font-family: 'DM Mono', monospace; font-size: 0.75rem; color: var(--stone-light); }
   .card-price .active-euro { color: var(--charcoal); }
-
   .card-body { padding: 1rem 1.4rem 1.4rem; }
-
   .card-name {
     font-family: 'Playfair Display', serif;
     font-size: 1.4rem;
@@ -412,7 +376,6 @@
     line-height: 1.15;
     margin-bottom: 0.3rem;
   }
-
   .card-address {
     font-family: 'DM Mono', monospace;
     font-size: 0.6rem;
@@ -420,7 +383,6 @@
     color: var(--stone);
     margin-bottom: 0.8rem;
   }
-
   .card-desc {
     font-size: 0.95rem;
     font-style: italic;
@@ -428,14 +390,7 @@
     line-height: 1.55;
     margin-bottom: 1rem;
   }
-
-  .card-dishes {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.4rem;
-    margin-bottom: 1rem;
-  }
-
+  .card-dishes { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 1rem; }
   .dish-tag {
     font-family: 'DM Mono', monospace;
     font-size: 0.58rem;
@@ -446,7 +401,6 @@
     padding: 0.25rem 0.55rem;
     border: 1px solid rgba(140,123,107,0.2);
   }
-
   .card-tip {
     font-size: 0.88rem;
     color: var(--stone);
@@ -454,7 +408,6 @@
     padding-top: 0.8rem;
     border-top: 1px solid var(--parchment);
   }
-
   .card-tip strong {
     font-family: 'DM Mono', monospace;
     font-size: 0.6rem;
@@ -464,7 +417,6 @@
     display: block;
     margin-bottom: 0.2rem;
   }
-
   .card-hours {
     display: flex;
     align-items: center;
@@ -473,22 +425,10 @@
     padding-top: 0.8rem;
     border-top: 1px solid var(--parchment);
   }
+  .hours-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--stone-light); flex-shrink: 0; }
+  .hours-text { font-family: 'DM Mono', monospace; font-size: 0.6rem; letter-spacing: 0.06em; color: var(--stone); }
 
-  .hours-dot {
-    width: 6px; height: 6px;
-    border-radius: 50%;
-    background: var(--stone-light);
-    flex-shrink: 0;
-  }
-
-  .hours-text {
-    font-family: 'DM Mono', monospace;
-    font-size: 0.6rem;
-    letter-spacing: 0.06em;
-    color: var(--stone);
-  }
-
-  /* food highlights section */
+  /* ── SECTION TITLE ── */
   .section-title {
     font-family: 'Playfair Display', serif;
     font-size: 1.6rem;
@@ -501,21 +441,15 @@
     align-items: center;
     gap: 1rem;
   }
+  .section-title::after { content: ''; flex: 1; height: 1px; background: var(--parchment); }
 
-  .section-title::after {
-    content: '';
-    flex: 1;
-    height: 1px;
-    background: var(--parchment);
-  }
-
+  /* ── FOODS GRID ── */
   .foods-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
     gap: 1rem;
     margin-bottom: 4rem;
   }
-
   .food-item {
     display: flex;
     gap: 1rem;
@@ -525,13 +459,8 @@
     border: 1px solid rgba(140,123,107,0.15);
     transition: border-color 0.2s;
   }
-
   .food-item:hover { border-color: var(--stone-light); }
-
   .food-emoji { font-size: 1.8rem; flex-shrink: 0; line-height: 1; }
-
-  .food-info {}
-
   .food-name {
     font-family: 'Playfair Display', serif;
     font-size: 1.05rem;
@@ -540,31 +469,18 @@
     line-height: 1.2;
     margin-bottom: 0.25rem;
   }
+  .food-note { font-size: 0.85rem; font-style: italic; color: var(--stone); line-height: 1.4; }
 
-  .food-note {
-    font-size: 0.85rem;
-    font-style: italic;
-    color: var(--stone);
-    line-height: 1.4;
-  }
-
-  /* insider tips */
+  /* ── TIPS CARDS ── */
   .tips-row {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
     gap: 1rem;
     margin-bottom: 4rem;
   }
-
-  .tip-card {
-    padding: 1.2rem 1.4rem;
-    background: var(--charcoal);
-    color: var(--cream);
-  }
-
+  .tip-card { padding: 1.2rem 1.4rem; background: var(--charcoal); color: var(--cream); }
   .tip-card.ochre { background: var(--ochre); color: var(--charcoal); }
   .tip-card.red { background: var(--deep-red); }
-
   .tip-label {
     font-family: 'DM Mono', monospace;
     font-size: 0.58rem;
@@ -573,50 +489,139 @@
     opacity: 0.65;
     margin-bottom: 0.5rem;
   }
+  .tip-text { font-size: 0.95rem; font-style: italic; line-height: 1.55; }
 
-  .tip-text {
-    font-size: 0.95rem;
-    font-style: italic;
-    line-height: 1.55;
+  /* ── SIGNATURE DISHES SHOWCASE (new) ── */
+  .dishes-showcase {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    border: 1px solid rgba(140,123,107,0.2);
+    overflow: hidden;
+    margin-bottom: 0;
   }
+  @media (max-width: 900px) { .dishes-showcase { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 500px) { .dishes-showcase { grid-template-columns: 1fr; } }
 
-  /* food walk section */
-  .walk-section {
-    margin-bottom: 4rem;
-  }
-
-  .walk-timeline {
+  .dish-showcase-card {
     position: relative;
-    padding-left: 2.5rem;
+    height: 300px;
+    overflow: hidden;
+    cursor: pointer;
+    border-right: 1px solid rgba(140,123,107,0.2);
+  }
+  .dish-showcase-card:last-child { border-right: none; }
+
+  .dish-showcase-bg {
+    position: absolute; inset: 0;
+    background-size: cover;
+    background-position: center;
+    transition: transform 0.55s ease, filter 0.4s ease;
+    filter: brightness(0.52) saturate(0.75);
+  }
+  .dish-showcase-card:hover .dish-showcase-bg {
+    transform: scale(1.07);
+    filter: brightness(0.4) saturate(0.65);
+  }
+  .dish-showcase-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(to top, rgba(22,14,9,0.92) 0%, rgba(22,14,9,0.2) 50%, transparent 100%);
+  }
+  .dish-showcase-content {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    padding: 1.4rem;
+  }
+  .dish-showcase-emoji { font-size: 1.5rem; line-height: 1; margin-bottom: 0.4rem; display: block; }
+  .dish-showcase-nbh {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.52rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ochre);
+    margin-bottom: 0.25rem;
+  }
+  .dish-showcase-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #fff;
+    line-height: 1.15;
+    margin-bottom: 0.35rem;
+  }
+  .dish-showcase-desc {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 0.85rem;
+    color: rgba(245,240,232,0.75);
+    line-height: 1.45;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease, opacity 0.35s ease;
+    opacity: 0;
+  }
+  .dish-showcase-card:hover .dish-showcase-desc {
+    max-height: 90px;
+    opacity: 1;
   }
 
+  /* CTA bar below cards */
+  .dishes-cta-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: var(--charcoal);
+    padding: 1.2rem 1.8rem;
+    margin-bottom: 4rem;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+  .dishes-cta-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1.05rem;
+    color: var(--stone-light);
+  }
+  .dishes-cta-text strong { color: var(--cream); font-style: normal; font-weight: 600; }
+
+  .btn-terracotta {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    background: var(--terracotta);
+    color: var(--cream);
+    border: none;
+    padding: 0.75rem 1.6rem;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    transition: background 0.2s, transform 0.2s;
+    white-space: nowrap;
+  }
+  .btn-terracotta:hover { background: var(--terracotta-dark); transform: translateY(-1px); }
+
+  /* ── FOOD WALK ── */
+  .walk-section { margin-bottom: 4rem; }
+  .walk-timeline { position: relative; padding-left: 2.5rem; }
   .walk-timeline::before {
     content: '';
     position: absolute;
-    left: 0.55rem;
-    top: 0.5rem;
-    bottom: 0.5rem;
+    left: 0.55rem; top: 0.5rem; bottom: 0.5rem;
     width: 1px;
     background: var(--parchment);
   }
-
-  .walk-step {
-    position: relative;
-    padding-bottom: 2rem;
-  }
-
+  .walk-step { position: relative; padding-bottom: 2rem; }
   .walk-step::before {
     content: '';
     position: absolute;
-    left: -2.5rem;
-    top: 0.3rem;
+    left: -2.5rem; top: 0.3rem;
     width: 10px; height: 10px;
     border-radius: 50%;
     background: var(--terracotta);
     border: 2px solid var(--cream);
     box-shadow: 0 0 0 2px var(--terracotta);
   }
-
   .walk-time {
     font-family: 'DM Mono', monospace;
     font-size: 0.6rem;
@@ -625,7 +630,6 @@
     color: var(--ochre);
     margin-bottom: 0.2rem;
   }
-
   .walk-place {
     font-family: 'Playfair Display', serif;
     font-size: 1.1rem;
@@ -633,15 +637,9 @@
     color: var(--charcoal);
     margin-bottom: 0.2rem;
   }
+  .walk-what { font-size: 0.9rem; font-style: italic; color: var(--stone); line-height: 1.4; }
 
-  .walk-what {
-    font-size: 0.9rem;
-    font-style: italic;
-    color: var(--stone);
-    line-height: 1.4;
-  }
-
-  /* ── OVERVIEW TAB ── */
+  /* ── OVERVIEW ── */
   .overview-intro {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -650,22 +648,8 @@
     padding-bottom: 3rem;
     border-bottom: 1px solid var(--parchment);
   }
-
-  @media (max-width: 768px) {
-    .overview-intro { grid-template-columns: 1fr; gap: 2rem; }
-    .neighbourhood-header { grid-template-columns: 1fr; }
-    .nbh-stats { text-align: left; }
-    .restaurants-grid { grid-template-columns: 1fr; }
-  }
-
-  .overview-intro-text {
-    font-size: 1.15rem;
-    line-height: 1.8;
-    color: var(--stone);
-  }
-
+  .overview-intro-text { font-size: 1.15rem; line-height: 1.8; color: var(--stone); }
   .overview-intro-text p + p { margin-top: 1rem; }
-
   .overview-intro-pull {
     font-family: 'Playfair Display', serif;
     font-size: clamp(1.6rem, 3vw, 2.3rem);
@@ -675,7 +659,6 @@
     border-left: 3px solid var(--terracotta);
     padding-left: 1.5rem;
   }
-
   .nbh-overview-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
@@ -684,7 +667,6 @@
     border: 1px solid var(--parchment);
     margin-bottom: 4rem;
   }
-
   .nbh-card {
     background: var(--warm-white);
     padding: 1.5rem;
@@ -693,9 +675,7 @@
     text-decoration: none;
     display: block;
   }
-
   .nbh-card:hover { background: var(--cream); }
-
   .nbh-card-name {
     font-family: 'Playfair Display', serif;
     font-size: 1.1rem;
@@ -703,81 +683,46 @@
     color: var(--charcoal);
     margin-bottom: 0.3rem;
   }
+  .nbh-card-tagline { font-size: 0.85rem; font-style: italic; color: var(--stone); line-height: 1.4; }
 
-  .nbh-card-tagline {
-    font-size: 0.85rem;
-    font-style: italic;
-    color: var(--stone);
-    line-height: 1.4;
-    margin-bottom: 0.8rem;
-  }
-
-  .nbh-card-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.3rem;
-  }
-
-  .mini-tag {
-    font-family: 'DM Mono', monospace;
-    font-size: 0.55rem;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--stone);
-    background: var(--parchment);
-    padding: 0.15rem 0.4rem;
-  }
-   .back-home-container {
-    text-align: center;
-    margin: 20px 0;
-}
-
-.back-home-button {
-    background-color: #f5f0e8;
-    color: white;
+  /* ── HOME BTN ── */
+  .home-btn {
+    position: fixed;
+    top: 24px; right: 24px;
+    background: rgba(42,36,32,0.75);
+    backdrop-filter: blur(6px);
+    color: var(--cream);
+    padding: 9px 18px;
     text-decoration: none;
-    padding: 10px 20px;
-    border-radius: 6px;
-    font-size: 1.1rem;
-    transition: background-color 0.3s;
-}
+    font-family: 'DM Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    border: 1px solid rgba(196,181,165,0.2);
+    transition: all 0.25s;
+    z-index: 1000;
+  }
+  .home-btn:hover { background: rgba(42,36,32,0.95); border-color: var(--terracotta); color: var(--terracotta); }
 
-.back-home-button:hover {
-    background-color: #f5f0e8;
-}
-        
-        .home-btn {
-            position: fixed;
-            top: 30px;
-            right: 30px;
-            background: #f5f0e8;
-            color: white;
-            padding: 12px 28px;
-            border-radius: 30px;
-            text-decoration: none;
-            font-weight: bold;
-            box-shadow: 0 4px 15px rgba(139, 38, 53, 0.4);
-            transition: all 0.3s ease;
-            z-index: 1000;
-            font-size: 16px;
-        }
+  /* ── RESPONSIVE ── */
+  @media (max-width: 768px) {
+    .overview-intro { grid-template-columns: 1fr; gap: 2rem; }
+    .nbh-header-content { flex-direction: column; align-items: flex-start; gap: 0.5rem; }
+    .nbh-stats { text-align: left; }
+    .restaurants-grid { grid-template-columns: 1fr; }
+    .nbh-photo-strip { height: 180px; }
+    .home-btn { top: auto; bottom: 1.2rem; right: 1rem; }
+  }
 
-        .home-btn:hover {
-            background: #f5f0e8;
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(139, 38, 53, 0.6);
-        }
   /* ── ANIMATIONS ── */
   @keyframes fadeUp {
     from { opacity: 0; transform: translateY(20px); }
     to { opacity: 1; transform: translateY(0); }
   }
-
   @keyframes fadeIn {
     from { opacity: 0; }
-    to { opacity: 1; }
+    to   { opacity: 1; }
   }
-
   @keyframes scrollPulse {
     0%, 100% { opacity: 0.4; }
     50% { opacity: 1; }
@@ -790,7 +735,6 @@
     padding: 3rem 2rem;
     text-align: center;
   }
-
   .footer-logo {
     font-family: 'Playfair Display', serif;
     font-size: 1.5rem;
@@ -798,7 +742,6 @@
     color: var(--cream);
     margin-bottom: 0.5rem;
   }
-
   .footer-sub {
     font-family: 'DM Mono', monospace;
     font-size: 0.62rem;
@@ -807,14 +750,7 @@
     color: var(--stone);
     margin-bottom: 1.5rem;
   }
-
-  .footer-links {
-    display: flex;
-    justify-content: center;
-    gap: 2rem;
-    flex-wrap: wrap;
-  }
-
+  .footer-links { display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap; }
   .footer-links a {
     font-family: 'DM Mono', monospace;
     font-size: 0.62rem;
@@ -824,21 +760,22 @@
     text-decoration: none;
     transition: color 0.2s;
   }
-
   .footer-links a:hover { color: var(--terracotta); }
 </style>
 </head>
 <body>
 
-<!-- HERO -->
+<a href="index.html" class="home-btn">← Homepage</a>
+
+<!-- ═══════════ HERO ═══════════ -->
 <section class="hero">
-  <div class="hero-texture"></div>
-  <div class="hero-grid"></div>
+  <div class="hero-photo"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-tint"></div>
   <div style="position:relative;z-index:2;">
     <p class="hero-eyebrow">Taste &amp; Wander · Roma</p>
     <h1>Eat Rome<br><em>by Neighbourhood</em></h1>
-   <!-- <p class="hero-sub">Every rione has its own table. Find where you are, and eat like you belong there.</p> -->
-     <p class="hero-sub"> Roman cuisine is full of flavors —you just need to know where to look.</p>
+    <p class="hero-sub">Roman cuisine is full of flavors — you just need to know where to look.</p>
     <div class="hero-cta">
       <button class="btn btn-primary" onclick="locateMe()">📍 Find my neighbourhood</button>
       <a href="#guide" class="btn btn-ghost">Explore the map</a>
@@ -850,7 +787,7 @@
   </div>
 </section>
 
-<!-- LOCATION BAR -->
+<!-- ═══════════ LOCATION BAR ═══════════ -->
 <div class="location-bar" id="locationBar">
   <div class="location-status">
     <div class="location-dot" id="locationDot"></div>
@@ -865,829 +802,549 @@
   </div>
 </div>
 
-<!-- NAVIGATION -->
+<!-- ═══════════ GUIDE ═══════════ -->
 <div id="guide">
 <nav class="nav-section">
   <ul class="nav-tabs" id="navTabs">
-    <li class="nav-tab active" data-tab="overview" onclick="switchTab('overview', this)">Overview</li>
-    <li class="nav-tab" data-tab="trastevere" onclick="switchTab('trastevere', this)">Trastevere</li>
-    <li class="nav-tab" data-tab="testaccio" onclick="switchTab('testaccio', this)">Testaccio</li>
-    <li class="nav-tab" data-tab="ghetto" onclick="switchTab('ghetto', this)">Jewish Ghetto</li>
-    <li class="nav-tab" data-tab="prati" onclick="switchTab('prati', this)">Prati</li>
-    <li class="nav-tab" data-tab="campo" onclick="switchTab('campo', this)">Campo de' Fiori</li>
-    <li class="nav-tab" data-tab="monti" onclick="switchTab('monti', this)">Monti</li>
+    <li class="nav-tab active" data-tab="overview"    onclick="switchTab('overview',this)">Overview</li>
+    <li class="nav-tab"        data-tab="trastevere"  onclick="switchTab('trastevere',this)">Trastevere</li>
+    <li class="nav-tab"        data-tab="testaccio"   onclick="switchTab('testaccio',this)">Testaccio</li>
+    <li class="nav-tab"        data-tab="ghetto"      onclick="switchTab('ghetto',this)">Jewish Ghetto</li>
+    <li class="nav-tab"        data-tab="prati"       onclick="switchTab('prati',this)">Prati</li>
+    <li class="nav-tab"        data-tab="campo"       onclick="switchTab('campo',this)">Campo de' Fiori</li>
+    <li class="nav-tab"        data-tab="monti"       onclick="switchTab('monti',this)">Monti</li>
   </ul>
 </nav>
 
-<!-- MAIN -->
 <main class="main">
-<a href="index.html" class="home-btn">← Homepage</a>
-  <!-- ════════════ OVERVIEW ════════════ -->
-  <div class="neighbourhood active" id="tab-overview">
-    <div class="overview-intro">
-      <div class="overview-intro-text">
-        <p>Roman food doesn't come from a menu — it comes from a neighbourhood. Each <em>rione</em> has its own history, its own poverty, its own pride. The Jewish Ghetto gave Rome its fried artichoke. Testaccio, built around a slaughterhouse, gave it offal. Trastevere kept the old kitchens alive when the rest of the city moved on.</p>
-        <p>Below are the six neighbourhoods that matter most if you want to eat well. Pick yours, or let the map find you.</p>
-      </div>
-      <p class="overview-intro-pull">"To eat in Rome is to understand that tradition is not nostalgia — it is survival."</p>
-    </div>
 
-    <div class="nbh-overview-grid">
-      <a class="nbh-card" onclick="switchTab('trastevere', document.querySelector('[data-tab=trastevere]'))">
-        <div class="nbh-card-name">Trastevere</div>
-        <div class="nbh-card-tagline">The soul of old Rome, where trattorias spill onto cobblestones</div>
-        <div class="nbh-card-tags">
-          <span class="mini-tag">Carbonara</span><span class="mini-tag">Coda</span><span class="mini-tag">Supplì</span>
-        </div>
-      </a>
-      <a class="nbh-card" onclick="switchTab('testaccio', document.querySelector('[data-tab=testaccio]'))">
-        <div class="nbh-card-name">Testaccio</div>
-        <div class="nbh-card-tagline">The working-class quarter that invented cucina povera</div>
-       <!-- <div class="nbh-card-tags">
-          <span class="mini-tag">Pajata</span><span class="mini-tag">Offal</span><span class="mini-tag">Cacio e Pepe</span>
-        </div> -->
-      </a>
-      <a class="nbh-card" onclick="switchTab('ghetto', document.querySelector('[data-tab=ghetto]'))">
-        <div class="nbh-card-name">Jewish Ghetto</div>
-        <div class="nbh-card-tagline">Two thousand years of cooking locked into a few narrow streets</div>
-         <!--   <div class="nbh-card-tags">
-        <span class="mini-tag">Carciofi alla Giudia</span><span class="mini-tag">Baccalà</span><span class="mini-tag">Fiori di Zucca</span>
-        </div>-->
-      </a>
-      <a class="nbh-card" onclick="switchTab('prati', document.querySelector('[data-tab=prati]'))">
-        <div class="nbh-card-name">Prati</div>
-        <div class="nbh-card-tagline">Vatican-side elegance — morning cornetti and proper trattorie</div>
-        <!-- <div class="nbh-card-tags">
-          <span class="mini-tag">Maritozzo</span><span class="mini-tag">Saltimbocca</span><span class="mini-tag">Pizza al taglio</span>
-        </div>-->
-      </a>
-      <a class="nbh-card" onclick="switchTab('campo', document.querySelector('[data-tab=campo]'))">
-        <div class="nbh-card-name">Campo de' Fiori</div>
-        <div class="nbh-card-tagline">Market square energy from dawn; pasta temples by night</div>
-      <!--   <div class="nbh-card-tags">
-          <span class="mini-tag">Amatriciana</span><span class="mini-tag">Gricia</span><span class="mini-tag">Pizza Bianca</span>
-        </div>-->
-      </a>
-      <a class="nbh-card" onclick="switchTab('monti', document.querySelector('[data-tab=monti]'))">
-        <div class="nbh-card-name">Monti</div>
-        <div class="nbh-card-tagline">Rome's hippest rione — natural wine bars meet ancient recipes</div>
-     <!--    <div class="nbh-card-tags">
-          <span class="mini-tag">Wine bars</span><span class="mini-tag">Cicchetti</span><span class="mini-tag">Cacio e Pepe</span>
-        </div>-->
-      </a>
-    </div>
+<!-- ═══════════════ OVERVIEW ═══════════════ -->
+<div class="neighbourhood active" id="tab-overview">
 
-    <p class="section-title">The golden rules of eating in Rome</p>
-    <div class="tips-row">
-      <div class="tip-card ochre">
-        <div class="tip-label">Rule 01 — Carbonara</div>
-        <div class="tip-text">No cream. Never cream. Guanciale, eggs, Pecorino, black pepper.</div>
+  <div class="overview-intro">
+    <div class="overview-intro-text">
+      <p>Roman food doesn't come from a menu — it comes from a neighbourhood. Each <em>rione</em> has its own history, its own poverty, its own pride. The Jewish Ghetto gave Rome its fried artichoke. Testaccio, built around a slaughterhouse, gave it offal. Trastevere kept the old kitchens alive when the rest of the city moved on.</p>
+      <p>Below are the six neighbourhoods that matter most if you want to eat well. Pick yours, or let the map find you.</p>
+    </div>
+    <p class="overview-intro-pull">"To eat in Rome is to understand that tradition is not nostalgia — it is survival."</p>
+  </div>
+
+  <div class="nbh-overview-grid">
+    <a class="nbh-card" onclick="switchTab('trastevere',document.querySelector('[data-tab=trastevere]'))">
+      <div class="nbh-card-name">Trastevere</div>
+      <div class="nbh-card-tagline">The soul of old Rome, where trattorias spill onto cobblestones</div>
+    </a>
+    <a class="nbh-card" onclick="switchTab('testaccio',document.querySelector('[data-tab=testaccio]'))">
+      <div class="nbh-card-name">Testaccio</div>
+      <div class="nbh-card-tagline">The working-class quarter that invented cucina povera</div>
+    </a>
+    <a class="nbh-card" onclick="switchTab('ghetto',document.querySelector('[data-tab=ghetto]'))">
+      <div class="nbh-card-name">Jewish Ghetto</div>
+      <div class="nbh-card-tagline">Two thousand years of cooking locked into a few narrow streets</div>
+    </a>
+    <a class="nbh-card" onclick="switchTab('prati',document.querySelector('[data-tab=prati]'))">
+      <div class="nbh-card-name">Prati</div>
+      <div class="nbh-card-tagline">Vatican-side elegance — morning cornetti and proper trattorie</div>
+    </a>
+    <a class="nbh-card" onclick="switchTab('campo',document.querySelector('[data-tab=campo]'))">
+      <div class="nbh-card-name">Campo de' Fiori</div>
+      <div class="nbh-card-tagline">Market square energy from dawn; pasta temples by night</div>
+    </a>
+    <a class="nbh-card" onclick="switchTab('monti',document.querySelector('[data-tab=monti]'))">
+      <div class="nbh-card-name">Monti</div>
+      <div class="nbh-card-tagline">Rome's hippest rione — natural wine bars meet ancient recipes</div>
+    </a>
+  </div>
+
+  <!-- Golden Rules -->
+  <p class="section-title">The golden rules of eating in Rome</p>
+  <div class="tips-row">
+    <div class="tip-card ochre">
+      <div class="tip-label">Rule 01 — Carbonara</div>
+      <div class="tip-text">No cream. Never cream. Guanciale, eggs, Pecorino, black pepper.</div>
+    </div>
+    <div class="tip-card">
+      <div class="tip-label">Rule 02 — Pizza</div>
+      <div class="tip-text">Roman pizza is thin and crisp. Thick dough is Neapolitan — beautiful, but calling it Roman is an affront.</div>
+    </div>
+    <div class="tip-card ochre">
+      <div class="tip-label">Rule 03 — Coffee</div>
+      <div class="tip-text">You stand at the bar. Three sips. No cappuccino after 11am if you want to be taken seriously.</div>
+    </div>
+    <div class="tip-card">
+      <div class="tip-label">Rule 04 — The Bill</div>
+      <div class="tip-text">Coperto is normal and legal. Bread brought without asking means you're paying for it. No complaints.</div>
+    </div>
+  </div>
+
+  <!-- ── SIGNATURE DISHES SHOWCASE ── -->
+  <p class="section-title">The dishes that define Rome</p>
+
+  <div class="dishes-showcase">
+    <div class="dish-showcase-card">
+      <div class="dish-showcase-bg" style="background-image: suppli.jpg;"></div>
+      <div class="dish-showcase-overlay"></div>
+      <div class="dish-showcase-content">
+        <span class="dish-showcase-emoji">🍚</span>
+        <div class="dish-showcase-nbh">Trastevere · Street food</div>
+        <div class="dish-showcase-name">Supplì al Telefono</div>
+        <div class="dish-showcase-desc">Golden-fried rice balls with ragù and mozzarella that stretches like a telephone cord. Rome's favourite street snack, best eaten on the spot.</div>
       </div>
-      <div class="tip-card ">
-        <div class="tip-label">Rule 02 — Pizza</div>
-        <div class="tip-text">Roman pizza is thin and crisp. Thick dough is Neapolitan and beautiful, but ordering it in Rome and calling it Roman is an affront.</div>
+    </div>
+    <div class="dish-showcase-card">
+      <div class="dish-showcase-bg" style="background-image: hq720.jpg;"></div>
+      <div class="dish-showcase-overlay"></div>
+      <div class="dish-showcase-content">
+        <span class="dish-showcase-emoji">🍝</span>
+        <div class="dish-showcase-nbh">Testaccio · Trastevere</div>
+        <div class="dish-showcase-name">Amatriciana</div>
+        <div class="dish-showcase-desc">Guanciale, tomato sauce, Pecorino, chili. Pasta bathed in tomato sauce slowly simmered to deepen its flavor, enriched by tender guanciale..</div>
       </div>
-      <div class="tip-card ochre">
-        <div class="tip-label">Rule 03 — Coffee</div>
-        <div class="tip-text">You stand at the bar. You drink it in three sips. You do not order a cappuccino after 11am if you want to be taken seriously.</div>
+    </div>
+    <div class="dish-showcase-card">
+      <div class="dish-showcase-bg" style="background-image: carciofi-alla-giudia.webp;"></div>
+      <div class="dish-showcase-overlay"></div>
+      <div class="dish-showcase-content">
+        <span class="dish-showcase-emoji">🌿</span>
+        <div class="dish-showcase-nbh">Jewish Ghetto · Since 1555</div>
+        <div class="dish-showcase-name">Carciofi alla Giudia</div>
+        <div class="dish-showcase-desc">Artichoke deep-fried whole until the petals crisp like chips and the heart stays tender. Born in the Ghetto, adopted by all of Rome.</div>
       </div>
-      <div class="tip-card">
-        <div class="tip-label">Rule 04 — The Bill</div>
-        <div class="tip-text">Coperto (cover charge) is normal and legal. Bread being brought without asking means you're paying for it. No complaints.</div>
+    </div>
+    <div class="dish-showcase-card">
+      <div class="dish-showcase-bg" style="background-image:url('https://tasteandwander.github.io/website/taglio.webp');"></div>
+      <div class="dish-showcase-overlay"></div>
+      <div class="dish-showcase-content">
+        <span class="dish-showcase-emoji">🍕</span>
+        <div class="dish-showcase-nbh">Campo de' Fiori · Bakeries</div>
+        <div class="dish-showcase-name">Pizza al Taglio</div>
+        <div class="dish-showcase-desc">Sold by weight, eaten standing. Long-fermented dough baked in rectangular trays, topped like edible mosaics.</div>
       </div>
     </div>
   </div>
 
-<p class="section-title">Traditional Dishes </p>
-    <div class="tips-row">
-      <div class="tip-card ochre">
-        <div class="tip-label">Supplì</div>
-        <div class="tip-text">
-        Golden-fried rice balls filled with rich ragù or vibrant tomato sauce, and a core of mozzarella that stretches with every bite.</div>
-      </div>
-      <div class="tip-card ">
-        <div class="tip-label">Amatriciana</div>
-        <div class="tip-text"> Pasta bathed in tomato sauce slowly simmered to deepen its flavor, enriched by tender guanciale.</div>
-      </div>
-      <div class="tip-card ochre">
-        <div class="tip-label">Carciofi alla Giudia</div>
-        <div class="tip-text">Artichokes, tender on the inside and crisp on the outside, fried with just a touch of salt— from the Roman-Jewish culinary tradition</div>
-      </div>
-      <div class="tip-card">
-        <div class="tip-label">Pizza al Taglio</div>
-        <div class="tip-text">Slices of airy dough baked in long pans, toppings like edible mosaics.</div>
-      </div>
-    </div>
+  <!-- CTA bar -->
+  <div class="dishes-cta-bar">
+    <p class="dishes-cta-text">There are <strong>twenty-three more dishes</strong> that define Roman cuisine — from trippa to maritozzo to coda alla vaccinara.</p>
+    <a href="https://tasteandwander.github.io/website/rome.html" class="btn-terracotta">Explore all traditional dishes →</a>
   </div>
 
-  
-  <!-- ════════════ TRASTEVERE ════════════ -->
-  <div class="neighbourhood" id="tab-trastevere">
-    <div class="neighbourhood-header">
+</div><!-- /overview -->
+
+
+<!-- ═══════════════ TRASTEVERE ═══════════════ -->
+<div class="neighbourhood" id="tab-trastevere">
+
+  <div class="neighbourhood-header">
+    <img class="nbh-photo-strip"
+         src="https://images.unsplash.com/photo-1555992336-03a23c7b20ee?w=1400&q=80&auto=format&fit=crop"
+         alt="Trastevere cobblestone streets Rome"
+         onerror="this.style.display='none'">
+    <div class="nbh-header-content">
       <div>
         <div class="nbh-eyebrow">Rione XIII</div>
         <h2 class="nbh-title">Traste<em>vere</em></h2>
-        <p class="nbh-desc">The neighbourhood that refused to be gentrified — at least at the table. Cobblestone lanes, ivy-covered walls, and the kind of carbonara that resets your understanding of pasta.</p>
+        <p class="nbh-desc-overlay">The neighbourhood that refused to be gentrified — at least at the table. Cobblestone lanes, ivy-covered walls, and the kind of carbonara that resets your understanding of pasta.</p>
       </div>
       <div class="nbh-stats">
-        <div class="stat-item"><span class="stat-val">5</span> top spots</div>
-        <div class="stat-item"><span class="stat-val">€€</span> avg price</div>
-        <div class="stat-item"><span class="stat-val">8pm</span> dinner hour</div>
-      </div>
-    </div>
-
-    <div class="nearest-highlight" id="nearest-trastevere">
-      <span class="arrow">📍</span>
-      <span>You're closest to this neighbourhood — these are your best options right now.</span>
-    </div>
-
-    <p class="section-title">Where to eat</p>
-    <div class="restaurants-grid">
-      <div class="restaurant-card">
-        <div class="card-top">
-          <span class="card-type">Trattoria</span>
-          <span class="card-price"><span class="active-euro">€</span><span class="active-euro">€</span><span>€</span></span>
-        </div>
-        <div class="card-body">
-          <div class="card-name">Tonnarello</div>
-          <div class="card-address">Via della Paglia 1/2/3 · Trastevere</div>
-          <div class="card-desc">The Trastevere institution. Lively, loud, packed with locals and savvy visitors. Their carbonara is the real thing — silky, rich, no shortcuts.</div>
-          <div class="card-dishes">
-            <span class="dish-tag">Carbonara</span>
-            <span class="dish-tag">Cacio e Pepe</span>
-            <span class="dish-tag">Coda alla Vaccinara</span>
-          </div>
-          <div class="card-tip">
-            <strong>Insider tip</strong>
-            Come at 6:30pm before the queue forms. Ask for Eslam if he's working — he'll guide you through the menu without the tourist treatment.
-          </div>
-          <div class="card-hours">
-            <div class="hours-dot"></div>
-            <span class="hours-text">Mon–Sun · 11:30am – 11:00pm</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="restaurant-card">
-        <div class="card-top">
-          <span class="card-type">Trattoria</span>
-          <span class="card-price"><span class="active-euro">€</span><span class="active-euro">€</span><span>€</span></span>
-        </div>
-        <div class="card-body">
-          <div class="card-name">Nannarella</div>
-          <div class="card-address">Piazza di S. Calisto 7/a · Trastevere</div>
-          <div class="card-desc">Excellent coda alla vaccinara and the best fried artichoke in the neighbourhood. The square setting makes for a perfect summer evening.</div>
-          <div class="card-dishes">
-            <span class="dish-tag">Coda alla Vaccinara</span>
-            <span class="dish-tag">Carciofi alla Giudia</span>
-            <span class="dish-tag">Carbonara</span>
-          </div>
-          <div class="card-tip">
-            <strong>Insider tip</strong>
-            Arrive before 7pm or expect a wait. The carbonara here is genuinely one of the best you'll find without hunting.
-          </div>
-          <div class="card-hours">
-            <div class="hours-dot"></div>
-            <span class="hours-text">Mon–Sun · 11:30am – 11:30pm</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="restaurant-card">
-        <div class="card-top">
-          <span class="card-type">Street Food</span>
-          <span class="card-price"><span class="active-euro">€</span><span>€€</span></span>
-        </div>
-        <div class="card-body">
-          <div class="card-name">Supplì Roma</div>
-          <div class="card-address">Via di S. Francesco a Ripa 137 · Trastevere</div>
-          <div class="card-desc">No sign outside, just a queue. That queue is the sign. The cacio e pepe supplì alone is worth a detour across the city.</div>
-          <div class="card-dishes">
-            <span class="dish-tag">Supplì al Telefono</span>
-            <span class="dish-tag">Pizza al taglio</span>
-          </div>
-          <div class="card-tip">
-            <strong>Insider tip</strong>
-            Takeaway only — grab supplì and eat on the steps of the nearby piazza. Order two minimum; one is never enough.
-          </div>
-          <div class="card-hours">
-            <div class="hours-dot"></div>
-            <span class="hours-text">Mon–Sat · 10:00am – 9:00pm · Closed Sunday</span>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <p class="section-title">What to eat here</p>
-    <div class="foods-grid">
-      <div class="food-item">
-        <div class="food-emoji">🍝</div>
-        <div class="food-info">
-          <div class="food-name">Carbonara</div>
-          <div class="food-note">The Trastevere trattoria is where this dish lives best — guanciale, egg, Pecorino, nothing else.</div>
-        </div>
-      </div>
-      <div class="food-item">
-        <div class="food-emoji">🥩</div>
-        <div class="food-info">
-          <div class="food-name">Coda alla Vaccinara</div>
-          <div class="food-note">Slow-braised oxtail in tomato. Saturday comfort food, now available most days in this neighbourhood.</div>
-        </div>
-      </div>
-      <div class="food-item">
-        <div class="food-emoji">🍚</div>
-        <div class="food-info">
-          <div class="food-name">Supplì al Telefono</div>
-          <div class="food-note">Fried rice ball with mozzarella that "phones home" when pulled apart. Aperitivo hour essential.</div>
-        </div>
-      </div>
-      <div class="food-item">
-        <div class="food-emoji">🍷</div>
-        <div class="food-info">
-          <div class="food-name">Vino sfuso</div>
-          <div class="food-note">House wine poured from a tap. Carafe, not bottle. Cheap, honest, Roman. Don't overthink it.</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="walk-section">
-      <p class="section-title">Trastevere food walk</p>
-      <div class="walk-timeline">
-        <div class="walk-step">
-          <div class="walk-time">8:00am</div>
-          <div class="walk-place">Bar San Calisto</div>
-          <div class="walk-what">The real neighbourhood bar. Cornetto and espresso standing at the bar, surrounded by actual Romans starting their day.</div>
-        </div>
-        <div class="walk-step">
-          <div class="walk-time">12:30pm</div>
-          <div class="walk-place">Supplì Roma</div>
-          <div class="walk-what">Pre-lunch supplì to sharpen your appetite. Cacio e pepe flavour if available.</div>
-        </div>
-        <div class="walk-step">
-          <div class="walk-time">1:30pm</div>
-          <div class="walk-place">Tonnarello</div>
-          <div class="walk-what">Proper Roman lunch — carbonara, half carafe of house red, bread to mop. No rushing.</div>
-        </div>
-        <div class="walk-step">
-          <div class="walk-time">4:00pm</div>
-          <div class="walk-place">Wander the market streets</div>
-          <div class="walk-what">The neighbourhood's food shops come alive in the late afternoon. Look for forni, salumerie, and the occasional street artichoke vendor.</div>
-        </div>
-        <div class="walk-step">
-          <div class="walk-time">8:30pm</div>
-          <div class="walk-place">Nannarella</div>
-          <div class="walk-what">Dinner: fried artichoke to start, coda alla vaccinara for the second, tiramisu if the waiter looks at you right.</div>
-        </div>
+        <div class="stat-item"><span class="stat-val">5</span>top spots</div>
+        <div class="stat-item"><span class="stat-val">€€</span>avg price</div>
+        <div class="stat-item"><span class="stat-val">8pm</span>dinner hour</div>
       </div>
     </div>
   </div>
 
-  <!-- ════════════ TESTACCIO ════════════ -->
-  <div class="neighbourhood" id="tab-testaccio">
-    <div class="neighbourhood-header">
+  <div class="nearest-highlight" id="nearest-trastevere">
+    <span class="arrow">📍</span>
+    <span>You're closest to this neighbourhood — these are your best options right now.</span>
+  </div>
+
+  <p class="section-title">Where to eat</p>
+  <div class="restaurants-grid">
+    <div class="restaurant-card">
+      <div class="card-top"><span class="card-type">Trattoria</span><span class="card-price"><span class="active-euro">€</span><span class="active-euro">€</span><span>€</span></span></div>
+      <div class="card-body">
+        <div class="card-name">Tonnarello</div>
+        <div class="card-address">Via della Paglia 1/2/3 · Trastevere</div>
+        <div class="card-desc">The Trastevere institution. Lively, loud, packed with locals and savvy visitors. Their carbonara is the real thing — silky, rich, no shortcuts.</div>
+        <div class="card-dishes"><span class="dish-tag">Carbonara</span><span class="dish-tag">Cacio e Pepe</span><span class="dish-tag">Coda alla Vaccinara</span></div>
+        <div class="card-tip"><strong>Insider tip</strong>Come at 6:30pm before the queue forms. Ask for Eslam — he'll guide you without the tourist treatment.</div>
+        <div class="card-hours"><div class="hours-dot"></div><span class="hours-text">Mon–Sun · 11:30am – 11:00pm</span></div>
+      </div>
+    </div>
+    <div class="restaurant-card">
+      <div class="card-top"><span class="card-type">Trattoria</span><span class="card-price"><span class="active-euro">€</span><span class="active-euro">€</span><span>€</span></span></div>
+      <div class="card-body">
+        <div class="card-name">Nannarella</div>
+        <div class="card-address">Piazza di S. Calisto 7/a · Trastevere</div>
+        <div class="card-desc">Excellent coda alla vaccinara and the best fried artichoke in the neighbourhood. The square setting makes for a perfect summer evening.</div>
+        <div class="card-dishes"><span class="dish-tag">Coda alla Vaccinara</span><span class="dish-tag">Carciofi alla Giudia</span><span class="dish-tag">Carbonara</span></div>
+        <div class="card-tip"><strong>Insider tip</strong>Arrive before 7pm or expect a wait. The carbonara here is genuinely one of the best you'll find without hunting.</div>
+        <div class="card-hours"><div class="hours-dot"></div><span class="hours-text">Mon–Sun · 11:30am – 11:30pm</span></div>
+      </div>
+    </div>
+    <div class="restaurant-card">
+      <div class="card-top"><span class="card-type">Street Food</span><span class="card-price"><span class="active-euro">€</span><span>€€</span></span></div>
+      <div class="card-body">
+        <div class="card-name">Supplì Roma</div>
+        <div class="card-address">Via di S. Francesco a Ripa 137 · Trastevere</div>
+        <div class="card-desc">No sign outside, just a queue. That queue is the sign. The cacio e pepe supplì alone is worth a detour across the city.</div>
+        <div class="card-dishes"><span class="dish-tag">Supplì al Telefono</span><span class="dish-tag">Pizza al taglio</span></div>
+        <div class="card-tip"><strong>Insider tip</strong>Takeaway only — grab supplì and eat on the steps of the nearby piazza. Order two minimum; one is never enough.</div>
+        <div class="card-hours"><div class="hours-dot"></div><span class="hours-text">Mon–Sat · 10:00am – 9:00pm · Closed Sunday</span></div>
+      </div>
+    </div>
+  </div>
+
+  <p class="section-title">What to eat here</p>
+  <div class="foods-grid">
+    <div class="food-item"><div class="food-emoji">🍝</div><div><div class="food-name">Carbonara</div><div class="food-note">The Trastevere trattoria is where this dish lives best — guanciale, egg, Pecorino, nothing else.</div></div></div>
+    <div class="food-item"><div class="food-emoji">🥩</div><div><div class="food-name">Coda alla Vaccinara</div><div class="food-note">Slow-braised oxtail in tomato. Saturday comfort food, now available most days in this neighbourhood.</div></div></div>
+    <div class="food-item"><div class="food-emoji">🍚</div><div><div class="food-name">Supplì al Telefono</div><div class="food-note">Fried rice ball with mozzarella that "phones home" when pulled apart. Aperitivo hour essential.</div></div></div>
+    <div class="food-item"><div class="food-emoji">🍷</div><div><div class="food-name">Vino sfuso</div><div class="food-note">House wine poured from a tap. Carafe, not bottle. Cheap, honest, Roman. Don't overthink it.</div></div></div>
+  </div>
+
+  <div class="walk-section">
+    <p class="section-title">Trastevere food walk</p>
+    <div class="walk-timeline">
+      <div class="walk-step"><div class="walk-time">8:00am</div><div class="walk-place">Bar San Calisto</div><div class="walk-what">The real neighbourhood bar. Cornetto and espresso standing at the bar, surrounded by actual Romans starting their day.</div></div>
+      <div class="walk-step"><div class="walk-time">12:30pm</div><div class="walk-place">Supplì Roma</div><div class="walk-what">Pre-lunch supplì to sharpen your appetite. Cacio e pepe flavour if available.</div></div>
+      <div class="walk-step"><div class="walk-time">1:30pm</div><div class="walk-place">Tonnarello</div><div class="walk-what">Proper Roman lunch — carbonara, half carafe of house red, bread to mop. No rushing.</div></div>
+      <div class="walk-step"><div class="walk-time">4:00pm</div><div class="walk-place">Wander the market streets</div><div class="walk-what">The neighbourhood's food shops come alive in the late afternoon. Look for forni, salumerie, and street artichoke vendors.</div></div>
+      <div class="walk-step"><div class="walk-time">8:30pm</div><div class="walk-place">Nannarella</div><div class="walk-what">Dinner: fried artichoke to start, coda alla vaccinara for the second, tiramisu if the waiter looks at you right.</div></div>
+    </div>
+  </div>
+
+</div><!-- /trastevere -->
+
+
+<!-- ═══════════════ TESTACCIO ═══════════════ -->
+<div class="neighbourhood" id="tab-testaccio">
+
+  <div class="neighbourhood-header">
+    <img class="nbh-photo-strip"
+         src="https://images.unsplash.com/photo-1555992457-b8fefdd09069?w=1400&q=80&auto=format&fit=crop"
+         alt="Testaccio Rome market food"
+         onerror="this.style.display='none'">
+    <div class="nbh-header-content">
       <div>
         <div class="nbh-eyebrow">Rione XII</div>
         <h2 class="nbh-title">Tes<em>taccio</em></h2>
-        <p class="nbh-desc">Built around a slaughterhouse. The workers took home the offal — the parts the rich didn't want — and turned them into Rome's most distinctive cuisine. Cucina povera at its most proud.</p>
+        <p class="nbh-desc-overlay">Built around a slaughterhouse. The workers took home the offal — the parts the rich didn't want — and turned them into Rome's most distinctive cuisine. Cucina povera at its most proud.</p>
       </div>
       <div class="nbh-stats">
-        <div class="stat-item"><span class="stat-val">4</span> top spots</div>
-        <div class="stat-item"><span class="stat-val">€€</span> avg price</div>
-        <div class="stat-item"><span class="stat-val">Sat</span> trippa day</div>
-      </div>
-    </div>
-
-    <div class="nearest-highlight" id="nearest-testaccio">
-      <span class="arrow">📍</span>
-      <span>You're closest to this neighbourhood — these are your best options right now.</span>
-    </div>
-
-    <p class="section-title">Where to eat</p>
-    <div class="restaurants-grid">
-      <div class="restaurant-card">
-        <div class="card-top">
-          <span class="card-type">Trattoria</span>
-          <span class="card-price"><span class="active-euro">€</span><span class="active-euro">€</span><span>€</span></span>
-        </div>
-        <div class="card-body">
-          <div class="card-name">Felice a Testaccio</div>
-          <div class="card-address">Via Mastro Giorgio 29 · Testaccio</div>
-          <div class="card-desc">The most famous address in the neighbourhood. Their cacio e pepe is prepared tableside — a controlled performance of pasta water and Pecorino that's quietly flawless.</div>
-          <div class="card-dishes">
-            <span class="dish-tag">Cacio e Pepe</span>
-            <span class="dish-tag">Carbonara</span>
-            <span class="dish-tag">Trippa alla Romana</span>
-          </div>
-          <div class="card-tip">
-            <strong>Insider tip</strong>
-            Book ahead — always. Ask for the cacio e pepe prepared at the table. The tiramisu is not on most lists but should be on yours.
-          </div>
-          <div class="card-hours">
-            <div class="hours-dot"></div>
-            <span class="hours-text">Mon–Sun · 12:30–3:30pm · 7:00–11:30pm</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="restaurant-card">
-        <div class="card-top">
-          <span class="card-type">Bakery / Pizza</span>
-          <span class="card-price"><span class="active-euro">€</span><span>€€</span></span>
-        </div>
-        <div class="card-body">
-          <div class="card-name">Antico Forno Roscioli</div>
-          <div class="card-address">Via dei Chiavari 34 · Near Campo de' Fiori</div>
-          <div class="card-desc">The benchmark for pizza al taglio in Rome. The dough ferments for 72 hours. The burrata pizza is essential. Queue moves fast — know what you want.</div>
-          <div class="card-dishes">
-            <span class="dish-tag">Pizza al Taglio</span>
-            <span class="dish-tag">Pizza Bianca</span>
-            <span class="dish-tag">Cornetto</span>
-          </div>
-          <div class="card-tip">
-            <strong>Insider tip</strong>
-            Go before noon. Takeaway only. The pizza bianca con mortadella is the purest Roman snack you'll find.
-          </div>
-          <div class="card-hours">
-            <div class="hours-dot"></div>
-            <span class="hours-text">Mon–Sun · 7:30am – 8:00pm</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="restaurant-card">
-        <div class="card-top">
-          <span class="card-type">Mercato</span>
-          <span class="card-price"><span class="active-euro">€</span><span>€€</span></span>
-        </div>
-        <div class="card-body">
-          <div class="card-name">Mercato di Testaccio</div>
-          <div class="card-address">Via Beniamino Franklin · Testaccio</div>
-          <div class="card-desc">The beating heart of the neighbourhood. Go for breakfast or lunch — stalls selling porchetta sandwiches, fresh pasta, offal, and seasonal produce. This is where Romans shop.</div>
-          <div class="card-dishes">
-            <span class="dish-tag">Porchetta sandwich</span>
-            <span class="dish-tag">Fresh pasta</span>
-            <span class="dish-tag">Seasonal produce</span>
-          </div>
-          <div class="card-tip">
-            <strong>Insider tip</strong>
-            Go on a weekday morning. Look for Stall 15 (Mordi e Vai) for a legendary offal sandwich that will either convert or confirm your feelings about offal.
-          </div>
-          <div class="card-hours">
-            <div class="hours-dot"></div>
-            <span class="hours-text">Mon–Sat · 7:00am – 3:30pm</span>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <p class="section-title">The offal question</p>
-    <div class="tips-row">
-      <div class="tip-card">
-        <div class="tip-label">Quinto Quarto</div>
-        <div class="tip-text">The "fifth quarter" — offal, intestines, tail, tripe. This was slaughterhouse workers' wages. It became Testaccio's identity. Try one dish. Start with trippa.</div>
-      </div>
-      <div class="tip-card ochre">
-        <div class="tip-label">Start here</div>
-        <div class="tip-text">Trippa alla Romana: tripe in tomato with mint and Pecorino. The flavour is rich and bright, not confrontational. It's the gentlest entry into offal Rome.</div>
-      </div>
-      <div class="tip-card red">
-        <div class="tip-label">The brave move</div>
-        <div class="tip-text">Rigatoni alla Pajata — pasta with veal intestines that still contain the mother's milk. Earthy, intense, entirely Roman. Available in very few places now.</div>
-      </div>
-    </div>
-
-    <p class="section-title">What to eat here</p>
-    <div class="foods-grid">
-      <div class="food-item">
-        <div class="food-emoji">🍝</div>
-        <div class="food-info">
-          <div class="food-name">Cacio e Pepe</div>
-          <div class="food-note">Testaccio is where this dish was perfected. Pecorino, black pepper, pasta water — a holy trinity that requires skill, not ingredients.</div>
-        </div>
-      </div>
-      <div class="food-item">
-        <div class="food-emoji">🐄</div>
-        <div class="food-info">
-          <div class="food-name">Trippa alla Romana</div>
-          <div class="food-note">Saturday tradition, but increasingly available daily. Rich tomato, mint, Pecorino. The dish that defines cucina povera.</div>
-        </div>
-      </div>
-      <div class="food-item">
-        <div class="food-emoji">🥩</div>
-        <div class="food-info">
-          <div class="food-name">Coda alla Vaccinara</div>
-          <div class="food-note">Oxtail braised for hours in tomato, celery, cocoa, and pine nuts. A dish of extraordinary patience.</div>
-        </div>
-      </div>
-      <div class="food-item">
-        <div class="food-emoji">🍕</div>
-        <div class="food-info">
-          <div class="food-name">Pizza al Taglio</div>
-          <div class="food-note">Sold by weight, eaten standing. Roscioli is the gold standard — long fermentation, perfect crust.</div>
-        </div>
+        <div class="stat-item"><span class="stat-val">4</span>top spots</div>
+        <div class="stat-item"><span class="stat-val">€€</span>avg price</div>
+        <div class="stat-item"><span class="stat-val">Sat</span>trippa day</div>
       </div>
     </div>
   </div>
 
-  <!-- ════════════ JEWISH GHETTO ════════════ -->
-  <div class="neighbourhood" id="tab-ghetto">
-    <div class="neighbourhood-header">
+  <div class="nearest-highlight" id="nearest-testaccio">
+    <span class="arrow">📍</span>
+    <span>You're closest to this neighbourhood — these are your best options right now.</span>
+  </div>
+
+  <p class="section-title">Where to eat</p>
+  <div class="restaurants-grid">
+    <div class="restaurant-card">
+      <div class="card-top"><span class="card-type">Trattoria</span><span class="card-price"><span class="active-euro">€</span><span class="active-euro">€</span><span>€</span></span></div>
+      <div class="card-body">
+        <div class="card-name">Felice a Testaccio</div>
+        <div class="card-address">Via Mastro Giorgio 29 · Testaccio</div>
+        <div class="card-desc">The most famous address in the neighbourhood. Their cacio e pepe is prepared tableside — a controlled performance of pasta water and Pecorino that's quietly flawless.</div>
+        <div class="card-dishes"><span class="dish-tag">Cacio e Pepe</span><span class="dish-tag">Carbonara</span><span class="dish-tag">Trippa alla Romana</span></div>
+        <div class="card-tip"><strong>Insider tip</strong>Book ahead — always. Ask for the cacio e pepe prepared at the table. The tiramisu is not on most lists but should be on yours.</div>
+        <div class="card-hours"><div class="hours-dot"></div><span class="hours-text">Mon–Sun · 12:30–3:30pm · 7:00–11:30pm</span></div>
+      </div>
+    </div>
+    <div class="restaurant-card">
+      <div class="card-top"><span class="card-type">Bakery / Pizza</span><span class="card-price"><span class="active-euro">€</span><span>€€</span></span></div>
+      <div class="card-body">
+        <div class="card-name">Antico Forno Roscioli</div>
+        <div class="card-address">Via dei Chiavari 34 · Near Campo de' Fiori</div>
+        <div class="card-desc">The benchmark for pizza al taglio in Rome. The dough ferments for 72 hours. The burrata pizza is essential. Queue moves fast — know what you want.</div>
+        <div class="card-dishes"><span class="dish-tag">Pizza al Taglio</span><span class="dish-tag">Pizza Bianca</span><span class="dish-tag">Cornetto</span></div>
+        <div class="card-tip"><strong>Insider tip</strong>Go before noon. Takeaway only. The pizza bianca con mortadella is the purest Roman snack you'll find.</div>
+        <div class="card-hours"><div class="hours-dot"></div><span class="hours-text">Mon–Sun · 7:30am – 8:00pm</span></div>
+      </div>
+    </div>
+    <div class="restaurant-card">
+      <div class="card-top"><span class="card-type">Mercato</span><span class="card-price"><span class="active-euro">€</span><span>€€</span></span></div>
+      <div class="card-body">
+        <div class="card-name">Mercato di Testaccio</div>
+        <div class="card-address">Via Beniamino Franklin · Testaccio</div>
+        <div class="card-desc">The beating heart of the neighbourhood. Go for breakfast or lunch — stalls selling porchetta sandwiches, fresh pasta, offal, and seasonal produce.</div>
+        <div class="card-dishes"><span class="dish-tag">Porchetta sandwich</span><span class="dish-tag">Fresh pasta</span><span class="dish-tag">Seasonal produce</span></div>
+        <div class="card-tip"><strong>Insider tip</strong>Look for Stall 15 (Mordi e Vai) for a legendary offal sandwich that will either convert or confirm your feelings about offal.</div>
+        <div class="card-hours"><div class="hours-dot"></div><span class="hours-text">Mon–Sat · 7:00am – 3:30pm</span></div>
+      </div>
+    </div>
+  </div>
+
+  <p class="section-title">The offal question</p>
+  <div class="tips-row">
+    <div class="tip-card"><div class="tip-label">Quinto Quarto</div><div class="tip-text">The "fifth quarter" — offal, intestines, tail, tripe. This was slaughterhouse workers' wages. It became Testaccio's identity. Try one dish. Start with trippa.</div></div>
+    <div class="tip-card ochre"><div class="tip-label">Start here</div><div class="tip-text">Trippa alla Romana: tripe in tomato with mint and Pecorino. Rich and bright, not confrontational. The gentlest entry into offal Rome.</div></div>
+    <div class="tip-card red"><div class="tip-label">The brave move</div><div class="tip-text">Rigatoni alla Pajata — pasta with veal intestines still containing the mother's milk. Earthy, intense, entirely Roman. Available in very few places now.</div></div>
+  </div>
+
+  <p class="section-title">What to eat here</p>
+  <div class="foods-grid">
+    <div class="food-item"><div class="food-emoji">🍝</div><div><div class="food-name">Cacio e Pepe</div><div class="food-note">Testaccio is where this dish was perfected. Pecorino, black pepper, pasta water — a holy trinity that requires skill, not ingredients.</div></div></div>
+    <div class="food-item"><div class="food-emoji">🐄</div><div><div class="food-name">Trippa alla Romana</div><div class="food-note">Saturday tradition. Rich tomato, mint, Pecorino. The dish that defines cucina povera.</div></div></div>
+    <div class="food-item"><div class="food-emoji">🥩</div><div><div class="food-name">Coda alla Vaccinara</div><div class="food-note">Oxtail braised for hours in tomato, celery, cocoa, and pine nuts. A dish of extraordinary patience.</div></div></div>
+    <div class="food-item"><div class="food-emoji">🍕</div><div><div class="food-name">Pizza al Taglio</div><div class="food-note">Sold by weight, eaten standing. Roscioli is the gold standard — long fermentation, perfect crust.</div></div></div>
+  </div>
+
+</div><!-- /testaccio -->
+
+
+<!-- ═══════════════ JEWISH GHETTO ═══════════════ -->
+<div class="neighbourhood" id="tab-ghetto">
+
+  <div class="neighbourhood-header">
+    <img class="nbh-photo-strip"
+         src="https://images.unsplash.com/photo-1585060544812-6b45742d762f?w=1400&q=80&auto=format&fit=crop"
+         alt="Rome Jewish Ghetto narrow streets"
+         onerror="this.style.display='none'">
+    <div class="nbh-header-content">
       <div>
         <div class="nbh-eyebrow">Rione XI · Since 1555</div>
         <h2 class="nbh-title">Jewish <em>Ghetto</em></h2>
-        <p class="nbh-desc">The oldest continuously inhabited Jewish neighbourhood in Europe. Its cuisine — built around restrictions, creativity, and resilience — gave Rome some of its most iconic dishes. The fried artichoke was born here.</p>
+        <p class="nbh-desc-overlay">The oldest continuously inhabited Jewish neighbourhood in Europe. Its cuisine — built around restrictions, creativity, and resilience — gave Rome some of its most iconic dishes.</p>
       </div>
       <div class="nbh-stats">
-        <div class="stat-item"><span class="stat-val">2000+</span> years of history</div>
-        <div class="stat-item"><span class="stat-val">€€</span> avg price</div>
-      </div>
-    </div>
-
-    <div class="nearest-highlight" id="nearest-ghetto">
-      <span class="arrow">📍</span>
-      <span>You're closest to this neighbourhood — these are your best options right now.</span>
-    </div>
-
-    <p class="section-title">What to eat here</p>
-    <div class="foods-grid">
-      <div class="food-item">
-        <div class="food-emoji">🌿</div>
-        <div class="food-info">
-          <div class="food-name">Carciofi alla Giudia</div>
-          <div class="food-note">The jewel of the Ghetto. Artichoke deep-fried whole until the petals crisp like chips while the heart stays tender. Simple, perfect, unrepeatable.</div>
-        </div>
-      </div>
-      <div class="food-item">
-        <div class="food-emoji">🌸</div>
-        <div class="food-info">
-          <div class="food-name">Fiori di Zucca</div>
-          <div class="food-note">Zucchini flowers stuffed with mozzarella and anchovy, battered and fried. The Ghetto serves the best version in the city.</div>
-        </div>
-      </div>
-      <div class="food-item">
-        <div class="food-emoji">🐟</div>
-        <div class="food-info">
-          <div class="food-name">Baccalà fritto</div>
-          <div class="food-note">Salt cod in a light batter, fried golden. The Jewish kitchen's answer to Lent — now a year-round Roman staple.</div>
-        </div>
-      </div>
-      <div class="food-item">
-        <div class="food-emoji">🥧</div>
-        <div class="food-info">
-          <div class="food-name">Crostata Ricotta e Visciole</div>
-          <div class="food-note">Pastry filled with sheep's ricotta and sour cherry jam — a Jewish-Roman dessert of remarkable subtlety. Find it at Roscioli or in the Ghetto bakeries.</div>
-        </div>
-      </div>
-    </div>
-
-    <p class="section-title">The seasonal rule</p>
-    <div class="tips-row">
-      <div class="tip-card ochre">
-        <div class="tip-label">Artichoke season</div>
-        <div class="tip-text">Carciofi alla Giudia is at its absolute best from February to May, when the Romanesco artichoke is in season. Out of season, politely decline.</div>
-      </div>
-      <div class="tip-card">
-        <div class="tip-label">Shabbat timing</div>
-        <div class="tip-text">Many restaurants in the Ghetto close for Shabbat (Friday evening through Saturday). Plan accordingly — some of the best spots won't be open Saturday lunch.</div>
-      </div>
-      <div class="tip-card red">
-        <div class="tip-label">Kosher rules</div>
-        <div class="tip-text">Many Ghetto restaurants are kosher — no mixing of meat and dairy. Don't be surprised when Pecorino doesn't come with the meat dishes. It's intentional and correct.</div>
-      </div>
-    </div>
-
-    <p class="section-title">Where to eat</p>
-    <div class="restaurants-grid">
-      <div class="restaurant-card">
-        <div class="card-top">
-          <span class="card-type">Trattoria · Kosher</span>
-          <span class="card-price"><span class="active-euro">€</span><span class="active-euro">€</span><span>€</span></span>
-        </div>
-        <div class="card-body">
-          <div class="card-name">Nonna Betta</div>
-          <div class="card-address">Via del Portico d'Ottavia 16 · Ghetto</div>
-          <div class="card-desc">The most beloved table in the Ghetto. Their carciofi alla Giudia is definitive — blistered petals, golden crisp, served hot and without apology.</div>
-          <div class="card-dishes">
-            <span class="dish-tag">Carciofi alla Giudia</span>
-            <span class="dish-tag">Fiori di Zucca</span>
-            <span class="dish-tag">Baccalà fritto</span>
-          </div>
-          <div class="card-tip">
-            <strong>Insider tip</strong>
-            Order the entire fried section to start — artichoke, fiori di zucca, baccalà. It is not excessive. It is the point.
-          </div>
-          <div class="card-hours">
-            <div class="hours-dot"></div>
-            <span class="hours-text">Sun–Fri · 12:00–3:00pm · 6:00–10:30pm · Closed Sat</span>
-          </div>
-        </div>
-      </div>
-      <div class="restaurant-card">
-        <div class="card-top">
-          <span class="card-type">Bakery</span>
-          <span class="card-price"><span class="active-euro">€</span><span>€€</span></span>
-        </div>
-        <div class="card-body">
-          <div class="card-name">Il Forno del Ghetto</div>
-          <div class="card-address">Via del Portico d'Ottavia 1 · Ghetto</div>
-          <div class="card-desc">The bakery that has been feeding the Ghetto for generations. The ricotta and sour cherry cake is essential. Small, unpretentious, and completely right.</div>
-          <div class="card-dishes">
-            <span class="dish-tag">Crostata Ricotta e Visciole</span>
-            <span class="dish-tag">Torta di Ricotta</span>
-          </div>
-          <div class="card-tip">
-            <strong>Insider tip</strong>
-            Go in the afternoon. Buy two slices of the crostata — one to eat there, one for later. You'll understand when you eat the first one.
-          </div>
-          <div class="card-hours">
-            <div class="hours-dot"></div>
-            <span class="hours-text">Sun–Fri · 9:00am – 7:00pm · Closed Sat</span>
-          </div>
-        </div>
+        <div class="stat-item"><span class="stat-val">2000+</span>years history</div>
+        <div class="stat-item"><span class="stat-val">€€</span>avg price</div>
       </div>
     </div>
   </div>
 
-  <!-- ════════════ PRATI ════════════ -->
-  <div class="neighbourhood" id="tab-prati">
-    <div class="neighbourhood-header">
+  <div class="nearest-highlight" id="nearest-ghetto">
+    <span class="arrow">📍</span>
+    <span>You're closest to this neighbourhood — these are your best options right now.</span>
+  </div>
+
+  <p class="section-title">What to eat here</p>
+  <div class="foods-grid">
+    <div class="food-item"><div class="food-emoji">🌿</div><div><div class="food-name">Carciofi alla Giudia</div><div class="food-note">The jewel of the Ghetto. Artichoke deep-fried whole until the petals crisp like chips. Simple, perfect, unrepeatable.</div></div></div>
+    <div class="food-item"><div class="food-emoji">🌸</div><div><div class="food-name">Fiori di Zucca</div><div class="food-note">Zucchini flowers stuffed with mozzarella and anchovy, battered and fried. The Ghetto serves the best version in the city.</div></div></div>
+    <div class="food-item"><div class="food-emoji">🐟</div><div><div class="food-name">Baccalà fritto</div><div class="food-note">Salt cod in a light batter, fried golden. The Jewish kitchen's answer to Lent — now a year-round Roman staple.</div></div></div>
+    <div class="food-item"><div class="food-emoji">🥧</div><div><div class="food-name">Crostata Ricotta e Visciole</div><div class="food-note">Pastry filled with sheep's ricotta and sour cherry jam — a Jewish-Roman dessert of remarkable subtlety.</div></div></div>
+  </div>
+
+  <p class="section-title">The seasonal rule</p>
+  <div class="tips-row">
+    <div class="tip-card ochre"><div class="tip-label">Artichoke season</div><div class="tip-text">Carciofi alla Giudia is at its best February–May, when the Romanesco artichoke is in season. Out of season, politely decline.</div></div>
+    <div class="tip-card"><div class="tip-label">Shabbat timing</div><div class="tip-text">Many restaurants close Friday evening through Saturday. Some of the best spots won't be open Saturday lunch — plan accordingly.</div></div>
+    <div class="tip-card red"><div class="tip-label">Kosher rules</div><div class="tip-text">Many Ghetto restaurants are kosher — no mixing of meat and dairy. Don't be surprised when Pecorino doesn't come with the meat dishes.</div></div>
+  </div>
+
+  <p class="section-title">Where to eat</p>
+  <div class="restaurants-grid">
+    <div class="restaurant-card">
+      <div class="card-top"><span class="card-type">Trattoria · Kosher</span><span class="card-price"><span class="active-euro">€</span><span class="active-euro">€</span><span>€</span></span></div>
+      <div class="card-body">
+        <div class="card-name">Nonna Betta</div>
+        <div class="card-address">Via del Portico d'Ottavia 16 · Ghetto</div>
+        <div class="card-desc">The most beloved table in the Ghetto. Their carciofi alla Giudia is definitive — blistered petals, golden crisp, served hot and without apology.</div>
+        <div class="card-dishes"><span class="dish-tag">Carciofi alla Giudia</span><span class="dish-tag">Fiori di Zucca</span><span class="dish-tag">Baccalà fritto</span></div>
+        <div class="card-tip"><strong>Insider tip</strong>Order the entire fried section to start. It is not excessive. It is the point.</div>
+        <div class="card-hours"><div class="hours-dot"></div><span class="hours-text">Sun–Fri · 12:00–3:00pm · 6:00–10:30pm · Closed Sat</span></div>
+      </div>
+    </div>
+    <div class="restaurant-card">
+      <div class="card-top"><span class="card-type">Bakery</span><span class="card-price"><span class="active-euro">€</span><span>€€</span></span></div>
+      <div class="card-body">
+        <div class="card-name">Il Forno del Ghetto</div>
+        <div class="card-address">Via del Portico d'Ottavia 1 · Ghetto</div>
+        <div class="card-desc">The bakery that has been feeding the Ghetto for generations. The ricotta and sour cherry cake is essential. Small, unpretentious, and completely right.</div>
+        <div class="card-dishes"><span class="dish-tag">Crostata Ricotta e Visciole</span><span class="dish-tag">Torta di Ricotta</span></div>
+        <div class="card-tip"><strong>Insider tip</strong>Go in the afternoon. Buy two slices of the crostata — one to eat there, one for later. You'll understand when you eat the first one.</div>
+        <div class="card-hours"><div class="hours-dot"></div><span class="hours-text">Sun–Fri · 9:00am – 7:00pm · Closed Sat</span></div>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /ghetto -->
+
+
+<!-- ═══════════════ PRATI ═══════════════ -->
+<div class="neighbourhood" id="tab-prati">
+
+  <div class="neighbourhood-header">
+    <img class="nbh-photo-strip"
+         src="https://images.unsplash.com/photo-1529260830199-42c24126f198?w=1400&q=80&auto=format&fit=crop"
+         alt="Rome Prati streets cafe"
+         onerror="this.style.display='none'">
+    <div class="nbh-header-content">
       <div>
         <div class="nbh-eyebrow">Across the Tiber</div>
         <h2 class="nbh-title">Pra<em>ti</em></h2>
-        <p class="nbh-desc">The Vatican's residential quarter — wide avenues, Liberty-era buildings, and a food scene that's slightly more composed than the rest of Rome. Where lawyers and clergy eat well.</p>
+        <p class="nbh-desc-overlay">The Vatican's residential quarter — wide avenues, Liberty-era buildings, and a food scene slightly more composed than the rest of Rome. Where lawyers and clergy eat well.</p>
       </div>
       <div class="nbh-stats">
-        <div class="stat-item"><span class="stat-val">3</span> top spots</div>
-        <div class="stat-item"><span class="stat-val">€€</span> avg price</div>
-      </div>
-    </div>
-
-    <div class="nearest-highlight" id="nearest-prati">
-      <span class="arrow">📍</span>
-      <span>You're closest to this neighbourhood — these are your best options right now.</span>
-    </div>
-
-    <p class="section-title">What to eat here</p>
-    <div class="foods-grid">
-      <div class="food-item">
-        <div class="food-emoji">🥐</div>
-        <div class="food-info">
-          <div class="food-name">Maritozzo con Panna</div>
-          <div class="food-note">The Roman breakfast bun — split and filled with an unreasonable amount of whipped cream. Best eaten standing at a bar before 10am.</div>
-        </div>
-      </div>
-      <div class="food-item">
-        <div class="food-emoji">🍖</div>
-        <div class="food-info">
-          <div class="food-name">Saltimbocca alla Romana</div>
-          <div class="food-note">Veal with prosciutto and sage, sautéed in butter and white wine. Prati does this well — the restaurants here know their classics.</div>
-        </div>
-      </div>
-      <div class="food-item">
-        <div class="food-emoji">☕</div>
-        <div class="food-info">
-          <div class="food-name">Morning bar culture</div>
-          <div class="food-note">Prati's wide boulevards mean good standing bars. Espresso, cornetto, quick exchange with the barista. The Roman morning ritual at its most civilised.</div>
-        </div>
-      </div>
-    </div>
-
-    <p class="section-title">Where to eat</p>
-    <div class="restaurants-grid">
-      <div class="restaurant-card">
-        <div class="card-top">
-          <span class="card-type">Pasticceria</span>
-          <span class="card-price"><span class="active-euro">€</span><span class="active-euro">€</span><span>€</span></span>
-        </div>
-        <div class="card-body">
-          <div class="card-name">Regoli Pasticceria</div>
-          <div class="card-address">Via dello Statuto 60 · Esquilino (near Prati)</div>
-          <div class="card-desc">The maritozzo here has become the standard by which all others are judged. Pillow-soft bun, cream that's lightly sweet and extremely generous. Queue is worth it.</div>
-          <div class="card-dishes">
-            <span class="dish-tag">Maritozzo con Panna</span>
-            <span class="dish-tag">Cornetto</span>
-            <span class="dish-tag">Crostata Ricotta e Visciole</span>
-          </div>
-          <div class="card-tip">
-            <strong>Insider tip</strong>
-            Cash preferred. Go early — the maritozzi sell out. Don't leave without also trying their wild strawberry tart if it's on the counter.
-          </div>
-          <div class="card-hours">
-            <div class="hours-dot"></div>
-            <span class="hours-text">Mon, Wed–Sun · 7:00am – 7:00pm · Closed Tuesday</span>
-          </div>
-        </div>
+        <div class="stat-item"><span class="stat-val">3</span>top spots</div>
+        <div class="stat-item"><span class="stat-val">€€</span>avg price</div>
       </div>
     </div>
   </div>
 
-  <!-- ════════════ CAMPO DE' FIORI ════════════ -->
-  <div class="neighbourhood" id="tab-campo">
-    <div class="neighbourhood-header">
+  <div class="nearest-highlight" id="nearest-prati">
+    <span class="arrow">📍</span>
+    <span>You're closest to this neighbourhood — these are your best options right now.</span>
+  </div>
+
+  <p class="section-title">What to eat here</p>
+  <div class="foods-grid">
+    <div class="food-item"><div class="food-emoji">🥐</div><div><div class="food-name">Maritozzo con Panna</div><div class="food-note">The Roman breakfast bun — split and filled with an unreasonable amount of whipped cream. Best eaten standing at a bar before 10am.</div></div></div>
+    <div class="food-item"><div class="food-emoji">🍖</div><div><div class="food-name">Saltimbocca alla Romana</div><div class="food-note">Veal with prosciutto and sage, sautéed in butter and white wine. Prati does this well — the restaurants here know their classics.</div></div></div>
+    <div class="food-item"><div class="food-emoji">☕</div><div><div class="food-name">Morning bar culture</div><div class="food-note">Wide boulevards mean excellent standing bars. Espresso, cornetto, quick exchange with the barista. The Roman morning ritual at its most civilised.</div></div></div>
+  </div>
+
+  <p class="section-title">Where to eat</p>
+  <div class="restaurants-grid">
+    <div class="restaurant-card">
+      <div class="card-top"><span class="card-type">Pasticceria</span><span class="card-price"><span class="active-euro">€</span><span class="active-euro">€</span><span>€</span></span></div>
+      <div class="card-body">
+        <div class="card-name">Regoli Pasticceria</div>
+        <div class="card-address">Via dello Statuto 60 · Esquilino</div>
+        <div class="card-desc">The maritozzo here has become the standard by which all others are judged. Pillow-soft bun, cream that's lightly sweet and extremely generous.</div>
+        <div class="card-dishes"><span class="dish-tag">Maritozzo con Panna</span><span class="dish-tag">Cornetto</span><span class="dish-tag">Crostata Ricotta e Visciole</span></div>
+        <div class="card-tip"><strong>Insider tip</strong>Cash preferred. Go early — the maritozzi sell out. Don't leave without also trying the wild strawberry tart.</div>
+        <div class="card-hours"><div class="hours-dot"></div><span class="hours-text">Mon, Wed–Sun · 7:00am – 7:00pm · Closed Tuesday</span></div>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /prati -->
+
+
+<!-- ═══════════════ CAMPO DE' FIORI ═══════════════ -->
+<div class="neighbourhood" id="tab-campo">
+
+  <div class="neighbourhood-header">
+    <img class="nbh-photo-strip"
+         src="https://images.unsplash.com/photo-1552832230-c0197dd311b5?w=1400&q=80&auto=format&fit=crop"
+         alt="Campo de Fiori market Rome"
+         onerror="this.style.display='none'">
+    <div class="nbh-header-content">
       <div>
         <div class="nbh-eyebrow">Campo de' Fiori</div>
         <h2 class="nbh-title">Campo <em>de' Fiori</em></h2>
-        <p class="nbh-desc">The piazza that doubles as a market by morning and a bar by night. Around it, some of Rome's best pasta addresses — including the legendary Roscioli family's two institutions.</p>
+        <p class="nbh-desc-overlay">The piazza that doubles as a market by morning and a bar by night. Around it, some of Rome's best pasta addresses — including the legendary Roscioli family's two institutions.</p>
       </div>
       <div class="nbh-stats">
-        <div class="stat-item"><span class="stat-val">3</span> top spots</div>
-        <div class="stat-item"><span class="stat-val">€€–€€€</span> range</div>
-      </div>
-    </div>
-
-    <div class="nearest-highlight" id="nearest-campo">
-      <span class="arrow">📍</span>
-      <span>You're closest to this neighbourhood — these are your best options right now.</span>
-    </div>
-
-    <p class="section-title">Where to eat</p>
-    <div class="restaurants-grid">
-      <div class="restaurant-card">
-        <div class="card-top">
-          <span class="card-type">Bakery</span>
-          <span class="card-price"><span class="active-euro">€</span><span>€€</span></span>
-        </div>
-        <div class="card-body">
-          <div class="card-name">Antico Forno Roscioli</div>
-          <div class="card-address">Via dei Chiavari 34</div>
-          <div class="card-desc">72-hour fermented dough, wood-fired oven, toppings that change with the season. The burrata pizza is the one to order. Line moves fast; know your order before you reach the counter.</div>
-          <div class="card-dishes">
-            <span class="dish-tag">Pizza al Taglio</span>
-            <span class="dish-tag">Pizza Bianca con Mortadella</span>
-            <span class="dish-tag">Cornetto</span>
-          </div>
-          <div class="card-tip">
-            <strong>Insider tip</strong>
-            Go before noon to avoid the tourist wave. The pizza bianca with mortadella costs under €3 and is the best snack in the city at that price.
-          </div>
-          <div class="card-hours">
-            <div class="hours-dot"></div>
-            <span class="hours-text">Mon–Sun · 7:30am – 8:00pm</span>
-          </div>
-        </div>
-      </div>
-      <div class="restaurant-card">
-        <div class="card-top">
-          <span class="card-type">Deli / Restaurant</span>
-          <span class="card-price"><span class="active-euro">€</span><span class="active-euro">€</span><span class="active-euro">€</span></span>
-        </div>
-        <div class="card-body">
-          <div class="card-name">Ristorante Roscioli</div>
-          <div class="card-address">Via dei Giubbonari 21/22</div>
-          <div class="card-desc">The other Roscioli — a deli-restaurant with a wine list that makes sommeliers weep. The pasta is extraordinary; the cacio e pepe is among the best in Rome. Reservations essential.</div>
-          <div class="card-dishes">
-            <span class="dish-tag">Cacio e Pepe</span>
-            <span class="dish-tag">Amatriciana</span>
-            <span class="dish-tag">Burrata</span>
-          </div>
-          <div class="card-tip">
-            <strong>Insider tip</strong>
-            Book at least a week ahead for dinner. Lunch is slightly easier. Order the house cured meats to start — they source everything themselves.
-          </div>
-          <div class="card-hours">
-            <div class="hours-dot"></div>
-            <span class="hours-text">Mon–Sat · 12:30–3:30pm · 7:30–11:00pm</span>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <p class="section-title">What to eat here</p>
-    <div class="foods-grid">
-      <div class="food-item">
-        <div class="food-emoji">🍕</div>
-        <div class="food-info">
-          <div class="food-name">Pizza Bianca</div>
-          <div class="food-note">Plain white pizza, brushed with olive oil and salt. The Roman answer to bread. Get it with mortadella.</div>
-        </div>
-      </div>
-      <div class="food-item">
-        <div class="food-emoji">🍝</div>
-        <div class="food-info">
-          <div class="food-name">Amatriciana</div>
-          <div class="food-note">The sister of gricia — guanciale and tomato, Pecorino on top. The dish that Amatrice gave to Rome.</div>
-        </div>
-      </div>
-      <div class="food-item">
-        <div class="food-emoji">🫙</div>
-        <div class="food-info">
-          <div class="food-name">Gnocchi alla Romana</div>
-          <div class="food-note">Semolina discs, baked with butter and Parmigiano. Served on Thursdays in traditional homes — now available here daily.</div>
-        </div>
+        <div class="stat-item"><span class="stat-val">3</span>top spots</div>
+        <div class="stat-item"><span class="stat-val">€€–€€€</span>range</div>
       </div>
     </div>
   </div>
 
-  <!-- ════════════ MONTI ════════════ -->
-  <div class="neighbourhood" id="tab-monti">
-    <div class="neighbourhood-header">
+  <div class="nearest-highlight" id="nearest-campo">
+    <span class="arrow">📍</span>
+    <span>You're closest to this neighbourhood — these are your best options right now.</span>
+  </div>
+
+  <p class="section-title">Where to eat</p>
+  <div class="restaurants-grid">
+    <div class="restaurant-card">
+      <div class="card-top"><span class="card-type">Bakery</span><span class="card-price"><span class="active-euro">€</span><span>€€</span></span></div>
+      <div class="card-body">
+        <div class="card-name">Antico Forno Roscioli</div>
+        <div class="card-address">Via dei Chiavari 34</div>
+        <div class="card-desc">72-hour fermented dough, wood-fired oven, toppings that change with the season. The burrata pizza is the one to order. Line moves fast — know your order before you reach the counter.</div>
+        <div class="card-dishes"><span class="dish-tag">Pizza al Taglio</span><span class="dish-tag">Pizza Bianca con Mortadella</span><span class="dish-tag">Cornetto</span></div>
+        <div class="card-tip"><strong>Insider tip</strong>Go before noon. The pizza bianca with mortadella costs under €3 and is the best snack in the city at that price.</div>
+        <div class="card-hours"><div class="hours-dot"></div><span class="hours-text">Mon–Sun · 7:30am – 8:00pm</span></div>
+      </div>
+    </div>
+    <div class="restaurant-card">
+      <div class="card-top"><span class="card-type">Deli / Restaurant</span><span class="card-price"><span class="active-euro">€</span><span class="active-euro">€</span><span class="active-euro">€</span></span></div>
+      <div class="card-body">
+        <div class="card-name">Ristorante Roscioli</div>
+        <div class="card-address">Via dei Giubbonari 21/22</div>
+        <div class="card-desc">A deli-restaurant with a wine list that makes sommeliers weep. The pasta is extraordinary; the cacio e pepe is among the best in Rome. Reservations essential.</div>
+        <div class="card-dishes"><span class="dish-tag">Cacio e Pepe</span><span class="dish-tag">Amatriciana</span><span class="dish-tag">Burrata</span></div>
+        <div class="card-tip"><strong>Insider tip</strong>Book at least a week ahead for dinner. Order the house cured meats to start — they source everything themselves.</div>
+        <div class="card-hours"><div class="hours-dot"></div><span class="hours-text">Mon–Sat · 12:30–3:30pm · 7:30–11:00pm</span></div>
+      </div>
+    </div>
+  </div>
+
+  <p class="section-title">What to eat here</p>
+  <div class="foods-grid">
+    <div class="food-item"><div class="food-emoji">🍕</div><div><div class="food-name">Pizza Bianca</div><div class="food-note">Plain white pizza, brushed with olive oil and salt. The Roman answer to bread. Get it with mortadella.</div></div></div>
+    <div class="food-item"><div class="food-emoji">🍝</div><div><div class="food-name">Amatriciana</div><div class="food-note">Guanciale and tomato, Pecorino on top. The dish that Amatrice gave to Rome.</div></div></div>
+    <div class="food-item"><div class="food-emoji">🫙</div><div><div class="food-name">Gnocchi alla Romana</div><div class="food-note">Semolina discs baked with butter and Parmigiano. Served on Thursdays in traditional homes.</div></div></div>
+  </div>
+
+</div><!-- /campo -->
+
+
+<!-- ═══════════════ MONTI ═══════════════ -->
+<div class="neighbourhood" id="tab-monti">
+
+  <div class="neighbourhood-header">
+    <img class="nbh-photo-strip"
+         src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=1400&q=80&auto=format&fit=crop"
+         alt="Monti Rome wine bar"
+         onerror="this.style.display='none'">
+    <div class="nbh-header-content">
       <div>
         <div class="nbh-eyebrow">Rione I · The Oldest</div>
         <h2 class="nbh-title">Mon<em>ti</em></h2>
-        <p class="nbh-desc">Rome's first rione — ancient, bohemian, and increasingly good at wine. Independent enotece sit next to traditional restaurants that have barely changed since the 1970s. The best of both Romes.</p>
+        <p class="nbh-desc-overlay">Rome's first rione — ancient, bohemian, and increasingly good at wine. Independent enotece sit next to traditional restaurants that have barely changed since the 1970s.</p>
       </div>
       <div class="nbh-stats">
-        <div class="stat-item"><span class="stat-val">3</span> top spots</div>
-        <div class="stat-item"><span class="stat-val">€€</span> avg price</div>
-      </div>
-    </div>
-
-    <div class="nearest-highlight" id="nearest-monti">
-      <span class="arrow">📍</span>
-      <span>You're closest to this neighbourhood — these are your best options right now.</span>
-    </div>
-
-    <p class="section-title">What to eat here</p>
-    <div class="foods-grid">
-      <div class="food-item">
-        <div class="food-emoji">🍷</div>
-        <div class="food-info">
-          <div class="food-name">Natural wine + cicchetti</div>
-          <div class="food-note">Monti leads Rome's natural wine scene. Small plates alongside orange wines and skin-contact whites — a new Roman ritual that pairs beautifully with old recipes.</div>
-        </div>
-      </div>
-      <div class="food-item">
-        <div class="food-emoji">🍝</div>
-        <div class="food-info">
-          <div class="food-name">Cacio e Pepe</div>
-          <div class="food-note">Several small trattorias here do a very serious cacio e pepe in a neighbourhood that hasn't been ruined by tourism yet.</div>
-        </div>
-      </div>
-      <div class="food-item">
-        <div class="food-emoji">🫙</div>
-        <div class="food-info">
-          <div class="food-name">Fagioli con le Cotiche</div>
-          <div class="food-note">Beans and pork rind — the ultimate peasant dish, now served in Monti's more honest trattorias. Warming, ancient, entirely Roman.</div>
-        </div>
-      </div>
-    </div>
-
-    <p class="section-title">The Monti approach</p>
-    <div class="tips-row">
-      <div class="tip-card">
-        <div class="tip-label">Aperitivo hour</div>
-        <div class="tip-text">Monti has the best aperitivo scene in Rome. From 6–8pm, small enotece serve snacks with natural wine at prices that make the rest of the city look embarrassed.</div>
-      </div>
-      <div class="tip-card ochre">
-        <div class="tip-label">Avoid the main square</div>
-        <div class="tip-text">Piazza della Madonna dei Monti is beautiful but its restaurants are tourist-facing. Walk one block in any direction to find the real neighbourhood.</div>
+        <div class="stat-item"><span class="stat-val">3</span>top spots</div>
+        <div class="stat-item"><span class="stat-val">€€</span>avg price</div>
       </div>
     </div>
   </div>
+
+  <div class="nearest-highlight" id="nearest-monti">
+    <span class="arrow">📍</span>
+    <span>You're closest to this neighbourhood — these are your best options right now.</span>
+  </div>
+
+  <p class="section-title">What to eat here</p>
+  <div class="foods-grid">
+    <div class="food-item"><div class="food-emoji">🍷</div><div><div class="food-name">Natural wine + cicchetti</div><div class="food-note">Monti leads Rome's natural wine scene. Small plates alongside orange wines and skin-contact whites.</div></div></div>
+    <div class="food-item"><div class="food-emoji">🍝</div><div><div class="food-name">Cacio e Pepe</div><div class="food-note">Several small trattorias here do a very serious cacio e pepe in a neighbourhood that hasn't been ruined by tourism yet.</div></div></div>
+    <div class="food-item"><div class="food-emoji">🫙</div><div><div class="food-name">Fagioli con le Cotiche</div><div class="food-note">Beans and pork rind — the ultimate peasant dish, served in Monti's more honest trattorias. Warming, ancient, entirely Roman.</div></div></div>
+  </div>
+
+  <p class="section-title">The Monti approach</p>
+  <div class="tips-row">
+    <div class="tip-card"><div class="tip-label">Aperitivo hour</div><div class="tip-text">Monti has the best aperitivo scene in Rome. From 6–8pm, small enotece serve snacks with natural wine at prices that make the rest of the city look embarrassed.</div></div>
+    <div class="tip-card ochre"><div class="tip-label">Avoid the main square</div><div class="tip-text">Piazza della Madonna dei Monti is beautiful but its restaurants are tourist-facing. Walk one block in any direction to find the real neighbourhood.</div></div>
+  </div>
+
+</div><!-- /monti -->
 
 </main>
 </div>
 
-<!-- FOOTER -->
+<!-- ═══ FOOTER ═══ -->
 <footer class="footer">
   <div class="footer-logo">Taste &amp; Wander</div>
   <p class="footer-sub">Traditional food guides for the curious traveller</p>
   <div class="footer-links">
     <a href="https://tasteandwander.github.io/website/rome.html">Traditional Dishes of Rome →</a>
     <a href="#">Amsterdam</a>
-  
   </div>
 </footer>
 
 <script>
-// ── NEIGHBOURHOOD COORDINATES (city centre bounding boxes)
 const neighbourhoods = [
-  {
-    id: 'trastevere',
-    name: 'Trastevere',
-    lat: 41.8895, lng: 12.4711,
-    bounds: { north: 41.8960, south: 41.8820, east: 12.4790, west: 12.4620 }
-  },
-  {
-    id: 'testaccio',
-    name: 'Testaccio',
-    lat: 41.8785, lng: 12.4764,
-    bounds: { north: 41.8860, south: 41.8720, east: 12.4870, west: 12.4660 }
-  },
-  {
-    id: 'ghetto',
-    name: 'Jewish Ghetto',
-    lat: 41.8934, lng: 12.4766,
-    bounds: { north: 41.8970, south: 41.8890, east: 12.4830, west: 12.4700 }
-  },
-  {
-    id: 'prati',
-    name: 'Prati',
-    lat: 41.9065, lng: 12.4644,
-    bounds: { north: 41.9150, south: 41.8980, east: 12.4780, west: 12.4520 }
-  },
-  {
-    id: 'campo',
-    name: "Campo de' Fiori",
-    lat: 41.8955, lng: 12.4722,
-    bounds: { north: 41.9000, south: 41.8910, east: 12.4810, west: 12.4640 }
-  },
-  {
-    id: 'monti',
-    name: 'Monti',
-    lat: 41.8942, lng: 12.4920,
-    bounds: { north: 41.9000, south: 41.8880, east: 12.5020, west: 12.4820 }
-  }
+  { id: 'trastevere', name: 'Trastevere',      lat: 41.8895, lng: 12.4711 },
+  { id: 'testaccio',  name: 'Testaccio',        lat: 41.8785, lng: 12.4764 },
+  { id: 'ghetto',     name: 'Jewish Ghetto',    lat: 41.8934, lng: 12.4766 },
+  { id: 'prati',      name: 'Prati',            lat: 41.9065, lng: 12.4644 },
+  { id: 'campo',      name: "Campo de' Fiori",  lat: 41.8955, lng: 12.4722 },
+  { id: 'monti',      name: 'Monti',            lat: 41.8942, lng: 12.4920 }
 ];
 
 function haversineKm(lat1, lng1, lat2, lng2) {
@@ -1708,9 +1365,9 @@ function findNearest(userLat, userLng) {
 }
 
 function locateMe() {
-  const dot = document.getElementById('locationDot');
+  const dot  = document.getElementById('locationDot');
   const text = document.getElementById('locationText');
-  const btn = document.getElementById('locateBtn');
+  const btn  = document.getElementById('locateBtn');
 
   if (!navigator.geolocation) {
     text.textContent = 'Geolocation not supported by your browser';
@@ -1719,12 +1376,13 @@ function locateMe() {
   }
 
   text.textContent = 'Detecting location…';
-  btn.textContent = 'Locating…';
+  btn.textContent  = 'Locating…';
 
   navigator.geolocation.getCurrentPosition(
     (pos) => {
       const { latitude, longitude } = pos.coords;
       dot.className = 'location-dot active';
+      btn.textContent = 'Located';
 
       const { nbh, distKm } = findNearest(latitude, longitude);
       const distStr = distKm < 1
@@ -1732,60 +1390,40 @@ function locateMe() {
         : distKm.toFixed(1) + ' km away';
 
       if (distKm > 50) {
-        // User not in Rome
         text.textContent = `You're not in Rome right now (${distKm.toFixed(0)} km away) — but you can still explore`;
-        btn.textContent = 'Located';
       } else {
         text.textContent = `You're in Rome — nearest food neighbourhood: ${nbh.name} (${distStr})`;
-        btn.textContent = 'Located';
 
-        // Show nearest badge
-        const badge = document.getElementById('nearestBadge');
-        badge.classList.add('show');
+        document.getElementById('nearestBadge').classList.add('show');
         document.getElementById('nearestName').textContent = nbh.name;
 
-        // Show highlight in that neighbourhood
         const highlight = document.getElementById('nearest-' + nbh.id);
         if (highlight) highlight.classList.add('show');
 
-        // Switch to that tab
         const tabEl = document.querySelector(`[data-tab="${nbh.id}"]`);
         if (tabEl) switchTab(nbh.id, tabEl);
 
-        // Smooth scroll to guide
         document.getElementById('guide').scrollIntoView({ behavior: 'smooth', block: 'start' });
       }
     },
     (err) => {
       dot.className = 'location-dot error';
       btn.textContent = 'Locate me';
-      if (err.code === 1) {
-        text.textContent = 'Location permission denied — browse by neighbourhood below';
-      } else {
-        text.textContent = 'Could not detect location — browse by neighbourhood below';
-      }
+      text.textContent = err.code === 1
+        ? 'Location permission denied — browse by neighbourhood below'
+        : 'Could not detect location — browse by neighbourhood below';
     },
     { timeout: 8000, maximumAge: 60000 }
   );
 }
 
 function switchTab(id, el) {
-  // Deactivate all
   document.querySelectorAll('.neighbourhood').forEach(n => n.classList.remove('active'));
   document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
-
-  // Activate selected
   const panel = document.getElementById('tab-' + id);
   if (panel) panel.classList.add('active');
   if (el) el.classList.add('active');
 }
-
-// Neighbourhood overview cards
-document.querySelectorAll('.nbh-card').forEach(card => {
-  card.addEventListener('click', () => {
-    document.getElementById('guide').scrollIntoView({ behavior: 'smooth' });
-  });
-});
 </script>
 </body>
 </html>
