@@ -727,7 +727,46 @@
     background: var(--parchment);
     padding: 0.15rem 0.4rem;
   }
+   .back-home-container {
+    text-align: center;
+    margin: 20px 0;
+}
 
+.back-home-button {
+    background-color: #f5f0e8;
+    color: white;
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 6px;
+    font-size: 1.1rem;
+    transition: background-color 0.3s;
+}
+
+.back-home-button:hover {
+    background-color: #f5f0e8;
+}
+        
+        .home-btn {
+            position: fixed;
+            top: 30px;
+            right: 30px;
+            background: #f5f0e8;
+            color: white;
+            padding: 12px 28px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            box-shadow: 0 4px 15px rgba(139, 38, 53, 0.4);
+            transition: all 0.3s ease;
+            z-index: 1000;
+            font-size: 16px;
+        }
+
+        .home-btn:hover {
+            background: #f5f0e8;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(139, 38, 53, 0.6);
+        }
   /* ── ANIMATIONS ── */
   @keyframes fadeUp {
     from { opacity: 0; transform: translateY(20px); }
@@ -842,7 +881,7 @@
 
 <!-- MAIN -->
 <main class="main">
-
+<a href="index.html" class="home-btn">← Homepage</a>
   <!-- ════════════ OVERVIEW ════════════ -->
   <div class="neighbourhood active" id="tab-overview">
     <div class="overview-intro">
@@ -871,8 +910,8 @@
       <a class="nbh-card" onclick="switchTab('ghetto', document.querySelector('[data-tab=ghetto]'))">
         <div class="nbh-card-name">Jewish Ghetto</div>
         <div class="nbh-card-tagline">Two thousand years of cooking locked into a few narrow streets</div>
-        <div class="nbh-card-tags">
-        <!--   <span class="mini-tag">Carciofi alla Giudia</span><span class="mini-tag">Baccalà</span><span class="mini-tag">Fiori di Zucca</span>
+         <!--   <div class="nbh-card-tags">
+        <span class="mini-tag">Carciofi alla Giudia</span><span class="mini-tag">Baccalà</span><span class="mini-tag">Fiori di Zucca</span>
         </div>-->
       </a>
       <a class="nbh-card" onclick="switchTab('prati', document.querySelector('[data-tab=prati]'))">
@@ -919,6 +958,29 @@
     </div>
   </div>
 
+<p class="section-title">Traditional Dishes </p>
+    <div class="tips-row">
+      <div class="tip-card ochre">
+        <div class="tip-label">Supplì</div>
+        <div class="tip-text">
+        Golden-fried rice balls filled with rich ragù or vibrant tomato sauce, and a core of mozzarella that stretches with every bite.</div>
+      </div>
+      <div class="tip-card ">
+        <div class="tip-label">Amatriciana</div>
+        <div class="tip-text"> Pasta bathed in tomato sauce slowly simmered to deepen its flavor, enriched by tender guanciale.</div>
+      </div>
+      <div class="tip-card ochre">
+        <div class="tip-label">Carciofi alla Giudia</div>
+        <div class="tip-text">Artichokes, tender on the inside and crisp on the outside, fried with just a touch of salt— from the Roman-Jewish culinary tradition</div>
+      </div>
+      <div class="tip-card">
+        <div class="tip-label">Pizza al Taglio</div>
+        <div class="tip-text">Slices of airy dough baked in long pans, toppings like edible mosaics.</div>
+      </div>
+    </div>
+  </div>
+
+  
   <!-- ════════════ TRASTEVERE ════════════ -->
   <div class="neighbourhood" id="tab-trastevere">
     <div class="neighbourhood-header">
