@@ -848,6 +848,8 @@
     <li class="nav-tab"        data-tab="sangio"       onclick="switchTab('sangio',this)">San Giovanni</li>
     <li class="nav-tab"        data-tab="coppede"       onclick="switchTab('coppede',this)">Coppedè</li>
     <li class="nav-tab"        data-tab="sanlollo"       onclick="switchTab('sanlollo',this)">San Lorenzo</li>
+    <li class="nav-tab"        data-tab="centro"       onclick="switchTab('centro',this)">Centro Storico</li>
+    <li class="nav-tab"        data-tab="pigneot"       onclick="switchTab('pigneto',this)">Pigneto</li>
 
   </ul>
 </nav>
@@ -900,12 +902,20 @@
       <div class="nbh-card-name">San Giovanni</div>
       <div class="nbh-card-tagline">Crowned by the legendary Via Appia Antica, the Regina Viarum, this district is rich of monumental archaeological sites.</div>
     </a>
+     <a class="nbh-card" onclick="switchTab('centro',document.querySelector('[data-tab=centro]'))">
+      <div class="nbh-card-name">Centro Storico</div>
+      <div class="nbh-card-tagline">TBC.</div>
+     </a>
      <a class="nbh-card" onclick="switchTab('sanlollo',document.querySelector('[data-tab=sanlollo]'))">
       <div class="nbh-card-name">San Lorenzo</div>
       <div class="nbh-card-tagline">TBC.</div>
     </a>
      <a class="nbh-card" onclick="switchTab('coppede',document.querySelector('[data-tab=coppede]'))">
       <div class="nbh-card-name">Coppedè</div>
+      <div class="nbh-card-tagline">TBC.</div>
+    </a>
+     <a class="nbh-card" onclick="switchTab('pigneto',document.querySelector('[data-tab=pigneto]'))">
+      <div class="nbh-card-name">Pigneto</div>
       <div class="nbh-card-tagline">TBC.</div>
     </a>
   </div>
@@ -925,7 +935,7 @@
       <div class="tip-label">Rule 03 — Coffee</div>
       <div class="tip-text">You stand at the bar. Three sips. No cappuccino after 11am if you want to be taken seriously.</div>
     </div>
-    <div class=" tip-card cream">
+    <div class=" tip-card darkcream">
       <div class="tip-label">Rule 04 — The Bill</div>
       <div class="tip-text">Coperto is normal and legal. Bread brought without asking means you're paying for it. No complaints.</div>
     </div>
