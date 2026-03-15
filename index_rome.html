@@ -54,9 +54,9 @@
     position: absolute; inset: 0;
     background: linear-gradient(
       to bottom,
-      rgba(30,22,18,0.50) 0%,
-      rgba(30,22,18,0.62) 60%,
-      rgba(30,22,18,0.88) 100%
+      rgba(30,22,18,0.15) 0%,
+      rgba(30,22,18,0.30) 60%,
+      rgba(30,22,18,0.65) 100%
     );
   }
   .hero-tint {
@@ -484,6 +484,8 @@
   .tip-card { padding: 1.2rem 1.4rem; background: var(--charcoal); color: var(--cream); }
   .tip-card.ochre { background: var(--ochre); color: var(--charcoal); }
   .tip-card.red { background: var(--deep-red); }
+  .tip-card.terracotta { background: var(--terracotta); color: var(--charcoal); }
+  .tip-card.cream { background: var(--cream); color: var(--charcoal); }
   .tip-label {
     font-family: 'DM Mono', monospace;
     font-size: 0.58rem;
@@ -816,6 +818,8 @@
     <li class="nav-tab"        data-tab="prati"       onclick="switchTab('prati',this)">Prati</li>
     <li class="nav-tab"        data-tab="campo"       onclick="switchTab('campo',this)">Campo de' Fiori</li>
     <li class="nav-tab"        data-tab="monti"       onclick="switchTab('monti',this)">Monti</li>
+    <li class="nav-tab"        data-tab="garba"       onclick="switchTab('garbatella',this)">Garbatella</li>
+    <li class="nav-tab"        data-tab="sangio"       onclick="switchTab('sangio',this)">San Giovanni</li>
   </ul>
 </nav>
 
@@ -859,6 +863,14 @@
       <div class="nbh-card-name">Monti</div>
       <div class="nbh-card-tagline">Rome's hippest rione — natural wine bars meet ancient recipes</div>
     </a>
+     <a class="nbh-card" onclick="switchTab('garba',document.querySelector('[data-tab=garba]'))">
+      <div class="nbh-card-name">Garbatella</div>
+      <div class="nbh-card-tagline">Conceived in the 1920s as a haven for dockworkers, today visionary urban design meets the authentic flavors of traditional Roman cuisine.</div>
+    </a>
+     <a class="nbh-card" onclick="switchTab('sangio',document.querySelector('[data-tab=sangio]'))">
+      <div class="nbh-card-name">San Giovanni</div>
+      <div class="nbh-card-tagline">Crowned by the legendary Via Appia Antica, the Regina Viarum, this district is rich of monumental archaeological sites.</div>
+    </a>
   </div>
 
   <!-- Golden Rules -->
@@ -872,7 +884,7 @@
       <div class="tip-label">Rule 02 — Pizza</div>
       <div class="tip-text">Roman pizza is thin and crisp. Thick dough is Neapolitan — beautiful, but calling it Roman is an affront.</div>
     </div>
-    <div class="tip-card ochre">
+    <div class="tip-card cream">
       <div class="tip-label">Rule 03 — Coffee</div>
       <div class="tip-text">You stand at the bar. Three sips. No cappuccino after 11am if you want to be taken seriously.</div>
     </div>
@@ -980,12 +992,12 @@
     <div class="restaurant-card">
       <div class="card-top"><span class="card-type">Trattoria</span><span class="card-price"><span class="active-euro">€</span><span class="active-euro">€</span><span>€</span></span></div>
       <div class="card-body">
-        <div class="card-name">Nannarella</div>
-        <div class="card-address">Piazza di S. Calisto 7/a · Trastevere</div>
+        <div class="card-name">Rione 13 Ristorante</div>
+        <div class="card-address"> Via Roma Libera, 19 · Trastevere</div>
         <div class="card-desc">Excellent coda alla vaccinara and the best fried artichoke in the neighbourhood. The square setting makes for a perfect summer evening.</div>
         <div class="card-dishes"><span class="dish-tag">Coda alla Vaccinara</span><span class="dish-tag">Carciofi alla Giudia</span><span class="dish-tag">Carbonara</span></div>
         <div class="card-tip"><strong>Insider tip</strong>Arrive before 7pm or expect a wait. The carbonara here is genuinely one of the best you'll find without hunting.</div>
-        <div class="card-hours"><div class="hours-dot"></div><span class="hours-text">Mon–Sun · 11:30am – 11:30pm</span></div>
+        <div class="card-hours"><div class="hours-dot"></div><span class="hours-text">Mon–Sun · 9:00am – 11:30pm</span></div>
       </div>
     </div>
     <div class="restaurant-card">
@@ -1063,7 +1075,7 @@
         <div class="card-hours"><div class="hours-dot"></div><span class="hours-text">Mon–Sun · 12:30–3:30pm · 7:00–11:30pm</span></div>
       </div>
     </div>
-    <div class="restaurant-card">
+   <!-- <div class="restaurant-card">
       <div class="card-top"><span class="card-type">Bakery / Pizza</span><span class="card-price"><span class="active-euro">€</span><span>€€</span></span></div>
       <div class="card-body">
         <div class="card-name">Antico Forno Roscioli</div>
@@ -1072,6 +1084,15 @@
         <div class="card-dishes"><span class="dish-tag">Pizza al Taglio</span><span class="dish-tag">Pizza Bianca</span><span class="dish-tag">Cornetto</span></div>
         <div class="card-tip"><strong>Insider tip</strong>Go before noon. Takeaway only. The pizza bianca con mortadella is the purest Roman snack you'll find.</div>
         <div class="card-hours"><div class="hours-dot"></div><span class="hours-text">Mon–Sun · 7:30am – 8:00pm</span></div>
+      </div>
+    </div>-->
+    <div class="restaurant-card">
+      <div class="card-top"><span class="card-type">Trattoria</span><span class="card-price"><span class="active-euro">€</span><span>€€</span></span></div>
+      <div class="card-body">
+        <div class="card-name">Flavio al Velavevodetto</div>
+        <div class="card-address">Via di Monte Testaccio 97 · Testaccio</div>
+        <div class="card-desc">Here Carbonara docet - winner of the Carbonara Day -, and other delicioous dishes of the roman cuisine in a characteristic location.</div>
+        <div class="card-hours"><div class="hours-dot"></div><span class="hours-text">Mon–Sun · 12:30pm – 3:00pm, 7:30pm - 11pm </span></div>
       </div>
     </div>
     <div class="restaurant-card">
@@ -1208,8 +1229,8 @@
     <div class="food-item"><div class="food-emoji">☕</div><div><div class="food-name">Morning bar culture</div><div class="food-note">Wide boulevards mean excellent standing bars. Espresso, cornetto, quick exchange with the barista. The Roman morning ritual at its most civilised.</div></div></div>
   </div>
 
-  <p class="section-title">Where to eat</p>
-  <div class="restaurants-grid">
+ <p class="section-title">Where to eat</p>
+  <!-- <div class="restaurants-grid">
     <div class="restaurant-card">
       <div class="card-top"><span class="card-type">Pasticceria</span><span class="card-price"><span class="active-euro">€</span><span class="active-euro">€</span><span>€</span></span></div>
       <div class="card-body">
@@ -1221,8 +1242,51 @@
         <div class="card-hours"><div class="hours-dot"></div><span class="hours-text">Mon, Wed–Sun · 7:00am – 7:00pm · Closed Tuesday</span></div>
       </div>
     </div>
-  </div>
-
+  </div> -->
+    <div class="restaurant-card">
+      <div class="card-top"><span class="card-type">Trattoria</span><span class="card-price"><span class="active-euro">€</span><span class="active-euro">€</span><span>€</span></span></div>
+      <div class="card-body">
+        <div class="card-name">Da Zacca ar 20</div>
+        <div class="card-address">Via Domenico Millelire 20 · Prati</div>
+        <div class="card-desc">A rustic sanctuary in the heart of Prati. It’s unpretentious, loud, and deeply Roman—a place where the recipes feel like they’ve been handed down through generations.</div>
+        <div class="card-dishes"><span class="dish-tag">Carbonara</span><span class="dish-tag">Amatriciana</span><span class="dish-tag">Trippa alla Romana</span></div>
+        <div class="card-tip"><strong>Insider tip</strong>Book ahead — always. </div>
+        <div class="card-hours"><div class="hours-dot"></div><span class="hours-text">Mon–Thu · 7:30–11:30pm; · Fri-Sun 12:30-3:00pm, 7:30–11:00pm</span></div>
+      </div>
+    </div>
+   <div class="restaurant-card">
+      <div class="card-top"><span class="card-type"> Aperitivo</span><span class="card-price"><span class="active-euro">€</span><span class="active-euro">€</span><span>€</span></span></div>
+      <div class="card-body">
+        <div class="card-name">Vanni</div>
+        <div class="card-address">Via Col di Lana 10 · Prati</div>
+        <div class="card-desc">A Prati institution since 1929. Neighborhood’s elegance meets the ritual of the aperitivo. </div>
+        <div class="card-dishes"><span class="dish-tag">Signature Cocktail Vanni</span><span class="dish-tag">Pizzette di Sfoglia</span></div>
+        <div class="card-tip"><strong>Insider tip</strong>Grab a Vanni and enjoy the happy hour, and more.</div>
+        <div class="card-hours"><div class="hours-dot"></div><span class="hours-text">Mon–Sun · 7:00am-00:00am </span></div>
+      </div>
+    </div>
+  <div class="restaurant-card">
+      <div class="card-top"><span class="card-type">Trattoria</span><span class="card-price"><span class="active-euro">€€</span><span class="active-euro">€</span><span>€€</span></span></div>
+      <div class="card-body">
+        <div class="card-name">Romanè</div>
+        <div class="card-address">Via Cipro 106 · Prati</div>
+        <div class="card-desc">Love letter to the Roman kitchen. Serves "confort food" that feels both nostalgic and masterfully executed.</div>
+        <div class="card-dishes"><span class="dish-tag">Fettuccine al Tortellino</span><span class="dish-tag">Carbonara</span><span class="dish-tag">Polpette di Bollito</span></div>
+        <div class="card-tip"><strong>Insider tip</strong>Book ahead — always. Fettuccine al Tortellino is a stroke of genius—all the flavor of a meat tortellini reimagined as a pasta dish.</div>
+        <div class="card-hours"><div class="hours-dot"></div><span class="hours-text">Mon–Sun · 12:00–11:30pm </span></div>
+      </div>
+    </div>
+    <div class="restaurant-card">
+      <div class="card-top"><span class="card-type">Bakery / Forno</span><span class="card-price"><span class="active-euro">€</span><span class="active-euro">€</span><span>€</span></span></div>
+      <div class="card-body">
+        <div class="card-name">Pizzarium</div>
+        <div class="card-address">Via della Meloria 43 · Prati</div>
+        <div class="card-desc">This isn't just a bakery. Gabriele Bonci’s dedication has turned this shop near Prati into a gold standard for Roman baking.</div>
+        <div class="card-dishes"><span class="dish-tag">Pizza</span><span class="dish-tag">Supplì</span></div>
+        <div class="card-tip"><strong>Insider tip</strong>Grab a slice of the richest, most flavorful pizza.</div>
+        <div class="card-hours"><div class="hours-dot"></div><span class="hours-text">Mon–Sun · 11:00am-10:00pm </span></div>
+      </div>
+    </div>
 </div><!-- /prati -->
 
 
