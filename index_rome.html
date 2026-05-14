@@ -52,6 +52,12 @@
     background-size: cover;
     background-position: center 40%;
     background-repeat: no-repeat;
+    background: linear-gradient(
+      to bottom,
+      rgba(30,22,18,0.00) 0%,
+      rgba(30,22,18,0.04) 60%,
+      rgba(30,22,18,0.15) 100%
+    );
   }
  /* .hero-overlay {
     content: '';
@@ -848,18 +854,18 @@
 <nav class="nav-section">
   <ul class="nav-tabs" id="navTabs">
     <li class="nav-tab active" data-tab="overview"    onclick="switchTab('overview',this)">Overview</li>
-    <li class="nav-tab"        data-tab="trastevere"  onclick="switchTab('trastevere',this)">Trastevere</li>
-    <li class="nav-tab"        data-tab="testaccio"   onclick="switchTab('testaccio',this)">Testaccio</li>
+    <li class="nav-tab"        data-tab="centro"       onclick="switchTab('centro',this)">Centro Storico</li>
+        <li class="nav-tab"        data-tab="campo"       onclick="switchTab('campo',this)">Campo de' Fiori</li>
     <li class="nav-tab"        data-tab="ghetto"      onclick="switchTab('ghetto',this)">Jewish Ghetto</li>
+    <li class="nav-tab"        data-tab="trastevere"  onclick="switchTab('trastevere',this)">Trastevere</li>
+   <li class="nav-tab"        data-tab="monti"       onclick="switchTab('monti',this)">Monti</li>
     <li class="nav-tab"        data-tab="prati"       onclick="switchTab('prati',this)">Prati</li>
-    <li class="nav-tab"        data-tab="campo"       onclick="switchTab('campo',this)">Campo de' Fiori</li>
-    <li class="nav-tab"        data-tab="monti"       onclick="switchTab('monti',this)">Monti</li>
+    <li class="nav-tab"        data-tab="testaccio"   onclick="switchTab('testaccio',this)">Testaccio</li>
     <li class="nav-tab"        data-tab="garba"       onclick="switchTab('garbatella',this)">Garbatella</li>
     <li class="nav-tab"        data-tab="sangio"       onclick="switchTab('sangio',this)">San Giovanni</li>
-    <li class="nav-tab"        data-tab="coppede"       onclick="switchTab('coppede',this)">Coppedè</li>
+   <!-- <li class="nav-tab"        data-tab="coppede"       onclick="switchTab('coppede',this)">Coppedè</li>
     <li class="nav-tab"        data-tab="sanlollo"       onclick="switchTab('sanlollo',this)">San Lorenzo</li>
-    <li class="nav-tab"        data-tab="centro"       onclick="switchTab('centro',this)">Centro Storico</li>
-    <li class="nav-tab"        data-tab="pigneot"       onclick="switchTab('pigneto',this)">Pigneto</li>
+    <li class="nav-tab"        data-tab="pigneot"       onclick="switchTab('pigneto',this)">Pigneto</li> -->
 
   </ul>
 </nav>
@@ -1507,7 +1513,7 @@
     <div class="tip-card ochre"><div class="tip-label">Avoid the main square</div><div class="tip-text">Piazza della Madonna dei Monti is beautiful but its restaurants are tourist-facing. Walk one block in any direction to find the real neighbourhood.</div></div>
   </div>
 
-</div><!-- /monti -->
+</div> <!-- /monti -->
 
 
 <!-- ═══════════════ Garbatella ═══════════════ -->
