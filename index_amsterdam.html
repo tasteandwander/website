@@ -1,0 +1,1533 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Taste & Wander — Amsterdam by Neighbourhood</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #f5f0e8;
+    --darkcream: #eddcb3;
+    --warm-white: #faf8f3;
+    --terracotta: #c4623a;
+    --terracotta-dark: #a04e2c;
+    --ochre: #d4a843;
+    --ochrelight:#d8b055;
+    --ochrelighter:#e0c27b;
+    --deep-red: #7a1f1f;
+    --charcoal: #2a2420;
+    --stone: #8c7b6b;
+    --stone-light: #c4b5a5;
+    --parchment: #e8dfd0;
+    --shadow: rgba(42,36,32,0.12);
+    /* Amsterdam accent: canal blue */
+    --canal: #3a6e8c;
+    --canal-dark: #2a5470;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--cream);
+    color: var(--charcoal);
+    font-family: 'Cormorant Garamond', serif;
+    overflow-x: hidden;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    position: relative;
+    min-height: 55vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 4rem 2rem;
+    overflow: hidden;
+  }
+  .hero-photo {
+    position: absolute; inset: 0;
+    background-image: url('https://images.unsplash.com/photo-1534351590666-13e3e96b5017?w=1600&q=80&auto=format&fit=crop');
+    background-size: cover;
+    background-position: center 45%;
+    background-repeat: no-repeat;
+  }
+  .hero-overlay {
+    content: '';
+    position: absolute; inset: 0;
+    background: linear-gradient(
+      to bottom,
+      rgba(20,30,40,0.00) 0%,
+      rgba(20,30,40,0.10) 60%,
+      rgba(20,30,40,0.25) 100%
+    );
+  }
+  .hero-tint {
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse at 20% 50%, rgba(58,110,140,0.10) 0%, transparent 30%),
+      radial-gradient(ellipse at 80% 30%, rgba(212,168,67,0.07) 0%, transparent 55%);
+  }
+  .hero-eyebrow {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--ochre);
+    margin-bottom: 1.5rem;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.2s ease forwards;
+  }
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(3rem, 9vw, 7.5rem);
+    font-weight: 900;
+    line-height: 0.95;
+    color: var(--cream);
+    letter-spacing: -0.02em;
+    opacity: 0;
+    animation: fadeUp 0.9s 0.4s ease forwards;
+    text-shadow: 0 2px 30px rgba(0,0,0,0.4);
+  }
+  .hero h1 em { font-style: italic; color: var(--ochre); }
+  .hero-sub {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+    color: rgba(245,240,232,0.88);
+    margin-top: 1.5rem;
+    max-width: 480px;
+    line-height: 1.5;
+    opacity: 0;
+    animation: fadeUp 0.9s 0.6s ease forwards;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .hero-cta {
+    margin-top: 2.5rem;
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    opacity: 0;
+    animation: fadeUp 0.9s 0.8s ease forwards;
+  }
+  .btn {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 0.85rem 2rem;
+    border: none;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    text-decoration: none;
+    display: inline-block;
+  }
+  .btn-primary { background: var(--terracotta); color: var(--cream); }
+  .btn-primary:hover { background: var(--terracotta-dark); transform: translateY(-2px); }
+  .btn-ghost {
+    background: transparent;
+    color: var(--stone-light);
+    border: 1px solid rgba(196,181,165,0.5);
+  }
+  .btn-ghost:hover { border-color: var(--stone-light); color: var(--cream); }
+  .scroll-hint {
+    position: absolute;
+    bottom: 2rem; left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.4rem;
+    opacity: 0;
+    animation: fadeUp 1s 1.2s ease forwards;
+  }
+  .scroll-hint span {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: rgba(196,181,165,0.7);
+  }
+  .scroll-line {
+    width: 1px; height: 40px;
+    background: linear-gradient(to bottom, rgba(196,181,165,0.7), transparent);
+    animation: scrollPulse 1.8s ease-in-out infinite;
+  }
+
+  .nbh-back-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--stone);
+    text-decoration: none;
+    border: 1px solid var(--stone-light);
+    padding: 0.45rem 1rem;
+    margin-bottom: 2rem;
+    transition: all 0.2s;
+    background: var(--warm-white);
+  }
+  .nbh-back-btn:hover {
+    border-color: var(--terracotta);
+    color: var(--terracotta);
+  }
+
+  /* ── LOCATION BAR ── */
+  .location-bar {
+    background: var(--parchment);
+    border-bottom: 1px solid rgba(140,123,107,0.25);
+    padding: 0.9rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  .location-status {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    color: var(--stone);
+  }
+  .location-dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: var(--stone-light);
+    transition: background 0.4s;
+    flex-shrink: 0;
+  }
+  .location-dot.active { background: #5aad6e; box-shadow: 0 0 0 3px rgba(90,173,110,0.25); }
+  .location-dot.error  { background: var(--terracotta); }
+  .nearest-badge {
+    display: none;
+    align-items: center;
+    gap: 0.5rem;
+    background: var(--terracotta);
+    color: var(--cream);
+    padding: 0.3rem 0.9rem;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+  }
+  .nearest-badge.show { display: flex; }
+  .locate-btn {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    background: none;
+    border: 1px solid var(--stone-light);
+    color: var(--stone);
+    padding: 0.3rem 0.8rem;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .locate-btn:hover { border-color: var(--terracotta); color: var(--terracotta); }
+
+  /* ── NAV TABS ── */
+  .nav-section {
+    background: var(--warm-white);
+    border-bottom: 1px solid rgba(140,123,107,0.2);
+    padding: 0 2rem;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .nav-section::-webkit-scrollbar { display: none; }
+  .nav-tabs { display: flex; list-style: none; min-width: max-content; }
+  .nav-tab {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 1rem 1.4rem;
+    cursor: pointer;
+    color: var(--stone);
+    border-bottom: 2px solid transparent;
+    transition: all 0.2s;
+    white-space: nowrap;
+  }
+  .nav-tab:hover { color: var(--charcoal); }
+  .nav-tab.active { color: var(--terracotta); border-bottom-color: var(--terracotta); }
+
+  /* ── MAIN ── */
+  .main {
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 4rem 2rem;
+  }
+  .neighbourhood { display: none; animation: fadeIn 0.4s ease; }
+  .neighbourhood.active { display: block; }
+
+  /* ── NEIGHBOURHOOD PHOTO HEADER BANNER ── */
+  .neighbourhood-header {
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 3rem;
+  }
+  .nbh-photo-strip {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    display: block;
+    filter: brightness(0.65) saturate(0.85);
+  }
+  .nbh-header-content {
+    position: absolute; inset: 0;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    padding: 1.8rem 2rem;
+    background: linear-gradient(to top, rgba(20,14,10,0.85) 0%, rgba(20,14,10,0.25) 55%, transparent 100%);
+  }
+  .nbh-eyebrow {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--ochre);
+    margin-bottom: 0.4rem;
+  }
+  .nbh-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 4.5vw, 3.5rem);
+    font-weight: 900;
+    line-height: 1;
+    color: #fff;
+    text-shadow: 0 2px 20px rgba(0,0,0,0.5);
+  }
+  .nbh-title em { font-style: italic; color: var(--ochre); }
+  .nbh-desc-overlay {
+    font-size: 0.92rem;
+    font-style: italic;
+    color: rgba(245,240,232,0.78);
+    max-width: 420px;
+    line-height: 1.5;
+    margin-top: 0.4rem;
+  }
+  .nbh-stats { text-align: right; flex-shrink: 0; }
+  .stat-item {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.58rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(245,240,232,0.6);
+    line-height: 2;
+  }
+  .stat-val {
+    display: block;
+    font-size: 1.5rem;
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    color: #fff;
+    line-height: 1;
+  }
+
+  /* nearest highlight */
+  .nearest-highlight {
+    background: linear-gradient(135deg, var(--terracotta) 0%, var(--terracotta-dark) 100%);
+    color: var(--cream);
+    padding: 1.2rem 1.8rem;
+    margin-bottom: 2.5rem;
+    display: none;
+    align-items: center;
+    gap: 1rem;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+  }
+  .nearest-highlight.show { display: flex; }
+  .nearest-highlight .arrow { font-size: 1.4rem; }
+
+  /* ── RESTAURANT CARDS ── */
+  .restaurants-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+  }
+  .restaurant-card {
+    background: var(--warm-white);
+    border: 1px solid rgba(140,123,107,0.18);
+    overflow: hidden;
+    transition: all 0.3s ease;
+  }
+  .restaurant-card:hover {
+    border-color: var(--terracotta);
+    transform: translateY(-3px);
+    box-shadow: 0 12px 40px var(--shadow);
+  }
+  .card-top {
+    padding: 1.4rem 1.4rem 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+  .card-type {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--terracotta);
+    background: rgba(196,98,58,0.1);
+    padding: 0.25rem 0.6rem;
+  }
+  .card-price { font-family: 'DM Mono', monospace; font-size: 0.75rem; color: var(--stone-light); }
+  .card-price .active-euro { color: var(--charcoal); }
+  .card-body { padding: 1rem 1.4rem 1.4rem; }
+  .card-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--charcoal);
+    line-height: 1.15;
+    margin-bottom: 0.3rem;
+  }
+  .card-address {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.08em;
+    color: var(--stone);
+    margin-bottom: 0.8rem;
+  }
+  .card-desc {
+    font-size: 0.95rem;
+    font-style: italic;
+    color: var(--stone);
+    line-height: 1.55;
+    margin-bottom: 1rem;
+  }
+  .card-dishes { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 1rem; }
+  .dish-tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.58rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--charcoal);
+    background: var(--parchment);
+    padding: 0.25rem 0.55rem;
+    border: 1px solid rgba(140,123,107,0.2);
+  }
+  .card-tip {
+    font-size: 0.88rem;
+    color: var(--stone);
+    line-height: 1.5;
+    padding-top: 0.8rem;
+    border-top: 1px solid var(--parchment);
+  }
+  .card-tip strong {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ochre);
+    display: block;
+    margin-bottom: 0.2rem;
+  }
+  .card-hours {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    margin-top: 0.8rem;
+    padding-top: 0.8rem;
+    border-top: 1px solid var(--parchment);
+  }
+  .hours-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--stone-light); flex-shrink: 0; }
+  .hours-text { font-family: 'DM Mono', monospace; font-size: 0.6rem; letter-spacing: 0.06em; color: var(--stone); }
+
+  /* ── SECTION TITLE ── */
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--charcoal);
+    margin-bottom: 1.2rem;
+    padding-bottom: 0.8rem;
+    border-bottom: 1px solid var(--parchment);
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  .section-title::after { content: ''; flex: 1; height: 1px; background: var(--parchment); }
+
+  /* ── FOODS GRID ── */
+  .foods-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 1rem;
+    margin-bottom: 4rem;
+  }
+  .food-item {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+    padding: 1rem;
+    background: var(--warm-white);
+    border: 1px solid rgba(140,123,107,0.15);
+    transition: border-color 0.2s;
+  }
+  .food-item:hover { border-color: var(--stone-light); }
+  .food-emoji { font-size: 1.8rem; flex-shrink: 0; line-height: 1; }
+  .food-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--charcoal);
+    line-height: 1.2;
+    margin-bottom: 0.25rem;
+  }
+  .food-note { font-size: 0.85rem; font-style: italic; color: var(--stone); line-height: 1.4; }
+
+  /* ── TIPS CARDS ── */
+  .tips-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1rem;
+    margin-bottom: 4rem;
+  }
+  .tip-card { padding: 1.2rem 1.4rem; background: var(--charcoal); color: var(--cream); }
+  .tip-card.ochre { background: var(--ochre); color: var(--charcoal); }
+  .tip-card.red { background: var(--deep-red); }
+  .tip-card.darkcream { background: var(--darkcream); color: var(--charcoal); }
+  .tip-card.ochrelight { background: var(--ochrelight); color: var(--charcoal); }
+  .tip-card.ochrelighter { background: var(--ochrelighter); color: var(--charcoal); }
+  .tip-card.canal { background: var(--canal); color: var(--cream); }
+  .tip-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.58rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    opacity: 0.65;
+    margin-bottom: 0.5rem;
+  }
+  .tip-text { font-size: 0.95rem; font-style: italic; line-height: 1.55; }
+
+  /* ── SIGNATURE DISHES SHOWCASE ── */
+  .dishes-showcase {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    border: 1px solid rgba(140,123,107,0.2);
+    overflow: hidden;
+    margin-bottom: 0;
+  }
+  @media (max-width: 900px) { .dishes-showcase { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 500px) { .dishes-showcase { grid-template-columns: 1fr; } }
+
+  .dish-showcase-card {
+    position: relative;
+    height: 300px;
+    overflow: hidden;
+    cursor: pointer;
+    border-right: 1px solid rgba(140,123,107,0.2);
+  }
+  .dish-showcase-card:last-child { border-right: none; }
+  .dish-showcase-bg {
+    position: absolute; inset: 0;
+    background-size: cover;
+    background-position: center;
+    transition: transform 0.55s ease, filter 0.4s ease;
+    filter: brightness(0.52) saturate(0.75);
+  }
+  .dish-showcase-card:hover .dish-showcase-bg {
+    transform: scale(1.07);
+    filter: brightness(0.4) saturate(0.65);
+  }
+  .dish-showcase-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(to top, rgba(22,14,9,0.92) 0%, rgba(22,14,9,0.2) 50%, transparent 100%);
+  }
+  .dish-showcase-content {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    padding: 1.4rem;
+  }
+  .dish-showcase-emoji { font-size: 1.5rem; line-height: 1; margin-bottom: 0.4rem; display: block; }
+  .dish-showcase-nbh {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.52rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ochre);
+    margin-bottom: 0.25rem;
+  }
+  .dish-showcase-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #fff;
+    line-height: 1.15;
+    margin-bottom: 0.35rem;
+  }
+  .dish-showcase-desc {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 0.85rem;
+    color: rgba(245,240,232,0.75);
+    line-height: 1.45;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease, opacity 0.35s ease;
+    opacity: 0;
+  }
+  .dish-showcase-card:hover .dish-showcase-desc {
+    max-height: 90px;
+    opacity: 1;
+  }
+
+  .dishes-cta-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: var(--charcoal);
+    padding: 1.2rem 1.8rem;
+    margin-bottom: 4rem;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+  .dishes-cta-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1.05rem;
+    color: var(--stone-light);
+  }
+  .dishes-cta-text strong { color: var(--cream); font-style: normal; font-weight: 600; }
+
+  .btn-terracotta {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    background: var(--terracotta);
+    color: var(--cream);
+    border: none;
+    padding: 0.75rem 1.6rem;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    transition: background 0.2s, transform 0.2s;
+    white-space: nowrap;
+  }
+  .btn-terracotta:hover { background: var(--terracotta-dark); transform: translateY(-1px); }
+
+  /* ── OVERVIEW ── */
+  .overview-intro {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    margin-bottom: 4rem;
+    padding-bottom: 3rem;
+    border-bottom: 1px solid var(--parchment);
+  }
+  .overview-intro-text { font-size: 1.15rem; line-height: 1.8; color: var(--stone); }
+  .overview-intro-text p + p { margin-top: 1rem; }
+  .overview-intro-pull {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.6rem, 3vw, 2.3rem);
+    font-style: italic;
+    line-height: 1.3;
+    color: var(--charcoal);
+    border-left: 3px solid var(--terracotta);
+    padding-left: 1.5rem;
+  }
+  .nbh-overview-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1px;
+    background: var(--parchment);
+    border: 1px solid var(--parchment);
+    margin-bottom: 4rem;
+  }
+  .nbh-card {
+    background: var(--warm-white);
+    padding: 1.5rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    text-decoration: none;
+    display: block;
+  }
+  .nbh-card:hover { background: var(--cream); }
+  .nbh-card-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--charcoal);
+    margin-bottom: 0.3rem;
+  }
+  .nbh-card-tagline { font-size: 0.85rem; font-style: italic; color: var(--stone); line-height: 1.4; }
+
+  /* ── HOME BTN ── */
+  .home-btn {
+    position: fixed;
+    top: 24px; right: 24px;
+    background: rgba(42,36,32,0.75);
+    backdrop-filter: blur(6px);
+    color: var(--cream);
+    padding: 9px 18px;
+    text-decoration: none;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    border: 1px solid rgba(196,181,165,0.2);
+    transition: all 0.25s;
+    z-index: 1000;
+  }
+  .home-btn:hover { background: rgba(42,36,32,0.95); border-color: var(--terracotta); color: var(--terracotta); }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 768px) {
+    .overview-intro { grid-template-columns: 1fr; gap: 2rem; }
+    .nbh-header-content { flex-direction: column; align-items: flex-start; gap: 0.5rem; }
+    .nbh-stats { text-align: left; }
+    .restaurants-grid { grid-template-columns: 1fr; }
+    .nbh-photo-strip { height: 180px; }
+    .home-btn { top: auto; bottom: 1.2rem; right: 1rem; }
+  }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+  }
+  @keyframes scrollPulse {
+    0%, 100% { opacity: 0.4; }
+    50% { opacity: 1; }
+  }
+
+  /* ── FOOTER ── */
+  .footer {
+    background: var(--charcoal);
+    color: var(--stone);
+    padding: 3rem 2rem;
+    text-align: center;
+  }
+  .footer-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    font-style: italic;
+    color: var(--cream);
+    margin-bottom: 0.5rem;
+  }
+  .footer-sub {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.62rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--stone);
+    margin-bottom: 1.5rem;
+  }
+  .footer-links { display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap; }
+  .footer-links a {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.62rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--stone);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .footer-links a:hover { color: var(--terracotta); }
+</style>
+</head>
+<body>
+
+<a href="index.html" class="home-btn">← Homepage</a>
+
+<!-- ═══════════ HERO ═══════════ -->
+<section class="hero">
+  <div class="hero-photo"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-tint"></div>
+  <div style="position:relative;z-index:2;">
+    <p class="hero-eyebrow">Taste &amp; Wander · Amsterdam</p>
+    <h1>Eat Amsterdam<br><em>by Neighbourhood</em></h1>
+    <p class="hero-sub">Dutch food is more than stroopwafels — you just need to know which canal to follow.</p>
+    <div class="hero-cta">
+      <button class="btn btn-primary" onclick="locateMe()">📍 Find my neighbourhood</button>
+      <a href="#guide" class="btn btn-ghost">Explore the map</a>
+    </div>
+  </div>
+  <div class="scroll-hint">
+    <span>Scroll</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<!-- ═══════════ LOCATION BAR ═══════════ -->
+<div class="location-bar" id="locationBar">
+  <div class="location-status">
+    <div class="location-dot" id="locationDot"></div>
+    <span id="locationText">Location not detected — enable to get nearest neighbourhood</span>
+  </div>
+  <div style="display:flex;align-items:center;gap:0.8rem;flex-wrap:wrap;">
+    <div class="nearest-badge" id="nearestBadge">
+      <span>📍 Nearest:</span>
+      <strong id="nearestName"></strong>
+    </div>
+    <button class="locate-btn" onclick="locateMe()" id="locateBtn">Locate me</button>
+  </div>
+</div>
+
+<!-- ═══════════ GUIDE ═══════════ -->
+<div id="guide">
+<nav class="nav-section">
+  <ul class="nav-tabs" id="navTabs">
+    <li class="nav-tab active" data-tab="overview"   onclick="switchTab('overview',this)">Overview</li>
+    <li class="nav-tab"       data-tab="jordaan"     onclick="switchTab('jordaan',this)">Jordaan</li>
+    <li class="nav-tab"       data-tab="depijp"      onclick="switchTab('depijp',this)">De Pijp</li>
+    <li class="nav-tab"       data-tab="oudwest"     onclick="switchTab('oudwest',this)">Oud-West</li>
+    <li class="nav-tab"       data-tab="centrum"     onclick="switchTab('centrum',this)">Centrum</li>
+    <li class="nav-tab"       data-tab="oost"        onclick="switchTab('oost',this)">Amsterdam Oost</li>
+    <li class="nav-tab"       data-tab="noord"       onclick="switchTab('noord',this)">Noord</li>
+  </ul>
+</nav>
+
+<main class="main">
+
+<!-- ═══════════════ OVERVIEW ═══════════════ -->
+<div class="neighbourhood active" id="tab-overview">
+
+  <div class="overview-intro">
+    <div class="overview-intro-text">
+      <p>Amsterdam's food culture is inseparable from its history as a trading city. The Dutch Empire brought spices, coffee, and sugar into Europe. Indonesian, Surinamese, and Javanese communities brought their kitchens with them and never left. The result is a city where <em>rijsttafel</em> — a theatrical Indonesian rice table — is as local as bitterballen, and where a Surinamese roti on Ferdinand Bolstraat costs €6 and is one of the most satisfying things you can eat.</p>
+      <p>Dutch food itself — the <em>stamppot</em>, the <em>erwtensoep</em>, the herring eaten standing at a stall — is honest, unfashionable, and quietly excellent. It was built for cold weather and hard work. It doesn't photograph well. Eat it anyway.</p>
+      <p>Below are the neighbourhoods that matter. Jordaan for the bruine kroeg and the afternoon slow. De Pijp for the market and the international table. Oud-West for the food hall and the morning croissant. Each has its own register; each rewards a slow walk.</p>
+    </div>
+    <p class="overview-intro-pull">"Amsterdam feeds you if you know where to look — past the tourist menus and into the side streets."</p>
+  </div>
+
+  <div class="nbh-overview-grid">
+    <a class="nbh-card" onclick="switchTab('jordaan',document.querySelector('[data-tab=jordaan]'))">
+      <div class="nbh-card-name">Jordaan</div>
+      <div class="nbh-card-tagline">Brown cafés, appeltaart, and the best slow afternoon in the city</div>
+    </a>
+    <a class="nbh-card" onclick="switchTab('depijp',document.querySelector('[data-tab=depijp]'))">
+      <div class="nbh-card-name">De Pijp</div>
+      <div class="nbh-card-tagline">The food neighbourhood — Albert Cuyp market, rijsttafel, Surinamese roti, and natural wine bars</div>
+    </a>
+    <a class="nbh-card" onclick="switchTab('oudwest',document.querySelector('[data-tab=oudwest]'))">
+      <div class="nbh-card-name">Oud-West</div>
+      <div class="nbh-card-tagline">Foodhallen, Vondelpark, serious coffee, and a neighbourhood that actually lives here</div>
+    </a>
+    <a class="nbh-card" onclick="switchTab('centrum',document.querySelector('[data-tab=centrum]'))">
+      <div class="nbh-card-name">Centrum</div>
+      <div class="nbh-card-tagline">The tourist minefield — but also the jenever proeflokaal and the best frites in the city</div>
+    </a>
+    <a class="nbh-card" onclick="switchTab('oost',document.querySelector('[data-tab=oost]'))">
+      <div class="nbh-card-name">Amsterdam Oost</div>
+      <div class="nbh-card-tagline">Multicultural, unpretentious, and increasingly interesting — Javastraat is the key</div>
+    </a>
+    <a class="nbh-card" onclick="switchTab('noord',document.querySelector('[data-tab=noord]'))">
+      <div class="nbh-card-name">Noord</div>
+      <div class="nbh-card-tagline">Across the IJ — a windmill brewery, waterfront restaurants, and creative industry energy</div>
+    </a>
+  </div>
+
+  <!-- Golden Rules -->
+  <p class="section-title">The golden rules of eating in Amsterdam</p>
+  <div class="tips-row">
+    <div class="tip-card ochre">
+      <div class="tip-label">Rule 01 — Coffee</div>
+      <div class="tip-text">A <em>café</em> serves coffee. A <em>coffee shop</em> serves something else entirely. Know the difference before you walk in looking confused.</div>
+    </div>
+    <div class="tip-card ochrelight">
+      <div class="tip-label">Rule 02 — Herring</div>
+      <div class="tip-text">Hollandse Nieuwe is the season (late May–July). Raw herring eaten at a street stall, tilted back by the tail. Don't ask for it on bread the first time — do it properly.</div>
+    </div>
+    <div class="tip-card ochrelighter">
+      <div class="tip-label">Rule 03 — Jenever</div>
+      <div class="tip-text">Drink it in a tulip glass, neat, at room temperature. Older (Oude) jenever is malty and complex. Younger (Jonge) is clean. Both are Dutch gin's ancestors — and better than gin.</div>
+    </div>
+    <div class="tip-card darkcream">
+      <div class="tip-label">Rule 04 — Rijsttafel</div>
+      <div class="tip-text">Order it for at least two people. It's an Indonesian feast — twelve to thirty small dishes, passed around the table. It's not fusion. It's the real Dutch colonial table.</div>
+    </div>
+  </div>
+
+  <!-- ── SIGNATURE DISHES SHOWCASE ── -->
+  <p class="section-title">The dishes that define Amsterdam</p>
+  <div class="dishes-showcase">
+    <div class="dish-showcase-card">
+      <div class="dish-showcase-bg" style="background-image: url('https://tasteandwander.github.io/website/bitterballen.jpg');"></div>
+      <div class="dish-showcase-overlay"></div>
+      <div class="dish-showcase-content">
+        <span class="dish-showcase-emoji">🟤</span>
+        <div class="dish-showcase-nbh">Jordaan · Brown Cafés</div>
+        <div class="dish-showcase-name">Bitterballen</div>
+        <div class="dish-showcase-desc">Deep-fried beef ragù balls, crispy outside, molten inside. Served with mustard. The defining snack of the bruine kroeg — order them with beer, never without.</div>
+      </div>
+    </div>
+    <div class="dish-showcase-card">
+      <div class="dish-showcase-bg" style="background-image: url('https://tasteandwander.github.io/website/stamppot.jpg');"></div>
+      <div class="dish-showcase-overlay"></div>
+      <div class="dish-showcase-content">
+        <span class="dish-showcase-emoji">🥔</span>
+        <div class="dish-showcase-nbh">Jordaan · Dutch Classics</div>
+        <div class="dish-showcase-name">Stamppot</div>
+        <div class="dish-showcase-desc">Mashed potato folded with kale, sauerkraut, or endive, served with a smoked rookworst sausage. Winter food, honest food, real Dutch food.</div>
+      </div>
+    </div>
+    <div class="dish-showcase-card">
+      <div class="dish-showcase-bg" style="background-image: url('https://tasteandwander.github.io/website/appeltaart.jpg');"></div>
+      <div class="dish-showcase-overlay"></div>
+      <div class="dish-showcase-content">
+        <span class="dish-showcase-emoji">🥧</span>
+        <div class="dish-showcase-nbh">Jordaan · Winkel 43</div>
+        <div class="dish-showcase-name">Appeltaart</div>
+        <div class="dish-showcase-desc">Thick-crust Dutch apple pie with cinnamon, raisins, and a mountain of whipped cream. The slice at Winkel 43 on market Saturday morning is one of the city's rituals.</div>
+      </div>
+    </div>
+    <div class="dish-showcase-card">
+      <div class="dish-showcase-bg" style="background-image: url('https://tasteandwander.github.io/website/haring.webp');"></div>
+      <div class="dish-showcase-overlay"></div>
+      <div class="dish-showcase-content">
+        <span class="dish-showcase-emoji">🐟</span>
+        <div class="dish-showcase-nbh">Centrum · Street stalls</div>
+        <div class="dish-showcase-name">Hollandse Haring</div>
+        <div class="dish-showcase-desc">Raw, lightly salted herring with onion and pickle. Eaten by the tail, whole. The Dutch eat this standing at a market stall. It's an act of national character.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="dishes-cta-bar">
+    <p class="dishes-cta-text">There are <strong>twenty more dishes</strong> that define Dutch and Amsterdam cuisine — from poffertjes to rijsttafel to oliebollen.</p>
+    <a href="https://tasteandwander.github.io/website/index_amsterdam.html" class="btn-terracotta">Explore all traditional dishes →</a>
+  </div>
+
+</div><!-- /overview -->
+
+
+<!-- ═══════════════ JORDAAN ═══════════════ -->
+<div class="neighbourhood" id="tab-jordaan">
+
+  <div class="neighbourhood-header">
+    <img class="nbh-photo-strip"
+         src="https://images.unsplash.com/photo-1534351590666-13e3e96b5017?w=1400&q=80&auto=format&fit=crop"
+         alt="Jordaan Amsterdam canals"
+         onerror="this.style.display='none'">
+    <div class="nbh-header-content">
+      <div>
+        <div class="nbh-eyebrow">West · Canal Belt</div>
+        <h2 class="nbh-title">Jor<em>daan</em></h2>
+        <p class="nbh-desc-overlay">Once a working-class quarter of tanners and weavers; now Amsterdam's most coveted address. The food scene rewards slow mornings and long afternoons — bruine kroegen, appeltaart, and a genuine affection for the table.</p>
+      </div>
+      <div class="nbh-stats">
+        <div class="stat-item"><span class="stat-val">4</span>top spots</div>
+        <div class="stat-item"><span class="stat-val">€€</span>avg price</div>
+        <div class="stat-item"><span class="stat-val">Sat</span>market day</div>
+      </div>
+    </div>
+  </div>
+  <a href="index_amsterdam.html" class="nbh-back-btn">← All neighbourhoods</a>
+
+  <div class="nearest-highlight" id="nearest-jordaan">
+    <span class="arrow">📍</span>
+    <span>You're closest to this neighbourhood — these are your best options right now.</span>
+  </div>
+
+  <p class="section-title">Where to eat</p>
+  <div class="restaurants-grid">
+
+    <div class="restaurant-card">
+      <div class="card-top"><span class="card-type">Café / Bakery</span><span class="card-price"><span class="active-euro">€</span><span>€€</span></span></div>
+      <div class="card-body">
+        <div class="card-name">Winkel 43</div>
+        <div class="card-address">Noordermarkt 43 · Jordaan</div>
+        <div class="card-desc">The appeltaart here is the benchmark by which all others are judged in Amsterdam — thick crust, generous spiced apple, a serious mound of cream. The corner café at Noordermarkt has been the Saturday-morning ritual for Jordaan residents for decades.</div>
+        <div class="card-dishes"><span class="dish-tag">Appeltaart met Slagroom</span><span class="dish-tag">Coffee</span><span class="dish-tag">Uitsmijter</span></div>
+        <div class="card-tip"><strong>Insider tip</strong>Go on Saturday during the Noordermarkt market — eat your pie watching the square fill up with flowers and cheese. Avoid the same Saturday if you're in a hurry; it's the busiest day of the week.</div>
+        <div class="card-hours"><div class="hours-dot"></div><span class="hours-text">Mon–Thu · 8:00am–1:00am · Fri–Sun · 8:00am–1:00am</span></div>
+      </div>
+    </div>
+
+    <div class="restaurant-card">
+      <div class="card-top"><span class="card-type">Dutch Restaurant</span><span class="card-price"><span class="active-euro">€</span><span class="active-euro">€</span><span>€</span></span></div>
+      <div class="card-body">
+        <div class="card-name">Moeders</div>
+        <div class="card-address">Rozengracht 251 · Jordaan</div>
+        <div class="card-desc">The walls are covered with photos of mothers donated by guests over 30 years. The menu is the best version of traditional Dutch cooking in the city — stamppot, hutspot, boerenkool met worst. Warm, loud, and entirely sincere.</div>
+        <div class="card-dishes"><span class="dish-tag">Stamppot Boerenkool</span><span class="dish-tag">Hutspot</span><span class="dish-tag">Erwtensoep</span></div>
+        <div class="card-tip"><strong>Insider tip</strong>Book ahead — it fills up every evening. Bring a photo of your mother; it may end up on the wall.</div>
+        <div class="card-hours"><div class="hours-dot"></div><span class="hours-text">Mon–Fri · 5:00pm–10:00pm · Sat–Sun · 12:00–10:00pm</span></div>
+      </div>
+    </div>
+
+    <div class="restaurant-card">
+      <div class="card-top"><span class="card-type">Bruine Kroeg</span><span class="card-price"><span class="active-euro">€</span><span>€€</span></span></div>
+      <div class="card-body">
+        <div class="card-name">Café 't Smalle</div>
+        <div class="card-address">Egelantiersgracht 12 · Jordaan</div>
+        <div class="card-desc">Dating to 1786, one of Amsterdam's oldest and most atmospheric brown cafés. The dark wood, the low ceilings, the canal terrace in summer — it's one of those places that makes the city make sense. Bitterballen, jenever, and absolutely no rush.</div>
+        <div class="card-dishes"><span class="dish-tag">Bitterballen</span><span class="dish-tag">Jenever</span><span class="dish-tag">Dutch Cheese Board</span></div>
+        <div class="card-tip"><strong>Insider tip</strong>Arrive at 4pm on a weekday to get a terrace table on the canal. Order oude jenever, not young — this is the right place for it.</div>
+        <div class="card-hours"><div class="hours-dot"></div><span class="hours-text">Mon–Thu · 10:00am–1:00am · Fri–Sat · 10:00am–2:00am · Sun · 10:00am–1:00am</span></div>
+      </div>
+    </div>
+
+    <div class="restaurant-card">
+      <div class="card-top"><span class="card-type">Italian / Pizza</span><span class="card-price"><span class="active-euro">€</span><span class="active-euro">€</span><span>€</span></span></div>
+      <div class="card-body">
+        <div class="card-name">La Perla</div>
+        <div class="card-address">Tweede Tuindwarsstraat 14 · Jordaan</div>
+        <div class="card-desc">The pizza is made on one side of the street and carried across to the restaurant. Not the most technically perfect pizza in Amsterdam, but on this canal street, it's one of the most enjoyable meals in the city. Local institution.</div>
+        <div class="card-dishes"><span class="dish-tag">Wood-fired Pizza</span><span class="dish-tag">Pasta</span><span class="dish-tag">Tiramisu</span></div>
+        <div class="card-tip"><strong>Insider tip</strong>Book ahead. The street itself is the experience — sit outside if the weather allows and watch the canal life.</div>
+        <div class="card-hours"><div class="hours-dot"></div><span class="hours-text">Tue–Sun · 5:00pm–10:30pm · Closed Monday</span></div>
+      </div>
+    </div>
+
+  </div>
+
+  <p class="section-title">What to eat here</p>
+  <div class="foods-grid">
+    <div class="food-item"><div class="food-emoji">🥧</div><div><div class="food-name">Appeltaart</div><div class="food-note">Dutch apple pie — thick, heavy, cinnamon-spiced, and served with more cream than seems advisable. Winkel 43 has the definitive version.</div></div></div>
+    <div class="food-item"><div class="food-emoji">🥔</div><div><div class="food-name">Stamppot</div><div class="food-note">Mashed potato with kale and smoked sausage. Moeders does the city's best. Order it in winter; it was built for cold canal air.</div></div></div>
+    <div class="food-item"><div class="food-emoji">🍺</div><div><div class="food-name">Bitterballen + Jenever</div><div class="food-note">The bruine kroeg combination. Fried ragù balls, mustard, a small glass of Dutch gin. The ritual of Jordaan afternoons since 1786.</div></div></div>
+    <div class="food-item"><div class="food-emoji">🧀</div><div><div class="food-name">Dutch Cheese</div><div class="food-note">Gouda, Edam, Leyden — aged and young. The Saturday Noordermarkt has direct-farm cheese stalls. Buy a wedge of aged Gouda and eat it on a bench by the canal.</div></div></div>
+  </div>
+
+  <p class="section-title">The Jordaan approach</p>
+  <div class="tips-row">
+    <div class="tip-card canal"><div class="tip-label">Saturday ritual</div><div class="tip-text">Noordermarkt on Saturday: cheese and organic produce from 9am. Appeltaart at Winkel 43. Browse the antique market. This is how Jordaan residents spend their mornings.</div></div>
+    <div class="tip-card ochre"><div class="tip-label">Bruine kroeg culture</div><div class="tip-text">The "brown café" is a Dutch institution — dark wood, nicotine-stained ceilings, jenever at room temperature. Time genuinely slows down. 't Smalle is the most atmospheric. Papeneiland, on Prinsengracht, is the most legendary.</div></div>
+  </div>
+
+</div><!-- /jordaan -->
+
+
+<!-- ═══════════════ DE PIJP ═══════════════ -->
+<div class="neighbourhood" id="tab-depijp">
+
+  <div class="neighbourhood-header">
+    <img class="nbh-photo-strip"
+         src="https://images.unsplash.com/photo-1569880153113-76e33fc52d5f?w=1400&q=80&auto=format&fit=crop"
+         alt="De Pijp Amsterdam market"
+         onerror="this.style.display='none'">
+    <div class="nbh-header-content">
+      <div>
+        <div class="nbh-eyebrow">South · Former Working Class</div>
+        <h2 class="nbh-title">De <em>Pijp</em></h2>
+        <p class="nbh-desc-overlay">Amsterdam's undisputed food neighbourhood. Home to the Albert Cuyp Market — the largest street market in the Netherlands — and a dense grid of Surinamese roti shops, Indonesian restaurants, natural wine bars, and serious coffee roasters. Arrive hungry.</p>
+      </div>
+      <div class="nbh-stats">
+        <div class="stat-item"><span class="stat-val">4</span>top spots</div>
+        <div class="stat-item"><span class="stat-val">€–€€</span>avg price</div>
+        <div class="stat-item"><span class="stat-val">Daily</span>market</div>
+      </div>
+    </div>
+  </div>
+  <a href="index_amsterdam.html" class="nbh-back-btn">← All neighbourhoods</a>
+
+  <div class="nearest-highlight" id="nearest-depijp">
+    <span class="arrow">📍</span>
+    <span>You're closest to this neighbourhood — these are your best options right now.</span>
+  </div>
+
+  <p class="section-title">Where to eat</p>
+  <div class="restaurants-grid">
+
+    <div class="restaurant-card">
+      <div class="card-top"><span class="card-type">Market</span><span class="card-price"><span class="active-euro">€</span><span>€€</span></span></div>
+      <div class="card-body">
+        <div class="card-name">Albert Cuypmarkt</div>
+        <div class="card-address">Albert Cuypstraat · De Pijp</div>
+        <div class="card-desc">Open since 1905, this is the largest street market in the Netherlands — a kilometre-long stretch of cheese, stroopwafels, kibbeling (fried cod), herring stalls, fresh produce, and street food from a dozen cultures. Go on a weekday morning when it's locals doing actual shopping.</div>
+        <div class="card-dishes"><span class="dish-tag">Kibbeling</span><span class="dish-tag">Stroopwafel</span><span class="dish-tag">Hollandse Haring</span><span class="dish-tag">Dutch Cheese</span></div>
+        <div class="card-tip"><strong>Insider tip</strong>The hot stroopwafels made fresh at the market stalls are a different food from the packaged supermarket version. Find the stall with the longest queue.</div>
+        <div class="card-hours"><div class="hours-dot"></div><span class="hours-text">Mon–Sat · 9:00am–5:00pm · Closed Sunday</span></div>
+      </div>
+    </div>
+
+    <div class="restaurant-card">
+      <div class="card-top"><span class="card-type">Indonesian</span><span class="card-price"><span class="active-euro">€</span><span class="active-euro">€</span><span>€</span></span></div>
+      <div class="card-body">
+        <div class="card-name">Restaurant Blauw</div>
+        <div class="card-address">Amstelveenseweg 158 · De Pijp / Oud-Zuid border</div>
+        <div class="card-desc">Widely considered the best rijsttafel in Amsterdam. A theatrical spread of twelve to twenty Indonesian dishes — beef rendang, goat satay, gado gado, spiced tofu, sambal — that captures the genuine complexity of Indonesian cooking without simplifying it for Dutch palates.</div>
+        <div class="card-dishes"><span class="dish-tag">Rijsttafel Selera</span><span class="dish-tag">Beef Rendang</span><span class="dish-tag">Sate Kambing</span><span class="dish-tag">Gado Gado</span></div>
+        <div class="card-tip"><strong>Insider tip</strong>Book at least a week ahead for dinner. Order the full rijsttafel — minimum two people — and tell the waiter your spice tolerance honestly.</div>
+        <div class="card-hours"><div class="hours-dot"></div><span class="hours-text">Mon–Sun · 12:00–2:30pm · 5:30–10:00pm</span></div>
+      </div>
+    </div>
+
+    <div class="restaurant-card">
+      <div class="card-top"><span class="card-type">Surinamese</span><span class="card-price"><span class="active-euro">€</span><span>€€</span></span></div>
+      <div class="card-body">
+        <div class="card-name">Warung Mini</div>
+        <div class="card-address">Ferdinand Bolstraat · De Pijp</div>
+        <div class="card-desc">One of De Pijp's best Surinamese spots — a cuisine that blends Indian, Indonesian, African, and Dutch-colonial influences into something entirely its own. The roti is soft flatbread with curried vegetables or chicken and a boiled egg. It costs almost nothing and fills you completely.</div>
+        <div class="card-dishes"><span class="dish-tag">Roti Kip</span><span class="dish-tag">Rames</span><span class="dish-tag">Nasi Goreng</span></div>
+        <div class="card-tip"><strong>Insider tip</strong>Cash preferred. Order at the counter. The roti is the move — it's the most satisfying €8 you'll spend in this city.</div>
+        <div class="card-hours"><div class="hours-dot"></div><span class="hours-text">Mon–Sat · 12:00–8:00pm · Closed Sunday</span></div>
+      </div>
+    </div>
+
+    <div class="restaurant-card">
+      <div class="card-top"><span class="card-type">Wine Bar</span><span class="card-price"><span class="active-euro">€</span><span class="active-euro">€</span><span>€</span></span></div>
+      <div class="card-body">
+        <div class="card-name">Glouglou</div>
+        <div class="card-address">Weteringstraat 31 · De Pijp</div>
+        <div class="card-desc">The natural wine bar that De Pijp needed. Organic and biodynamic wines, jazz on the sound system, small plates that know what they're doing. The kind of place where one glass becomes three and nobody minds.</div>
+        <div class="card-dishes"><span class="dish-tag">Natural Wine Selection</span><span class="dish-tag">Cheese & Charcuterie</span><span class="dish-tag">Small Plates</span></div>
+        <div class="card-tip"><strong>Insider tip</strong>Show up at aperitivo hour (6–8pm), tell the sommelier what you're in the mood for, and let them choose. They know their cellar well.</div>
+        <div class="card-hours"><div class="hours-dot"></div><span class="hours-text">Tue–Sun · 4:00pm–1:00am · Closed Monday</span></div>
+      </div>
+    </div>
+
+  </div>
+
+  <p class="section-title">What to eat here</p>
+  <div class="foods-grid">
+    <div class="food-item"><div class="food-emoji">🍛</div><div><div class="food-name">Rijsttafel</div><div class="food-note">The Indonesian rice table — a feast of small dishes passed around the table. Born from Dutch colonial trade; now Amsterdam's greatest contribution to the dining table.</div></div></div>
+    <div class="food-item"><div class="food-emoji">🫓</div><div><div class="food-name">Surinamese Roti</div><div class="food-note">Soft flatbread with curried chicken or vegetables, a boiled egg, and a hit of sambal. The most underrated dish in the city at the best price in the city.</div></div></div>
+    <div class="food-item"><div class="food-emoji">🐟</div><div><div class="food-name">Kibbeling</div><div class="food-note">Fried cod pieces in light batter, eaten from a paper bag at the market. Squeeze of lemon, dip in garlic sauce, eat standing on Albert Cuypstraat.</div></div></div>
+    <div class="food-item"><div class="food-emoji">🍷</div><div><div class="food-name">Natural Wine</div><div class="food-note">De Pijp leads Amsterdam's natural wine scene. Glouglou is the anchor — but several other small bars on the side streets have serious cellars worth exploring.</div></div></div>
+  </div>
+
+  <p class="section-title">The De Pijp question</p>
+  <div class="tips-row">
+    <div class="tip-card canal"><div class="tip-label">Market timing</div><div class="tip-text">Albert Cuyp is tourist-heavy on weekends. Go Tuesday or Wednesday morning when it's local shoppers buying actual food. Fewer selfie sticks, better cheese conversation.</div></div>
+    <div class="tip-card ochre"><div class="tip-label">The colonial table</div><div class="tip-text">Surinamese and Indonesian food in Amsterdam is not fusion — it's a centuries-old tradition. Ferdinand Bolstraat is the main strip for Surinamese; Amstelveenseweg for Indonesian. Both reward walking slowly and eating repeatedly.</div></div>
+    <div class="tip-card"><div class="tip-label">Heineken caveat</div><div class="tip-text">The Heineken Experience is in De Pijp. It's a fine tourist attraction. But if you're here for beer, walk ten minutes to Brouwerij 't IJ instead — better beer, better story, better atmosphere.</div></div>
+  </div>
+
+</div><!-- /depijp -->
+
+
+<!-- ═══════════════ OUD-WEST ═══════════════ -->
+<div class="neighbourhood" id="tab-oudwest">
+
+  <div class="neighbourhood-header">
+    <img class="nbh-photo-strip"
+         src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1400&q=80&auto=format&fit=crop"
+         alt="Oud-West Amsterdam food hall"
+         onerror="this.style.display='none'">
+    <div class="nbh-header-content">
+      <div>
+        <div class="nbh-eyebrow">West · Kinkerstraat</div>
+        <h2 class="nbh-title">Oud<em>-West</em></h2>
+        <p class="nbh-desc-overlay">Between Vondelpark and the Foodhallen — a neighbourhood that takes coffee and food seriously without taking itself too seriously. Residential, laid-back, and quietly excellent at almost every meal of the day.</p>
+      </div>
+      <div class="nbh-stats">
+        <div class="stat-item"><span class="stat-val">3</span>top spots</div>
+        <div class="stat-item"><span class="stat-val">€€</span>avg price</div>
+      </div>
+    </div>
+  </div>
+  <a href="index_amsterdam.html" class="nbh-back-btn">← All neighbourhoods</a>
+
+  <div class="nearest-highlight" id="nearest-oudwest">
+    <span class="arrow">📍</span>
+    <span>You're closest to this neighbourhood — these are your best options right now.</span>
+  </div>
+
+  <p class="section-title">Where to eat</p>
+  <div class="restaurants-grid">
+
+    <div class="restaurant-card">
+      <div class="card-top"><span class="card-type">Food Hall</span><span class="card-price"><span class="active-euro">€</span><span class="active-euro">€</span><span>€</span></span></div>
+      <div class="card-body">
+        <div class="card-name">De Hallen (Foodhallen)</div>
+        <div class="card-address">Hannie Dankbaarpassage 33 · Oud-West</div>
+        <div class="card-desc">A former tram depot converted into Amsterdam's best indoor food market — a dozen stalls serving everything from Vietnamese bánh mì to Dutch bitterballen to wood-fired pizza. Also contains an art deco cinema and a Sunday market. The building itself is worth the visit.</div>
+        <div class="card-dishes"><span class="dish-tag">Bitterballen</span><span class="dish-tag">Bánh Mì</span><span class="dish-tag">Kaasplank</span><span class="dish-tag">Craft Beer</span></div>
+        <div class="card-tip"><strong>Insider tip</strong>Go for dinner on a weekday — weekends are packed. The stall selection changes, so walk the full circuit before committing. The Vietnamese spot is usually the queue to follow.</div>
+        <div class="card-hours"><div class="hours-dot"></div><span class="hours-text">Sun–Thu · 11:00am–11:00pm · Fri–Sat · 11:00am–1:00am</span></div>
+      </div>
+    </div>
+
+    <div class="restaurant-card">
+      <div class="card-top"><span class="card-type">Coffee Roastery</span><span class="card-price"><span class="active-euro">€</span><span>€€</span></span></div>
+      <div class="card-body">
+        <div class="card-name">Lot Sixty One</div>
+        <div class="card-address">Kinkerstraat 112 · Oud-West</div>
+        <div class="card-desc">The benchmark for serious coffee in Amsterdam. A spacious, beautifully designed roastery-café that sources carefully and trains properly. Single origin, filter options, and flat whites made with discipline. The kind of coffee that rewards sitting with.</div>
+        <div class="card-dishes"><span class="dish-tag">Single Origin Filter</span><span class="dish-tag">Flat White</span><span class="dish-tag">Pastries</span></div>
+        <div class="card-tip"><strong>Insider tip</strong>Order a filter coffee alongside your espresso drink to understand what the beans actually taste like. They're happy to talk through the origins.</div>
+        <div class="card-hours"><div class="hours-dot"></div><span class="hours-text">Mon–Fri · 8:00am–6:00pm · Sat–Sun · 9:00am–6:00pm</span></div>
+      </div>
+    </div>
+
+    <div class="restaurant-card">
+      <div class="card-top"><span class="card-type">Neighbourhood Café</span><span class="card-price"><span class="active-euro">€</span><span class="active-euro">€</span><span>€</span></span></div>
+      <div class="card-body">
+        <div class="card-name">Staring at Jacob</div>
+        <div class="card-address">Jacob van Lennepkade 213 · Oud-West</div>
+        <div class="card-desc">The definitive Oud-West neighbourhood café — proper waffles, pancakes, excellent hot chicken sandwiches, and strong Bloody Marys on weekends. The kind of place locals bring visiting friends to prove that Amsterdam isn't just tourist menus.</div>
+        <div class="card-dishes"><span class="dish-tag">Dutch Pancakes</span><span class="dish-tag">Hot Chicken Sandwich</span><span class="dish-tag">Uitsmijter</span></div>
+        <div class="card-tip"><strong>Insider tip</strong>Weekend brunch is the move. No reservations — arrive by 10am or expect a queue that moves companionably slowly.</div>
+        <div class="card-hours"><div class="hours-dot"></div><span class="hours-text">Mon–Fri · 9:00am–5:00pm · Sat–Sun · 9:00am–5:00pm</span></div>
+      </div>
+    </div>
+
+  </div>
+
+  <p class="section-title">What to eat here</p>
+  <div class="foods-grid">
+    <div class="food-item"><div class="food-emoji">🥞</div><div><div class="food-name">Dutch Pancakes</div><div class="food-note">Thinner than American, thicker than French — pannenkoeken are served with stroop (syrup), bacon, or apple and cinnamon. A legitimate meal, not a dessert.</div></div></div>
+    <div class="food-item"><div class="food-emoji">☕</div><div><div class="food-name">Specialty Coffee</div><div class="food-note">Oud-West is the capital of Amsterdam's serious coffee scene. Lot Sixty One sets the standard; White Label near Centraal is the second pillar. Filter coffee is the local preference.</div></div></div>
+    <div class="food-item"><div class="food-emoji">🍔</div><div><div class="food-name">Global Street Food</div><div class="food-note">The Foodhallen has Vietnamese, Korean, Dutch, Italian, and more under one roof. It's the best single building for eating variety in Amsterdam.</div></div></div>
+  </div>
+
+</div><!-- /oudwest -->
+
+
+<!-- ═══════════════ CENTRUM ═══════════════ -->
+<div class="neighbourhood" id="tab-centrum">
+
+  <div class="neighbourhood-header">
+    <img class="nbh-photo-strip"
+         src="https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?w=1400&q=80&auto=format&fit=crop"
+         alt="Amsterdam Centrum canals"
+         onerror="this.style.display='none'">
+    <div class="nbh-header-content">
+      <div>
+        <div class="nbh-eyebrow">Historic Heart · Canal Ring</div>
+        <h2 class="nbh-title">Cen<em>trum</em></h2>
+        <p class="nbh-desc-overlay">Tourist density is high and the tourist traps are many — but buried among the canal houses are the oldest jenever tasting rooms in Europe, the best frites in the city, and a few honest Dutch tables that have never needed to advertise.</p>
+      </div>
+      <div class="nbh-stats">
+        <div class="stat-item"><span class="stat-val">3</span>top spots</div>
+        <div class="stat-item"><span class="stat-val">€–€€€</span>range</div>
+      </div>
+    </div>
+  </div>
+  <a href="index_amsterdam.html" class="nbh-back-btn">← All neighbourhoods</a>
+
+  <div class="nearest-highlight" id="nearest-centrum">
+    <span class="arrow">📍</span>
+    <span>You're closest to this neighbourhood — these are your best options right now.</span>
+  </div>
+
+  <p class="section-title">Where to eat</p>
+  <div class="restaurants-grid">
+
+    <div class="restaurant-card">
+      <div class="card-top"><span class="card-type">Proeflokaal</span><span class="card-price"><span class="active-euro">€</span><span>€€</span></span></div>
+      <div class="card-body">
+        <div class="card-name">Wynand Fockink</div>
+        <div class="card-address">Pijlsteeg 31 · Centrum (behind Dam Square)</div>
+        <div class="card-desc">Operating since 1679, tucked in an alley behind Dam Square. The most historically significant jenever tasting house in Amsterdam — dozens of varieties of Dutch gin, served in tulip glasses so full you must lean down to take the first sip without lifting. Standing room only, by tradition.</div>
+        <div class="card-dishes"><span class="dish-tag">Oude Jenever</span><span class="dish-tag">Jonge Jenever</span><span class="dish-tag">Advocaat</span><span class="dish-tag">Liqueurs</span></div>
+        <div class="card-tip"><strong>Insider tip</strong>Ask what they're pouring that day. Some varieties are made in tiny batches. The tradition is to drink the first sip standing at the counter without lifting the glass — it will spill on you otherwise.</div>
+        <div class="card-hours"><div class="hours-dot"></div><span class="hours-text">Mon–Thu · 3:00pm–9:00pm · Fri–Sun · 3:00pm–9:00pm</span></div>
+      </div>
+    </div>
+
+    <div class="restaurant-card">
+      <div class="card-top"><span class="card-type">Frites</span><span class="card-price"><span class="active-euro">€</span><span>€€</span></span></div>
+      <div class="card-body">
+        <div class="card-name">Vleminckx de Sausmeester</div>
+        <div class="card-address">Voetboogstraat 31 · Centrum (near Spui)</div>
+        <div class="card-desc">Frying since 1957 — a hole-in-the-wall on a side street near Spui that serves the best frites in Amsterdam. Flemish-style, double-fried, golden, served in a paper cone with 28 homemade sauces. The oorlog — Dutch mayo, peanut sauce, raw onion — is the correct first order.</div>
+        <div class="card-dishes"><span class="dish-tag">Frites Oorlog</span><span class="dish-tag">Frites met Mayonaise</span><span class="dish-tag">Vlammetjes</span></div>
+        <div class="card-tip"><strong>Insider tip</strong>There will be a queue. It moves fast. Order the oorlog (war sauce) for the full Dutch experience — the combination sounds chaotic and tastes inevitable.</div>
+        <div class="card-hours"><div class="hours-dot"></div><span class="hours-text">Mon · 11:00am–6:00pm · Tue–Sat · 11:00am–7:00pm · Sun · 12:00–6:00pm</span></div>
+      </div>
+    </div>
+
+    <div class="restaurant-card">
+      <div class="card-top"><span class="card-type">Traditional Dutch</span><span class="card-price"><span class="active-euro">€</span><span class="active-euro">€</span><span>€</span></span></div>
+      <div class="card-body">
+        <div class="card-name">Café Papeneiland</div>
+        <div class="card-address">Prinsengracht 2 · Centrum / Jordaan border</div>
+        <div class="card-desc">A 1642 canal-house café on the corner of Prinsengracht and Brouwersgracht — one of the most photographed corners in Amsterdam. The appeltaart is legendary, the atmosphere is ancient, and Bill Clinton ate here. Sit by the window, watch the canal, order the pie with cream.</div>
+        <div class="card-dishes"><span class="dish-tag">Appeltaart met Slagroom</span><span class="dish-tag">Broodje</span><span class="dish-tag">Dutch Beer</span></div>
+        <div class="card-tip"><strong>Insider tip</strong>Go on a grey weekday afternoon — the light through the old windows is extraordinary and the café is quieter. Weekend queues form quickly.</div>
+        <div class="card-hours"><div class="hours-dot"></div><span class="hours-text">Mon–Thu · 10:00am–1:00am · Fri–Sat · 10:00am–2:00am · Sun · 10:00am–1:00am</span></div>
+      </div>
+    </div>
+
+  </div>
+
+  <p class="section-title">What to eat here</p>
+  <div class="foods-grid">
+    <div class="food-item"><div class="food-emoji">🥃</div><div><div class="food-name">Jenever</div><div class="food-note">Dutch gin, served neat in a tulip glass, room temperature. Wynand Fockink behind Dam Square has been doing it since 1679 — don't skip it.</div></div></div>
+    <div class="food-item"><div class="food-emoji">🍟</div><div><div class="food-name">Frites Oorlog</div><div class="food-note">Dutch fries with mayo, peanut sauce, and raw onion. Sounds wrong, tastes right. Vleminckx near Spui has the best version and has since 1957.</div></div></div>
+    <div class="food-item"><div class="food-emoji">🐟</div><div><div class="food-name">Hollandse Haring</div><div class="food-note">Raw herring at a street stall near Centraal or at Waterlooplein. May–July for Hollandse Nieuwe (the season's first catch). Eaten by the tail, standing. No exceptions.</div></div></div>
+  </div>
+
+  <p class="section-title">Navigating the tourist trap</p>
+  <div class="tips-row">
+    <div class="tip-card canal"><div class="tip-label">The rule</div><div class="tip-text">If the menu has photos and is translated into six languages, walk past. The best places in Centrum have chalkboards or no menus visible from the street at all.</div></div>
+    <div class="tip-card ochre"><div class="tip-label">The Nine Streets</div><div class="tip-text">The <em>Negen Straatjes</em> grid between the main canals has some honest cafés and good lunch spots. It's tourist-adjacent but not a trap — the local clientele keeps the kitchens honest.</div></div>
+  </div>
+
+</div><!-- /centrum -->
+
+
+<!-- ═══════════════ AMSTERDAM OOST ═══════════════ -->
+<div class="neighbourhood" id="tab-oost">
+
+  <div class="neighbourhood-header">
+    <img class="nbh-photo-strip"
+         src="https://images.unsplash.com/photo-1519011985187-444d62641929?w=1400&q=80&auto=format&fit=crop"
+         alt="Amsterdam Oost Javastraat"
+         onerror="this.style.display='none'">
+    <div class="nbh-header-content">
+      <div>
+        <div class="nbh-eyebrow">East · Multicultural</div>
+        <h2 class="nbh-title">Amster<em>dam Oost</em></h2>
+        <p class="nbh-desc-overlay">The city's multicultural heart — Javastraat lined with Turkish, Moroccan, and Surinamese shops; the Dappermarkt grittier and more interesting than Albert Cuyp; and Brouwerij 't IJ inside an actual windmill. Less polished, more real.</p>
+      </div>
+      <div class="nbh-stats">
+        <div class="stat-item"><span class="stat-val">3</span>top spots</div>
+        <div class="stat-item"><span class="stat-val">€–€€</span>avg price</div>
+      </div>
+    </div>
+  </div>
+  <a href="index_amsterdam.html" class="nbh-back-btn">← All neighbourhoods</a>
+
+  <div class="nearest-highlight" id="nearest-oost">
+    <span class="arrow">📍</span>
+    <span>You're closest to this neighbourhood — these are your best options right now.</span>
+  </div>
+
+  <p class="section-title">Where to eat</p>
+  <div class="restaurants-grid">
+
+    <div class="restaurant-card">
+      <div class="card-top"><span class="card-type">Craft Brewery</span><span class="card-price"><span class="active-euro">€</span><span>€€</span></span></div>
+      <div class="card-body">
+        <div class="card-name">Brouwerij 't IJ</div>
+        <div class="card-address">Funenkade 7 · Amsterdam Oost</div>
+        <div class="card-desc">A working craft brewery at the base of a genuine 1814 windmill — the most atmospheric place to drink beer in Amsterdam and arguably in the Netherlands. Brewed on site, poured in a small tasting room with views of the windmill. The Columbus IPA justifies the pilgrimage alone.</div>
+        <div class="card-dishes"><span class="dish-tag">Columbus IPA</span><span class="dish-tag">Zatte Tripel</span><span class="dish-tag">IJwit Witbier</span><span class="dish-tag">Dutch Snack Board</span></div>
+        <div class="card-tip"><strong>Insider tip</strong>Sit outside when the weather allows — the windmill turns occasionally and the setting is extraordinary. The tasting room is small; arrive early on weekends. Brewery tours available.</div>
+        <div class="card-hours"><div class="hours-dot"></div><span class="hours-text">Mon–Sun · 2:00pm–8:00pm</span></div>
+      </div>
+    </div>
+
+    <div class="restaurant-card">
+      <div class="card-top"><span class="card-type">Farm-to-Table</span><span class="card-price"><span class="active-euro">€</span><span class="active-euro">€</span><span class="active-euro">€</span></span></div>
+      <div class="card-body">
+        <div class="card-name">De Kas</div>
+        <div class="card-address">Kamerlingh Onneslaan 3 · Amsterdam Oost</div>
+        <div class="card-desc">A restaurant inside a greenhouse — literally. De Kas grows most of its own vegetables in the glasshouse and the adjacent farm in the Beemster Polder. The set menu changes daily with what was harvested that morning. Mediterranean in spirit, Dutch in soul, extraordinary in execution.</div>
+        <div class="card-dishes"><span class="dish-tag">Daily Harvest Menu</span><span class="dish-tag">Greenhouse Vegetables</span><span class="dish-tag">Dutch Lamb</span></div>
+        <div class="card-tip"><strong>Insider tip</strong>Book at least two weeks ahead for dinner. Lunch is easier to get into and equally worth it. The greenhouse setting is best in spring when the gardens are flowering.</div>
+        <div class="card-hours"><div class="hours-dot"></div><span class="hours-text">Mon–Fri · 12:00–2:00pm · 6:30–10:00pm · Sat · 6:30–10:00pm · Closed Sunday</span></div>
+      </div>
+    </div>
+
+    <div class="restaurant-card">
+      <div class="card-top"><span class="card-type">Market</span><span class="card-price"><span class="active-euro">€</span><span>€€</span></span></div>
+      <div class="card-body">
+        <div class="card-name">Dappermarkt</div>
+        <div class="card-address">Dapperstraat · Amsterdam Oost</div>
+        <div class="card-desc">The most multicultural market in Amsterdam and the most honest. Turkish flatbreads, Moroccan spices, Indonesian snacks, fresh fish, West African vegetables — a market that reflects who actually lives in this part of the city. Cheaper and less crowded than Albert Cuyp.</div>
+        <div class="card-dishes"><span class="dish-tag">Turkish Flatbread</span><span class="dish-tag">Moroccan Spices</span><span class="dish-tag">Fresh Fish</span><span class="dish-tag">Street Snacks</span></div>
+        <div class="card-tip"><strong>Insider tip</strong>Come before noon on a weekday. Buy supplies for a Oosterpark picnic — the park is a five-minute walk. The Turkish grocery shops on Javastraat are excellent for cheap, quality produce.</div>
+        <div class="card-hours"><div class="hours-dot"></div><span class="hours-text">Mon–Sat · 9:00am–5:00pm · Closed Sunday</span></div>
+      </div>
+    </div>
+
+  </div>
+
+  <p class="section-title">What to eat here</p>
+  <div class="foods-grid">
+    <div class="food-item"><div class="food-emoji">🍺</div><div><div class="food-name">Craft Beer</div><div class="food-note">Brouwerij 't IJ in a windmill — the Columbus IPA is the reason to visit, but the whole range is worth working through. The most interesting beer address in the Netherlands.</div></div></div>
+    <div class="food-item"><div class="food-emoji">🌿</div><div><div class="food-name">Greenhouse Menu</div><div class="food-note">De Kas changes its menu daily based on the greenhouse harvest. It's one of the most honest farm-to-table experiences in Europe — and the setting is unlike anywhere else.</div></div></div>
+    <div class="food-item"><div class="food-emoji">🫓</div><div><div class="food-name">Javastraat Street Food</div><div class="food-note">Turkish lahmacun, Moroccan msemen, Indonesian snacks — Javastraat is a kilometre of multicultural eating. Walk from one end to the other and eat as you go.</div></div></div>
+  </div>
+
+</div><!-- /oost -->
+
+
+<!-- ═══════════════ NOORD ═══════════════ -->
+<div class="neighbourhood" id="tab-noord">
+
+  <div class="neighbourhood-header">
+    <img class="nbh-photo-strip"
+         src="https://images.unsplash.com/photo-1604999540073-43e59ba1fb14?w=1400&q=80&auto=format&fit=crop"
+         alt="Amsterdam Noord waterfront"
+         onerror="this.style.display='none'">
+    <div class="nbh-header-content">
+      <div>
+        <div class="nbh-eyebrow">Across the IJ · Creative District</div>
+        <h2 class="nbh-title">Noord</h2>
+        <p class="nbh-desc-overlay">A free two-minute ferry from behind Centraal Station takes you to a different Amsterdam — former shipyards turned into creative studios, waterfront restaurants, and the city's most atmospheric outdoor terrace. The city hasn't finished discovering it yet.</p>
+      </div>
+      <div class="nbh-stats">
+        <div class="stat-item"><span class="stat-val">2</span>top spots</div>
+        <div class="stat-item"><span class="stat-val">€€</span>avg price</div>
+        <div class="stat-item"><span class="stat-val">Free</span>ferry</div>
+      </div>
+    </div>
+  </div>
+  <a href="index_amsterdam.html" class="nbh-back-btn">← All neighbourhoods</a>
+
+  <div class="nearest-highlight" id="nearest-noord">
+    <span class="arrow">📍</span>
+    <span>You're closest to this neighbourhood — these are your best options right now.</span>
+  </div>
+
+  <p class="section-title">Where to eat</p>
+  <div class="restaurants-grid">
+
+    <div class="restaurant-card">
+      <div class="card-top"><span class="card-type">Waterfront Bar</span><span class="card-price"><span class="active-euro">€</span><span class="active-euro">€</span><span>€</span></span></div>
+      <div class="card-body">
+        <div class="card-name">Pllek</div>
+        <div class="card-address">T.T. Neveritaweg 59 · Amsterdam Noord</div>
+        <div class="card-desc">Built from shipping containers on the IJ waterfront — a laid-back, creative venue with a sandy beach, plant-based seasonal menu, and one of the best sunset views in Amsterdam. The kind of place where a drink turns into three hours without anyone noticing.</div>
+        <div class="card-dishes"><span class="dish-tag">Seasonal Plant-based Menu</span><span class="dish-tag">Craft Beer</span><span class="dish-tag">Natural Wine</span></div>
+        <div class="card-tip"><strong>Insider tip</strong>Take the free GVB ferry from behind Centraal (IJ-ferry 906, walk-on, no ticket needed) and arrive by 5pm on a summer evening to claim a beach chair before sunset.</div>
+        <div class="card-hours"><div class="hours-dot"></div><span class="hours-text">Mon–Thu · 11:00am–11:00pm · Fri–Sun · 11:00am–1:00am</span></div>
+      </div>
+    </div>
+
+    <div class="restaurant-card">
+      <div class="card-top"><span class="card-type">Restaurant</span><span class="card-price"><span class="active-euro">€</span><span class="active-euro">€</span><span>€</span></span></div>
+      <div class="card-body">
+        <div class="card-name">Restaurant Stork</div>
+        <div class="card-address">Gedempt Hamerkanaal 96 · Amsterdam Noord</div>
+        <div class="card-desc">Set in the former Stork machine factory on the water, this is one of Amsterdam's great dining spaces — high ceilings, industrial bones, and a menu focused on fish and Dutch produce. The mussels and the North Sea sole are exceptional. Worth the ferry for dinner.</div>
+        <div class="card-dishes"><span class="dish-tag">North Sea Sole</span><span class="dish-tag">Dutch Mussels</span><span class="dish-tag">Moules Marinières</span></div>
+        <div class="card-tip"><strong>Insider tip</strong>Book a window table for the water views. The lunch menu is significantly more affordable than dinner and the kitchen is equally attentive.</div>
+        <div class="card-hours"><div class="hours-dot"></div><span class="hours-text">Mon–Sun · 12:00–3:00pm · 6:00–10:30pm</span></div>
+      </div>
+    </div>
+
+  </div>
+
+  <p class="section-title">What to eat here</p>
+  <div class="foods-grid">
+    <div class="food-item"><div class="food-emoji">⛵</div><div><div class="food-name">Waterfront dining</div><div class="food-note">Noord's former industrial waterfront has the most dramatic dining settings in Amsterdam. Pllek for sunset drinks; Stork for a proper dinner. Both require the free IJ ferry and are better for it.</div></div></div>
+    <div class="food-item"><div class="food-emoji">🐚</div><div><div class="food-name">North Sea Fish</div><div class="food-note">Noord's restaurants lean into Dutch coastal produce — fresh mussels, North Sea sole, plaice. Stork does the most serious version; the setting in a former shipyard machine factory makes the fish taste better.</div></div></div>
+  </div>
+
+  <p class="section-title">Getting there</p>
+  <div class="tips-row">
+    <div class="tip-card canal"><div class="tip-label">The ferry</div><div class="tip-text">Free GVB IJ-ferries run continuously from behind Centraal Station — the journey takes two minutes and bikes are welcome. Service runs around the clock. It's not a tourist boat; it's public transport.</div></div>
+    <div class="tip-card ochre"><div class="tip-label">The vibe</div><div class="tip-text">Noord feels nothing like the canal belt. Former shipyards, street art, wide empty streets. The creative industry has arrived but hasn't fully gentrified it yet. A different city, five minutes away.</div></div>
+  </div>
+
+</div><!-- /noord -->
+
+
+</main>
+</div><!-- /guide -->
+
+<!-- ═══ FOOTER ═══ -->
+<footer class="footer">
+  <div class="footer-logo">Taste &amp; Wander</div>
+  <p class="footer-sub">Traditional food guides for the curious traveller</p>
+  <div class="footer-links">
+    <a href="https://tasteandwander.github.io/website/amsterdam.html">Traditional Dishes of Amsterdam →</a>
+    <a href="#">Rome</a>
+  </div>
+</footer>
+
+<script>
+const neighbourhoods = [
+  { id: 'jordaan',  name: 'Jordaan',          lat: 52.3751, lng: 4.8830 },
+  { id: 'depijp',   name: 'De Pijp',           lat: 52.3536, lng: 4.8949 },
+  { id: 'oudwest',  name: 'Oud-West',           lat: 52.3676, lng: 4.8693 },
+  { id: 'centrum',  name: 'Centrum',            lat: 52.3731, lng: 4.8922 },
+  { id: 'oost',     name: 'Amsterdam Oost',     lat: 52.3622, lng: 4.9283 },
+  { id: 'noord',    name: 'Noord',              lat: 52.3903, lng: 4.9003 }
+];
+
+function haversineKm(lat1, lng1, lat2, lng2) {
+  const R = 6371;
+  const dLat = (lat2 - lat1) * Math.PI / 180;
+  const dLng = (lng2 - lng1) * Math.PI / 180;
+  const a = Math.sin(dLat/2)**2 + Math.cos(lat1*Math.PI/180)*Math.cos(lat2*Math.PI/180)*Math.sin(dLng/2)**2;
+  return R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+}
+
+function findNearest(userLat, userLng) {
+  let nearest = null, minDist = Infinity;
+  for (const nbh of neighbourhoods) {
+    const dist = haversineKm(userLat, userLng, nbh.lat, nbh.lng);
+    if (dist < minDist) { minDist = dist; nearest = nbh; }
+  }
+  return { nbh: nearest, distKm: minDist };
+}
+
+function locateMe() {
+  const dot  = document.getElementById('locationDot');
+  const text = document.getElementById('locationText');
+  const btn  = document.getElementById('locateBtn');
+
+  if (!navigator.geolocation) {
+    text.textContent = 'Geolocation not supported by your browser';
+    dot.className = 'location-dot error';
+    return;
+  }
+
+  text.textContent = 'Detecting location…';
+  btn.textContent  = 'Locating…';
+
+  navigator.geolocation.getCurrentPosition(
+    (pos) => {
+      const { latitude, longitude } = pos.coords;
+      dot.className = 'location-dot active';
+      btn.textContent = 'Located';
+
+      const { nbh, distKm } = findNearest(latitude, longitude);
+      const distStr = distKm < 1
+        ? Math.round(distKm * 1000) + 'm away'
+        : distKm.toFixed(1) + ' km away';
+
+      if (distKm > 50) {
+        text.textContent = `You're not in Amsterdam right now (${distKm.toFixed(0)} km away) — but you can still explore`;
+      } else {
+        text.textContent = `You're in Amsterdam — nearest food neighbourhood: ${nbh.name} (${distStr})`;
+
+        document.getElementById('nearestBadge').classList.add('show');
+        document.getElementById('nearestName').textContent = nbh.name;
+
+        const highlight = document.getElementById('nearest-' + nbh.id);
+        if (highlight) highlight.classList.add('show');
+
+        const tabEl = document.querySelector(`[data-tab="${nbh.id}"]`);
+        if (tabEl) switchTab(nbh.id, tabEl);
+
+        document.getElementById('guide').scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    },
+    (err) => {
+      dot.className = 'location-dot error';
+      btn.textContent = 'Locate me';
+      text.textContent = err.code === 1
+        ? 'Location permission denied — browse by neighbourhood below'
+        : 'Could not detect location — browse by neighbourhood below';
+    },
+    { timeout: 8000, maximumAge: 60000 }
+  );
+}
+
+function switchTab(id, el) {
+  document.querySelectorAll('.neighbourhood').forEach(n => n.classList.remove('active'));
+  document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+  const panel = document.getElementById('tab-' + id);
+  if (panel) panel.classList.add('active');
+  if (el) el.classList.add('active');
+}
+</script>
+</body>
+</html>
